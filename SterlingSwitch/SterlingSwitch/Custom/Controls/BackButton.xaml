@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Custom.Controls.BackButton"
+             HeightRequest="28" WidthRequest="28">
+    
+   <Image x:Name="BackIcon" Aspect="Fill" HeightRequest="20" WidthRequest="11" Source="BackIcon.png" HorizontalOptions="Center" VerticalOptions="Center"/>
+</StackLayout>

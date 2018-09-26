@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "713211319792",
+    "firebase_url": "https://switch-5600b.firebaseio.com",
+    "project_id": "switch-5600b",
+    "storage_bucket": "switch-5600b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:713211319792:android:9c5cc523cc87db1e",
+        "android_client_info": {
+          "package_name": "com.switchmobile.sterling"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "713211319792-6848oeppbndk73kdkcasttd8a32hgmvn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKIJDM1K07GKZyTYtfvCYrZ5cgjhLnAh8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Pages.Investments.FixedDeposit.FixedDepositAccountReinvestPage"
+             xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+             xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls;assembly=SterlingSwitch"
+             IsBottomNavBarVisible="False" IsNavBarVisible="False" CurrentPage="Actions" 
+              ContentPadding="0" IsBackImageVisible="False" x:Name="Main">
+
+     <templates:SwitchMasterPage.PageContent>
+      <ContentView ControlTemplate="{StaticResource masterPage}">
+    <ScrollView>
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.13*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid BackgroundColor="{DynamicResource PrimaryColor}" Grid.Row="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Label Text="Fixed deposits" Style="{DynamicResource PageHeader}" Margin="0,0,0,11" />
+        </Grid>
+        <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+                <controls:ExtendedPicker x:Name="dpdDebitAccount" Title="Choose an account to debit" HorizontalOptions="FillAndExpand" SelectedIndexChanged="dpdDebitAccount_SelectedIndexChanged" HeightRequest="63" Margin="16,0,0,0" >
+                    
+                </controls:ExtendedPicker>
+
+                <controls:ExtendedPicker Grid.Row="1" x:Name="dpdReInvestOption" Title="Re-invest after maturity" SelectedIndexChanged="dpdReInvestOption_SelectedIndexChanged" HorizontalOptions="FillAndExpand" HeightRequest="63" Margin="16,0,0,0"  >
+                    
+                </controls:ExtendedPicker>
+
+
+                <Grid Grid.Row="1" HeightRequest="73" Margin="16,0,0,0" IsVisible="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Re-invest after maturity" FontSize="17" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                <Label Text="create another fixed deposit with the xxx" FontSize="12" Grid.Row="1" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Start" Margin="0,0,0,10"/>
+                <Switch Grid.RowSpan="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" IsToggled="{Binding IsToggled}"/>
+                <BoxView Style="{DynamicResource SeparatorStyle}" Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
+               </Grid>
+        </Grid>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Grid.Row="2" Margin="0,0,0,30">
+            <Button Text="Proceed" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" x:Name="btnProceed" Clicked="btnProceed_Clicked"/>
+        </Grid>
+    </Grid>
+    </ScrollView>
+    </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>

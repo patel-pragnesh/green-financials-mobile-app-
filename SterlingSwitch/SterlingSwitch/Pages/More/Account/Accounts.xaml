@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Pages.More.Accounts"
+             xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+             xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls"
+             xmlns:syncfussion="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+                            xmlns:vm="clr-namespace:SterlingSwitch.Pages.More.Account.Views" BackImageSource="BackIcon.png"
+                            TopNavBarBackgroundColor="#5ac8fa"  BackgroundColor="White" IsTopNavBarSeparatorVisible="False"
+             IsBackImageVisible="False"  IsBottomNavBarVisible="False" x:Name="AccountPage" ContentPadding="0"
+              PageTitleColor="White" >
+
+    <templates:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}">
+        <syncfussion:SfTabView x:Name="tabView"  VisibleHeaderCount="2" EnableSwiping="False">
+            <syncfussion:SfTabView.SelectionIndicatorSettings>
+                <syncfussion:SelectionIndicatorSettings Color="White" Position="Bottom" StrokeThickness="0"/>
+            </syncfussion:SfTabView.SelectionIndicatorSettings>
+            <syncfussion:SfTabItem>
+                <syncfussion:SfTabItem.HeaderContent>
+                    <StackLayout  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" BackgroundColor="#5ac8fa" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="7*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout VerticalOptions="Start" Grid.Column="0">
+                                <!--<StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="Backbtn" NumberOfTapsRequired="1" Tapped="Backbtn_Tapped"/>
+                                </StackLayout.GestureRecognizers>-->
+                                    <Image  Source="BackIcon.png">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer x:Name="backbtn" NumberOfTapsRequired="1" Tapped="Backbtn_Tapped"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                            </StackLayout>
+                            <StackLayout VerticalOptions="Center" Grid.Column="1">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Account_Tapped"/>
+                                </StackLayout.GestureRecognizers>
+                                <Label Text="ACCOUNTS" HorizontalTextAlignment="Center" Font="14" TextColor="White"/>
+                                <BoxView Style="{DynamicResource Key=accounts}" HorizontalOptions="Center" HeightRequest="3" WidthRequest="35"/>
+                            </StackLayout>
+                        </Grid>
+                        
+                       
+                    </StackLayout>
+                </syncfussion:SfTabItem.HeaderContent>
+                <syncfussion:SfTabItem.Content>
+                    <ScrollView>
+                      <vm:AccountList BindingContext="{Binding Path=BindingContext,Source={Reference AccountPage}}"></vm:AccountList>
+                    </ScrollView>
+                </syncfussion:SfTabItem.Content>
+            </syncfussion:SfTabItem>
+            <syncfussion:SfTabItem>
+                <syncfussion:SfTabItem.HeaderContent>
+                    <StackLayout  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" BackgroundColor="#5ac8fa" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="7*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Grid.Column="0">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Card_tapped"/>
+                                </StackLayout.GestureRecognizers>
+                                <Label HorizontalTextAlignment="Center" Text="CARDS" Font="14" TextColor="White"/>
+                                <BoxView Style="{DynamicResource Key=cards}" HorizontalOptions="Center" HeightRequest="3" WidthRequest="35"/>
+                            </StackLayout>
+                                <StackLayout Grid.Column="1" VerticalOptions="End">
+                                    <Image Source="addnew.png">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="1" x:Name="AddNewAccount" Tapped="AddNewAccount_Tapped"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                </syncfussion:SfTabItem.HeaderContent>
+                <syncfussion:SfTabItem.Content>
+                    <ScrollView>
+                        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+
+                            <Label Text="My Card"/>
+                        </StackLayout>
+                    </ScrollView>
+                </syncfussion:SfTabItem.Content>
+            </syncfussion:SfTabItem>
+        </syncfussion:SfTabView>
+        </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>

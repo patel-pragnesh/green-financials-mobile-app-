@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+                            xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls"
+                            IsBottomNavBarVisible="False"
+             IsTopNavBarSeparatorVisible="False"
+             IsNavBarVisible="False"
+             ContentPadding="0"               
+             BackgroundColor="White"  
+             TopNavBarBackgroundColor="White"               
+             x:Class="SterlingSwitch.Pages.Onboarding.Login.UnProfiledLoginPage">
+    <templates:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}" BackgroundColor="White">
+            <ScrollView VerticalScrollBarVisibility="Never" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid RowSpacing="10" Grid.Row="0" Margin="0,-50,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Image Source="switchlogo.png" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Start" Aspect="AspectFit" HeightRequest="40" WidthRequest="150"/>
+                        <Label Text="SWITCH" HorizontalOptions="Center" Grid.Row="1" FontSize="17" FontAttributes="Bold" TextColor="#191919"/>
+                    </Grid>
+
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="1" RowSpacing="40">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Frame Padding="0" CornerRadius="7" HasShadow="False" Margin="20,0,20,0">
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                <BoxView HeightRequest="50" HorizontalOptions="Fill" VerticalOptions="Center">
+                                    <BoxView.Color>
+                                        <Color x:FactoryMethod="FromRgba">
+                                            <x:Arguments>
+                                                <x:Int32>237</x:Int32>
+                                                <x:Int32>242</x:Int32>
+                                                <x:Int32>246</x:Int32>
+                                                <x:Int32>150</x:Int32>
+                                            </x:Arguments>
+                                        </Color>
+                                    </BoxView.Color>
+                                </BoxView>
+                                <Entry x:Name="txtUsername" IsSpellCheckEnabled="false"  Text="{Binding Customer.UserID}" TextChanged="txtUsername_TextChanged" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Username" Margin="30,0,20,0"/>
+                            </Grid>
+                        </Frame>
+                        <Frame Padding="0" CornerRadius="7" Margin="20,0,20,0" Grid.Row="1" HasShadow="False">
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                <BoxView HeightRequest="50" HorizontalOptions="Fill" VerticalOptions="Center">
+                                    <BoxView.Color>
+                                        <Color x:FactoryMethod="FromRgba">
+                                            <x:Arguments>
+                                                <x:Int32>237</x:Int32>
+                                                <x:Int32>242</x:Int32>
+                                                <x:Int32>246</x:Int32>
+                                                <x:Int32>150</x:Int32>
+                                            </x:Arguments>
+                                        </Color>
+                                    </BoxView.Color>
+                                </BoxView>
+                                <Entry VerticalOptions="Center" x:Name="txtPassword" Text="{Binding Customer.Password}" MaxLength="4" TextChanged="txtPassword_TextChanged" HorizontalOptions="Fill" Placeholder="Password" Keyboard="Numeric" IsPassword="True" Margin="30,0,20,0"/>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                    <Grid HorizontalOptions="Center" VerticalOptions="End" Grid.Row="2" Margin="0,30,0,0" RowSpacing="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Button Text="{Binding LoginButtonText}" x:Name="LoginButton" BackgroundColor="#33adc4" Clicked="LoginButton_Tapped" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" WidthRequest="200" />
+                        <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand" Grid.Row="1">
+                            <Label Text="Forgot Pin?"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontSize="14" TextColor="#191919">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="ForgotPin" Tapped="btnForgotPin_Tapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Margin="0,0,0,30">
+                    <Label Text="Join Switch" HorizontalOptions="Center" VerticalOptions="Center" FontSize="18" TextColor="#191919">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="btnJoinSwitch" Tapped="btnJoinSwitch_Tapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Switch IsVisible="False" x:Name="rememberMeSwitch" IsToggled="{Binding IsRememberPasswordChecked}" HeightRequest="22"  Margin="0,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"/>
+                </Grid>
+            </Grid>
+            </ScrollView>
+        </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>

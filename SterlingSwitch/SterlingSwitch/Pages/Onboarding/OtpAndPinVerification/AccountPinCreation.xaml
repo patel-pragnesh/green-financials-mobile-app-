@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<template:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:template="clr-namespace:SterlingSwitch.Templates"
+             xmlns:c="clr-namespace:SterlingSwitch.Custom.Controls"
+             x:Class="SterlingSwitch.Pages.Onboarding.OtpAndPinVerification.AccountPinCreation"
+             ContentPadding="0"              
+             IsBackImageVisible="False" IsBottomNavBarVisible="False"
+             IsNavBarVisible="False">
+    <template:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}" BackgroundColor="White">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="0.6*"/>
+                    <RowDefinition Height="0.4*"/>
+                </Grid.RowDefinitions>
+                <Grid Margin="0,20,0,0" VerticalOptions="Start">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Text="Back"  Margin="20,0,0,0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="BackLabel_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Image Margin="0,0,20,0" Grid.Column="2" Source="crossLittle.png" WidthRequest="23" HeightRequest="23" Aspect="AspectFit" HorizontalOptions="EndAndExpand">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Cross_Tapped"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+                
+                <StackLayout Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" Margin="30,90,30,0" Spacing="10" x:Name="PinStack">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10">
+                        <Label x:Name="TitleTxt" TextColor="Black" FontSize="17" HorizontalOptions="Center" Text="Create Login Pin"/>
+                        <Label x:Name="SubTitleTxt" TextColor="Black" FontSize="14" HorizontalOptions="Center" Text="Please enter pin for login on to switch." HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
+                        <Image x:Name="CellOne" WidthRequest="20" HeightRequest="20" Source="Circle.png"/>
+                        <Image x:Name="CellTwo"  WidthRequest="20" HeightRequest="20" Source="Circle.png"/>
+                        <Image x:Name="CellThree"   WidthRequest="20" HeightRequest="20" Source="Circle.png" />
+                        <Image x:Name="CellFour"   WidthRequest="20" HeightRequest="20"  Source="Circle.png"/>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" Margin="30,30,30,0" Spacing="10" IsVisible="False" x:Name="ConfirmPinStack">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10">
+                        <Label x:Name="ConfirmTitleTxt" TextColor="Black" FontSize="17" HorizontalOptions="Center" Text="Confirm Login Pin"/>
+                        <Label x:Name="ConfirmSubTitleTxt" TextColor="Black" FontSize="14" HorizontalOptions="Center" Text="Please confirm pin" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
+                        <Image x:Name="ConfirmCellOne" WidthRequest="20" HeightRequest="20" Source="Circle.png"/>
+                        <Image x:Name="ConfirmCellTwo"  WidthRequest="20" HeightRequest="20" Source="Circle.png"/>
+                        <Image x:Name="ConfirmCellThree"   WidthRequest="20" HeightRequest="20" Source="Circle.png" />
+                        <Image x:Name="ConfirmCellFour"   WidthRequest="20" HeightRequest="20"  Source="Circle.png"/>
+                    </StackLayout>
+                </StackLayout>
+                <Grid Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.BackgroundColor>
+                        <Color x:FactoryMethod="FromRgba">
+                            <x:Arguments>
+                                <x:Int32>208</x:Int32>
+                                <x:Int32>211</x:Int32>
+                                <x:Int32>217</x:Int32>
+                                <x:Int32>202</x:Int32>
+                            </x:Arguments>
+                        </Color>
+                    </Grid.BackgroundColor>
+                    <Grid RowSpacing="5" ColumnSpacing="5" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Margin="7,7,7,0">
+                        <Grid.RowDefinitions>
+                            <!--  D-o-t-s   -->
+                            <RowDefinition Height="*" />
+                            <!-- 1   2   3  -->
+                            <RowDefinition Height="*" />
+                            <!-- 4   5   6  -->
+                            <RowDefinition Height="*" />
+                            <!-- 7   8   9  -->
+                            <RowDefinition Height="*" />
+                            <!--     0  <-  -->
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <c:PinItemView 
+                    Text="1"
+                    Clicked="InputClicked"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    CommandParameter="1" HeightRequest="51" WidthRequest="117" />
+                    <c:PinItemView
+                    Text="2"
+                    Grid.Column="1"
+                     Clicked="InputClicked"    
+                    Grid.Row="0"
+                    
+                    CommandParameter="2"/>
+                        <c:PinItemView
+                    Text="3"
+                    Grid.Column="2"
+                    Clicked="InputClicked"        
+                    Grid.Row="0"
+                   
+                    CommandParameter="3"  />
+                        <c:PinItemView
+                    Text="4"
+                    Grid.Column="0"
+                    Clicked="InputClicked"        
+                    Grid.Row="1"
+                   
+                    CommandParameter="4"  />
+                        <c:PinItemView
+                    Text="5"
+                    Grid.Column="1"
+                    Clicked="InputClicked"        
+                    Grid.Row="1"
+                    
+                    CommandParameter="5"  />
+                        <c:PinItemView
+                    Text="6"
+                    Grid.Column="2"
+                    Clicked="InputClicked"        
+                    Grid.Row="1"
+                    
+                    CommandParameter="6"  />
+                        <c:PinItemView
+                    Text="7"
+                    Grid.Column="0"
+                    Clicked="InputClicked"        
+                    Grid.Row="2"
+                    
+                    CommandParameter="7"  />
+                        <c:PinItemView
+                    Text="8"
+                    Grid.Column="1"
+                    Clicked="InputClicked"             
+                    Grid.Row="2"
+                    
+                    CommandParameter="8" />
+                        <c:PinItemView
+                    Text="9"
+                    Grid.Column="2"
+                    Clicked="InputClicked"
+                    Grid.Row="2"
+                    
+                    CommandParameter="9"  />
+                        <c:PinItemView
+                    Text="0"
+                    Grid.Column="1"
+                    Clicked="InputClicked"
+                    Grid.Row="3"
+                    CommandParameter="0" />
+                        <Grid Grid.Row="3" Grid.Column="0">
+                            <Image HorizontalOptions="Center" VerticalOptions="Center" Source="Trash.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="30"/>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Delete_OnTapped"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                        <Grid Grid.Row="3" Grid.Column="2">
+                            <Image HorizontalOptions="Center" VerticalOptions="Center" Source="Check.png" Aspect="AspectFit" HeightRequest="15" WidthRequest="30"/>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="PinCreation_Tapped"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </ContentView>
+    </template:SwitchMasterPage.PageContent>
+</template:SwitchMasterPage>

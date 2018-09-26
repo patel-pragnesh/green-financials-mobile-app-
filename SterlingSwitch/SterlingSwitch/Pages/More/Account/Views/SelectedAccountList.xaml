@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls"
+             x:Class="SterlingSwitch.Pages.More.Account.Views.SelectedAccountList">
+    <ContentView.Content>
+        <StackLayout>            
+            <controls:DoubleLabel LeftText="Account Number" RightText="{Binding CustomerAccounts.nuban}"  LineColor="#c7c7cc" LeftTextColor="#5c5c5c" RightTextColor="#5c5c5c"/>
+            <controls:DoubleLabel LeftText="Currency" RightText="{Binding CustomerAccounts.currencyCode}" LineColor="#c7c7cc" LeftTextColor="#5c5c5c" RightTextColor="#5c5c5c"/>
+            <controls:DoubleLabel LeftText="Bank Address" RightText="20 Marina, Lagos Island Nigeria Africa" BackgroundColor="White" LeftTextColor="#5c5c5c" RightTextColor="#5c5c5c" LineColor="Gray"/>
+            <controls:DoubleLabel LeftText="Limit" RightText="098765" LeftTextColor="#5c5c5c" RightTextColor="#5c5c5c" BackgroundColor="White" LineColor="Gray"/>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

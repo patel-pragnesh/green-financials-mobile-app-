@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Pages.WalletAllTransaction.View.WalletAllTransactionView"
+             xmlns:cv="clr-namespace:SterlingSwitch.Converters"
+             xmlns:horizonalCtl="clr-namespace:SterlingSwitch.CustomControls.HorizontalList">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <cv:CreditDebitConverter x:Key="cdConvert"/>
+            <Color x:Key="horizontalListBColor">#2bade8</Color>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0" Padding="5" BackgroundColor="{StaticResource Key=horizontalListBColor}">
+                <horizonalCtl:HorizontalList SelectedCommand="{Binding SelectedMonthCommand}"  ListOrientation="Horizontal" ItemsSource="{Binding Months}">
+                    <horizonalCtl:HorizontalList.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout WidthRequest="70" HeightRequest="20" BackgroundColor="{StaticResource Key=horizontalListBColor}">
+                                <Label HorizontalTextAlignment="Center" Text="{Binding .}" TextColor="White"></Label>
+                            </StackLayout>
+                        </DataTemplate>
+                    </horizonalCtl:HorizontalList.ItemTemplate>
+                </horizonalCtl:HorizontalList>
+                <!--<Label Text="Horizontal List"></Label>-->
+            </StackLayout>
+            <Grid Padding="20,10"  Grid.Row="1" BackgroundColor="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0">
+                    <Label Text="{Binding SelectedMonth,StringFormat='Total for {0}'}" HorizontalTextAlignment="Start"></Label>
+                </StackLayout>
+                <StackLayout Grid.Column="1">
+                    <Label Text="{Binding Total}" HorizontalTextAlignment="End"/>
+                </StackLayout>
+            </Grid>
+            <StackLayout Padding="20,0" Grid.Row="2" BackgroundColor="White">
+                <ActivityIndicator IsRunning="{Binding IsWalletTransactionLoading}" IsVisible="{Binding IsWalletTransactionLoading}"></ActivityIndicator>
+                <Label VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" IsVisible="{Binding ShowWalletErrorMessage}" Text="{Binding WalletTransactionErrorMessage}"></Label>
+                <ListView HasUnevenRows="True"
+                           ItemsSource="{Binding WalletTransacttions}"
+                      SeparatorVisibility="None"
+                          ItemSelected="ListView_ItemSelected" BackgroundColor="Transparent">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Margin="0,0,0,5" VerticalOptions="CenterAndExpand" Spacing="10">
+
+                                    <Grid ColumnSpacing="20"  >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Column="0">
+                                            <Frame HasShadow="False" Padding="0" Margin="0"
+                                               CornerRadius="5" BorderColor="Transparent" 
+                                               IsClippedToBounds="True" BackgroundColor="{StaticResource SkyBlue}"
+                                                HeightRequest="50" 
+                                                 WidthRequest="50" 
+                                                 x:Name="bxv">
+
+                                            </Frame>
+
+                                        </StackLayout>
+                                        <StackLayout  Grid.Column="1">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <StackLayout Grid.Column="0">
+                                                    <Label LineBreakMode="TailTruncation"  Text="{Binding remarks}" Style="{StaticResource Key=LabelHeader}"></Label>
+                                                    <Label  Text="{Binding TransactionType}" Style="{StaticResource Key=LabelSubHeader}"></Label>
+                                                </StackLayout>
+                                                <StackLayout Grid.Column="1" HorizontalOptions="End">
+                                                    <Label Text="{Binding AmountFormatted}"
+                                               VerticalOptions="CenterAndExpand" 
+                                               TextColor="{Binding TransactionType,Converter={StaticResource Key=cdConvert}}"
+                                               HorizontalTextAlignment="End"
+                                               FontFamily="{StaticResource ThemeFont}"></Label>
+
+                                                </StackLayout>
+
+                                            </Grid>
+                                            <BoxView HeightRequest="0.5" HorizontalOptions="FillAndExpand" BackgroundColor="Gray"></BoxView>
+
+                                        </StackLayout>
+
+                                    </Grid>
+
+                                </StackLayout>
+
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

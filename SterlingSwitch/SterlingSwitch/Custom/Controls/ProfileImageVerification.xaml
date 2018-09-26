@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cus="clr-namespace:SterlingSwitch.Custom.Controls"
+             x:Class="SterlingSwitch.Custom.Controls.ProfileImageVerification">
+  <ContentView.Content>
+        <StackLayout  Margin="0,0,0,5" VerticalOptions="CenterAndExpand" Spacing="10">
+            <StackLayout Orientation="Vertical">
+                <Frame HorizontalOptions="Center" Padding="0" VerticalOptions="CenterAndExpand" HeightRequest="25"
+                       WidthRequest="25" CornerRadius="25"  x:Name="frmIndicator" BackgroundColor="Red"/>
+                <!--<Frame HorizontalOptions="Center" VerticalOptions="CenterAndExpand" HeightRequest="10"
+                       WidthRequest="10" CornerRadius="10" BackgroundColor="Blue" x:Name="ImageNotNullOREmpty"/>-->
+                <Label  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" x:Name="lblheaderText"/>
+                <Label  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" x:Name="lblsubheaderText"/>
+            </StackLayout>
+       </StackLayout>
+  </ContentView.Content>
+</ContentView>

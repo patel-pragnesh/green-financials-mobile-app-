@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ms:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:ms="clr-namespace:SterlingSwitch.Templates"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Pages.LocalTransfer.SendMoney"
+             PageTitle="Send Money" 
+             IsBottomNavBarVisible="False"
+             IsBackImageVisible="True"
+             ContentPadding="0" BackgroundColor="#EDEDED" ContentBackgroundColor="White"
+             xmlns:custom="clr-namespace:SterlingSwitch.Custom.Controls"
+             PageTitleColor="Black">
+    
+    <ms:SwitchMasterPage.PageContent>
+       <ContentView ControlTemplate="{StaticResource masterPage}">
+            <StackLayout Padding="16,20,0,-5" Spacing="0" VerticalOptions="StartAndExpand">
+                <StackLayout>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="tapRecipientType" Tapped="tapRecipientType_Tapped"  NumberOfTapsRequired="1"/>
+                    </StackLayout.GestureRecognizers>
+                        <custom:LabelUnderline SubHeaderText="Recipient type" ImageSource="arrowDown.png" IsArrowVisible="True"  />
+
+                </StackLayout>
+                <StackLayout IsVisible="False" Spacing="0" x:Name="NewOrExisting">
+                    <StackLayout x:Name="Existing">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="tapExisting" Tapped="tapExisting_Tapped"  NumberOfTapsRequired="1"/>
+                        </StackLayout.GestureRecognizers>
+                        <custom:LabelUnderline SubHeaderText="Existing recipient" />
+                        <!--<custom:SearchableExtendedPicker x:Name="RecipientPicker" Title="Existing Picker" SelectedIndexChanged="RecipientPicker_SelectedIndexChanged"/>-->
+                    </StackLayout>
+                    <StackLayout x:Name="New" >
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="tapNew" Tapped="tapNew_Tapped"  NumberOfTapsRequired="1"/>
+                        </StackLayout.GestureRecognizers>
+                        <custom:LabelUnderline SubHeaderText="New recipient" />
+
+                    </StackLayout>
+        
+                </StackLayout>
+                <StackLayout IsVisible="False">
+                <custom:SearchableExtendedPicker x:Name="RecipientPicker" SelectedIndexChanged="RecipientPicker_SelectedIndexChanged"/>
+            </StackLayout>
+
+            </StackLayout>
+        </ContentView>
+    </ms:SwitchMasterPage.PageContent>
+</ms:SwitchMasterPage>

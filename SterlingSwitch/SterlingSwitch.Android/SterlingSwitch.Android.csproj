@@ -1,0 +1,695 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C5818AE3-2C59-4684-8A37-C06908CD9D6F}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TemplateGuid>{c9e5eea5-ca05-42a1-839b-61506e0a37df}</TemplateGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SterlingSwitch.Droid</RootNamespace>
+    <AssemblyName>SterlingSwitch.Android</AssemblyName>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
+    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <AndroidSupportedAbis />
+    <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidManagedSymbols>true</AndroidManagedSymbols>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'TestPilot|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\TestPilot\</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Android" />
+    <Reference Include="Syncfusion.SfTabView.Android, Version=16.1451.0.37, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Syncfusion.SfTabView.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfTabView.XForms, Version=16.1451.0.37, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Syncfusion.SfTabView.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfTabView.XForms.Android, Version=16.1451.0.37, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Syncfusion.SfTabView.XForms.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Acr.DeviceInfo">
+      <Version>6.5.0</Version>
+    </PackageReference>
+    <PackageReference Include="Acr.Settings" Version="9.0.0" />
+    <PackageReference Include="AppCenter.Analytics.Metrics" Version="1.0.0" />
+    <PackageReference Include="CarouselView.FormsPlugin" Version="5.2.0" />
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="2.5.4" />
+    <PackageReference Include="DLToolkit.Forms.Controls.FlowListView">
+      <Version>2.0.11</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AppCenter" Version="1.7.0" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.7.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="1.7.0" />
+    <PackageReference Include="Microsoft.AppCenter.Distribute" Version="1.7.0" />
+    <PackageReference Include="Microsoft.AppCenter.Push" Version="1.7.0" />
+    <PackageReference Include="PCLCrypto">
+      <Version>2.0.147</Version>
+    </PackageReference>
+    <PackageReference Include="Plugin.CurrentActivity">
+      <Version>2.1.0.4</Version>
+    </PackageReference>
+    <PackageReference Include="Plugin.Fingerprint" Version="1.4.7" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.0.4" />
+    <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
+    <PackageReference Include="Xam.Plugin.Geolocator" Version="4.5.0.6" />
+    <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.1" />
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
+      <Version>3.0.0.5</Version>
+    </PackageReference>
+    <PackageReference Include="Xamanimation">
+      <Version>1.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Firebase.Common">
+      <Version>60.1142.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Firebase.Config">
+      <Version>60.1142.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="3.1.0.583944" />
+    <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2" />
+    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="27.0.2" />
+    <PackageReference Include="Xamarin.Android.Support.v4" Version="27.0.2" />
+    <PackageReference Include="Xamarin.Android.Support.v7.CardView" Version="27.0.2" />
+    <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="27.0.2" />
+    <PackageReference Include="Xamarin.Forms.Contacts" Version="1.0.5" />
+    <PackageReference Include="Xamarin.Forms.GoogleMaps">
+      <Version>3.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Base">
+      <Version>60.1142.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Basement">
+      <Version>60.1142.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Tasks">
+      <Version>60.1142.1</Version>
+    </PackageReference>
+    <PackageReference Include="XForms.Plugin.AnimationNavigationPage" Version="1.0.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helpers\AndroidIMEI.cs" />
+    <Compile Include="Helpers\IBSHelper.cs" />
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="PhoneBook\Contact.cs" />
+    <Compile Include="Renderers\BorderlessDatePickerRenderer.cs" />
+    <Compile Include="Renderers\CustomEntryRenderer.cs" />
+    <Compile Include="Renderers\CustomListView_Droid.cs" />
+    <Compile Include="Renderers\CustomScrollViewRenderer.cs" />
+    <Compile Include="Renderers\ExtendedViewCellRenderer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="ToastMessage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\OpenSans-Light.ttf" />
+    <AndroidAsset Include="Assets\OpenSans-Regular.ttf" />
+    <AndroidAsset Include="Assets\Roboto-Medium.ttf" />
+    <AndroidAsset Include="Assets\Roboto-Regular.ttf" />
+    <GoogleServicesJson Include="google-services.json" />
+    <None Include="PlayStoreJson\api-4742994694588178165-348945-80bf6ba52dc7.json" />
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+    <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Tabbar.axml" />
+    <AndroidResource Include="Resources\layout\Toolbar.axml" />
+    <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\mipmap-anydpi-v26\icon.xml" />
+    <AndroidResource Include="Resources\mipmap-anydpi-v26\icon_round.xml" />
+    <AndroidResource Include="Resources\mipmap-hdpi\Icon.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\Icon.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\Icon.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\Icon.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resources\drawable\sendMoneysmall.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\sendMoneysmall.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\sendMoneysmall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SterlingSwitch\SterlingSwitch.csproj">
+      <Project>{16942C20-A5BF-480E-9CFE-CA1F35D62B97}</Project>
+      <Name>SterlingSwitch</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\tipsCard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\forwardarrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\forwardarrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\forwardarrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\cross.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Rectangle1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\Rectangle1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\Rectangle1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\Rectangle1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Rectangle1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\custdashboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\IncomeDot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ExpenseDot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\SavingsDot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\TipDot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\custdashboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\custdashboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\custdashboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\custdashboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="xml\file_paths.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\More.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\MyBank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Payments.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\More.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\MyBank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\Payments.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\MyActions.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\MyActions.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\More.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\MyActions.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\MyBank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\Payments.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\More.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\MyActions.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\MyBank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\Payments.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\More.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\MyActions.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\MyBank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Payments.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bills.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\investment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\sendMoney.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\bills.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\investment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\sendMoney.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\bills.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\investment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\sendMoney.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\bills.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\investment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\sendMoney.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\bills.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\investment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\sendMoney.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\crossLittle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\feedCard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\feedCard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\feedCard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\feedCard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\feedCard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\investmentCard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\investmentCard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\investmentCard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\investmentCard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\investmentCard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\switchlogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\success.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\question.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\End.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\switchlogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\switchlogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\switchlogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\switchlogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="lib\Syncfusion.SfTabView.Android.dll" />
+    <Content Include="lib\Syncfusion.SfTabView.XForms.Android.dll" />
+    <Content Include="lib\Syncfusion.SfTabView.XForms.dll" />
+    <AndroidResource Include="Resources\drawable\airtime.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\airtime.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\airtime.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\airtime.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\airtime.png" />
+    <AndroidResource Include="Resources\drawable\loans.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\loans.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\loans.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\loans.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\loans.png" />
+    <AndroidResource Include="Resources\drawable\budgets.png" />
+    <AndroidResource Include="Resources\drawable\fx.png" />
+    <AndroidResource Include="Resources\drawable\give.png" />
+    <AndroidResource Include="Resources\drawable\insurance.png" />
+    <AndroidResource Include="Resources\drawable\tickets.png" />
+    <AndroidResource Include="Resources\drawable\withdrawal.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\budgets.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\fx.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\give.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\insurance.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\tickets.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\withdrawal.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\budgets.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\fx.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\give.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\insurance.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\tickets.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\withdrawal.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\budgets.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\fx.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\give.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\insurance.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\tickets.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\withdrawal.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\budgets.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\fx.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\give.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\insurance.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\tickets.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\withdrawal.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\BackIcon.png" />
+    <AndroidResource Include="Resources\drawable\BackIcon.png" />
+    <AndroidResource Include="Resources\drawable\forwardarrow.png" />
+    <AndroidResource Include="Resources\drawable\minus.png" />
+    <AndroidResource Include="Resources\drawable\plus.png" />
+    <AndroidResource Include="Resources\drawable\walkthroughcircle.png" />
+    <AndroidResource Include="Resources\drawable\shape.png" />
+    <AndroidResource Include="Resources\drawable\inputRounded.png" />
+    <AndroidResource Include="Resources\drawable\homeUnselected.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\homeUnselected.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\inputRounded.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\shape.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\walkthroughcircle.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\homeUnselected.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\inputRounded.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\shape.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\walkthroughcircle.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\homeUnselected.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\inputRounded.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\shape.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\walkthroughcircle.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\homeUnselected.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\inputRounded.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\shape.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\walkthroughcircle.png" />
+    <AndroidResource Include="Resources\drawable\visa.png" />
+    <AndroidResource Include="Resources\drawable\master.png" />
+    <AndroidResource Include="Resources\drawable\verve.png" />
+    <AndroidResource Include="Resources\drawable\cardBg.png" />
+    <AndroidResource Include="Resources\drawable\camera.png" />
+    <AndroidResource Include="Resources\drawable\DashProfile.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_refresh_black_18dp.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_refresh_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_refresh_black_36dp.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_refresh_black_48dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\camera.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\DashProfile.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_refresh_black_18dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_refresh_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_refresh_black_36dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_refresh_black_48dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\camera.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\DashProfile.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_refresh_black_18dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_refresh_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_refresh_black_36dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_refresh_black_48dp.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\camera.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\DashProfile.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_refresh_black_18dp.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_refresh_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_refresh_black_36dp.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_refresh_black_48dp.png" />
+    <AndroidResource Include="Resources\drawable\RefreshIcon.png" />
+    <AndroidResource Include="Resources\drawable\app_icon.png" />
+    <AndroidResource Include="Resources\drawable\entertainment.png" />
+    <AndroidResource Include="Resources\drawable\education.png" />
+    <AndroidResource Include="Resources\drawable\transportation.png" />
+    <AndroidResource Include="Resources\drawable\travel.png" />
+    <AndroidResource Include="Resources\drawable\groceries.png" />
+    <AndroidResource Include="Resources\drawable\shopping.png" />
+    <AndroidResource Include="Resources\drawable\eatingOut.png" />
+    <AndroidResource Include="Resources\drawable\transfers.png" />
+    <AndroidResource Include="Resources\drawable\income.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\shopping.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\eatingOut.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\transfers.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\entertainment.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\income.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\education.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\transportation.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\travel.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\groceries.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\entertainment.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\income.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\education.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\transportation.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\travel.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\groceries.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\shopping.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\eatingOut.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\transfers.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\transfers.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\entertainment.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\income.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\education.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\transportation.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\travel.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\groceries.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\shopping.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\eatingOut.png" />
+    <AndroidResource Include="Resources\drawable\sterlingLogo.png" />
+    <AndroidResource Include="Resources\drawable\phoneBook.png" />
+    <AndroidResource Include="Resources\drawable\SearchFind.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\BackIcon.png.png" />
+    <AndroidResource Include="Resources\drawable\loadingNew.gif" />
+    <AndroidResource Include="Resources\drawable\safe.png" />
+    <AndroidResource Include="Resources\drawable\selectedfavoriteMyActionsFilled.png" />
+    <AndroidResource Include="Resources\drawable\investmentAdd1.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\investmentAdd1.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\app_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\camera.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\DashProfile.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\selectedfavoriteMyActionsFilled.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\selectedfavoritePaymentsCopy.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\app_icon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\selectedfavoriteMyActionsFilled.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\selectedfavoritePaymentsCopy.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\investmentAdd1.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\investment2x.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\selectedfavoriteMyActionsFilled.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\selectedfavoritePaymentsCopy.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\investment2x.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\app_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\selectedfavoritePaymentsCopy.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\selectedfavoriteMyActionsFilled.png" />
+    <AndroidResource Include="Resources\drawable\shape2.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\shape2.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\shape2.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\shape2.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\shape2.png" />
+    <AndroidResource Include="Resources\drawable\arrowDown.png" />
+    <AndroidResource Include="Resources\drawable\investmentWalkthrough.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\investmentWalkthrough.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\investmentWalkthrough.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\investmentWalkthrough.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\investmentWalkthrough.png" />
+    <AndroidResource Include="Resources\drawable\BlackBackArrow.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\BlackBackArrow.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\BlackBackArrow.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\BlackBackArrow.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\BlackBackArrow.png" />
+    <AndroidResource Include="Resources\drawable\cardAccounts.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\cardAccounts.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\cardAccounts.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\cardAccounts.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\cardAccounts.png" />
+    <AndroidResource Include="Resources\drawable\cardAccount.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\cardAccount.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\cardAccount.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\cardAccount.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\arrow1.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Search.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\arrow1.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\BackIcon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Search.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\arrow1.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\BackIcon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Search.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\arrow1.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Search.png" />
+    <AndroidResource Include="Resources\drawable\Circle.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Circle.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Circle.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Circle.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Circle.png" />
+    <AndroidResource Include="Resources\drawable\FilledCircle.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\FilledCircle.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\FilledCircle.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\FilledCircle.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\FilledCircle.png" />
+    <AndroidResource Include="Resources\drawable\InvestmentBlueRectangle.png" />
+    <AndroidResource Include="Resources\drawable\InvestmentGreenRectangle.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Skyscrapper.png" />
+    <AndroidResource Include="Resources\drawable\Search.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Skyscrapper.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Skyscrapper.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Skyscrapper.png" />
+    <AndroidResource Include="Resources\drawable\Skyscrapper.png" />
+    <AndroidResource Include="Resources\drawable\SelectedBank.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\SelectedBank.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\SelectedBank.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\SelectedBank.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\SelectedBank.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\safe.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\safe.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\safe.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\safe.png" />
+    <AndroidResource Include="Resources\drawable\fundIllustration.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\fundIllustration.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\fundIllustration.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\fundAccountBig.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\fundIllustration.png" />
+    <AndroidResource Include="Resources\drawable\Search.png" />
+    <AndroidResource Include="Resources\drawable\statement.PNG" />
+    <AndroidResource Include="Resources\drawable\getdirection.PNG" />
+    <AndroidResource Include="Resources\drawable\User.png" />
+    <AndroidResource Include="Resources\drawable\Locked.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Locked.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\User.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Locked.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\User.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Locked.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\User.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Locked.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\User.png" />
+    <AndroidResource Include="Resources\drawable\billssmall.png" />
+    <AndroidResource Include="Resources\drawable\addnew.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\addnew.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\addnew.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\addnew.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\addnew.png" />
+    <AndroidResource Include="Resources\drawable\Check.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Check.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Check.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Check.png" />
+    <AndroidResource Include="Resources\drawable\Trash.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Trash.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Trash.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Trash.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Trash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\manage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\freeze.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\fund.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+</Project>

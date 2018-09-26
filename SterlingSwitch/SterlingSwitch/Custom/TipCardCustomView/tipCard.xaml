@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Custom.TipCardCustomView.tipCard">
+    <Frame Padding="0" CornerRadius="5" Margin="20,0,20,50" HeightRequest="250" HasShadow="false">
+        <Grid HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" BackgroundColor="White" Padding="20" RowSpacing="0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" HorizontalOptions="FillAndExpand">
+                <Image Source="crossLittle.png" HeightRequest="17" WidthRequest="17" HorizontalOptions="EndAndExpand"/>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="remove" Tapped="RemoveCard_Tapped"/>
+                </Grid.GestureRecognizers>
+            </Grid>
+            <Grid  Grid.Row="1" RowSpacing="10" Margin="0,0,0,10" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>                    
+                </Grid.RowDefinitions>
+                <Image Source="switchlogo.png" WidthRequest="44" HeightRequest="45" HorizontalOptions="CenterAndExpand" />
+                <Label Grid.Row="1" HorizontalOptions="CenterAndExpand" Text="{Binding Name}" FontSize="17" TextColor="{DynamicResource EntryTextColor}"/>
+                <Label Grid.Row="2" HorizontalOptions="CenterAndExpand" Text="{Binding Description}" HorizontalTextAlignment="Center" TextColor="{DynamicResource ContentTextColor}" FontSize="14" VerticalOptions="Start" />
+            </Grid>
+            <Grid Grid.Row="2" HorizontalOptions="FillAndExpand" Margin="0" Padding="0">
+                <Image  Source="feedCard.png" HeightRequest="27" WidthRequest="102" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="feedcardTap" Tapped="Feedcard_Tapped"/>
+                </Grid.GestureRecognizers>
+            </Grid>
+        </Grid>
+    </Frame>
+    
+</ContentView>

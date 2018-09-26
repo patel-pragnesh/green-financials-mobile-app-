@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage
+    xmlns:templates="clr-namespace:SterlingSwitch.Templates" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Pages.LiveChat.LiveChatPage"
+             IsBackImageVisible="True" x:Name="Main" BackgroundColor="White" BackImageSource="BackIcon.png"
+    PageTitle="Live Chat" PageTitleColor="White" ContentPadding="0" HeaderPadding="16,20,0,0" TopNavBarBackgroundColor="#5AC8FA">
+
+    <templates:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}">
+            <ScrollView>
+                <StackLayout>
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <WebView Grid.Row="1" Source="https://sterlingbankng.com/projects/switchchat/" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand"/>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout VerticalOptions="End" HorizontalOptions="CenterAndExpand" Padding="0,0,0,15">
+                        <Label Text="Tap the chat Icon above to chat with us..." FontSize="16" HorizontalOptions="CenterAndExpand"  TextColor="{DynamicResource SkyBlue}"/>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>

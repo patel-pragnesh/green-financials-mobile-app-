@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+             xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls"
+             IsBackImageVisible="True" PageTitle="Target Savings" PageTitleColor="Black" IsBottomNavBarVisible="False" IsTopNavBarSeparatorVisible="False"
+             x:Class="SterlingSwitch.Pages.TargetSaving.TargetSavings">
+    <templates:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" HeightRequest="160" Padding="0,50,0,0">
+                    <Image Source="cardAccount.png"  Aspect="AspectFit"/>
+                </StackLayout>
+                <StackLayout Grid.Row="1" Spacing="10">
+                    <controls:ExtendedEntry Title="Goal Name" Placeholder="School Fee"/>
+                    <controls:ExtendedEntry Title="Target Amount" Placeholder="e.g  NGN 50,000" IsAmount="True"/>
+                    <controls:ExtendedPicker Title="Account/Card to debit" Placeholder="VISA-1558"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <controls:LabelUnderline LableLineColor="Transparent" HeaderText="Schedule Payment" SubHeaderText="Or Create a Standing Order" Grid.Column="0"/>
+                        <Switch IsToggled="false" Grid.Column="1"  />
+                    </Grid>
+                </StackLayout>
+                <StackLayout Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="100">
+                    <Button Text="Continue" BackgroundColor="#5B5CDE"/>
+                </StackLayout>
+            </Grid>
+        </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>

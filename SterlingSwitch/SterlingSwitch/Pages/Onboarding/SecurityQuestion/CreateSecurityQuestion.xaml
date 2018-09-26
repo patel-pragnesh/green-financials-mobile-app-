@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Pages.Onboarding.SecurityQuestion.CreateSecurityQuestion"
+             xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+              xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls;assembly=SterlingSwitch"
+             IsBottomNavBarVisible="False"
+             IsTopNavBarSeparatorVisible="False"
+             TopNavBarBackgroundColor="White"
+             IsBackImageVisible="True"
+             IsNavBarVisible="False"
+             BackgroundColor="White">
+    <templates:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}">
+            <Grid BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Row="0" VerticalOptions="Start" Padding="0,10,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="2">
+                        <Image Source="" WidthRequest="23" HeightRequest="23" Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="EndAndExpand" />
+                       
+                    </Grid>
+                </Grid>
+                <Grid Row="1" VerticalOptions="Center" RowSpacing="30" Margin="0,0,0,150">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid x:Name="grdStep1" Grid.Row="1" RowSpacing="20" IsVisible="True">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="What's your first name ?" HorizontalOptions="Center" HorizontalTextAlignment="Center" x:Name="selectQuestionOne" FontSize="17" IsVisible="False" Grid.Row="0"/>
+                        <controls:ExtendedPicker x:Name="stepOnePicker" Grid.Row="0" ItemsSource="{Binding BindableQuestions}" Placeholder="Select a security Question, 1 of 2." HorizontalOptions="CenterAndExpand" IsArrowVisible="False" IsUnderLineVisible="False" IsEnabled="{Binding IsPickerEnabled}"/>
+                        <Grid Grid.Row="1" RowSpacing="10" HorizontalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Entry HorizontalTextAlignment="Center"  Placeholder="Your Answer." HorizontalOptions="FillAndExpand" x:Name="stepOneAnswer"/>
+                            <BoxView x:Name="BoxViewLine4" Grid.Row="1" Style="{DynamicResource SeparatorStyle}" VerticalOptions="End"/>
+                        </Grid>
+                        <Grid Row="2" VerticalOptions="EndAndExpand" Margin="0,20,0,0" RowSpacing="30">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Button Grid.Row="0" x:Name="btnStep1" Text="NEXT" Clicked="btnStep1_Clicked" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                        </Grid>
+                    </Grid>
+                    <Grid x:Name="grdStep2" Grid.Row="1" RowSpacing="10" IsVisible="False">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="What's your first name ?" HorizontalOptions="Center" HorizontalTextAlignment="Center" x:Name="selectQuestionTwo" FontSize="17" IsVisible="False" Grid.Row="0"/>
+                        <controls:ExtendedPicker Grid.Row="0" x:Name="stepTwoPicker" ItemsSource="{Binding BindableQuestions}" Placeholder="Select another security Question, 2 of 2." HorizontalOptions="CenterAndExpand" IsArrowVisible="False" IsUnderLineVisible="False"/>
+                        <Grid Grid.Row="1" RowSpacing="10" HorizontalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Entry HorizontalTextAlignment="Center" x:Name="stepTwoAnswer"  Placeholder="Your Answer." HorizontalOptions="FillAndExpand"/>
+                            <BoxView x:Name="BoxViewLine3" Grid.Row="1" Style="{DynamicResource SeparatorStyle}" VerticalOptions="End"/>
+                        </Grid>
+                        <Grid Row="2" VerticalOptions="EndAndExpand" Margin="0,20,0,0" RowSpacing="30">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Button Grid.Row="0" x:Name="btnsubmit" Text="Submit" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Clicked="btnSubmit_Clicked" />
+                            <!--<Label x:Name="grdStep2Previous" Grid.Row="1" FontSize="17" Text="PREVIOUS" TextColor="{DynamicResource SkyBlue}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Next_OnClicked"/>
+                                </Label.GestureRecognizers>
+                            </Label>-->
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>

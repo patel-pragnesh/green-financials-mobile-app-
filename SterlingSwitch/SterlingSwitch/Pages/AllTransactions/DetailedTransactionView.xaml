@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:c="clr-namespace:SterlingSwitch.Custom.Controls"
+                             xmlns:cv="clr-namespace:SterlingSwitch.Converters"
+                            xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+                            IsBottomNavBarVisible="False"
+                            TopNavBarBackgroundColor="{StaticResource SkyBlue}"
+                            PageTitle="All Transactions" PageTitleColor="White"
+                            ContentPadding="0" ContentBackgroundColor="White" BackImageSource="BackIcon.png"
+             x:Class="SterlingSwitch.Pages.AllTransactions.DetailedTransactionView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <cv:CreditDebitConverter x:Key="cdConvert"/>
+            <cv:CategoryToImageConverter x:Key="catimg"/>
+            
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <templates:SwitchMasterPage.PageContent>
+        <ContentView HeightRequest="100" ControlTemplate="{StaticResource masterPage}">
+            <ScrollView  HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid  Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0" Source="Skyscrapper.png" Opacity="0.5" Aspect="AspectFill"/>
+                        <Grid  VerticalOptions="EndAndExpand" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70*" />
+                                <ColumnDefinition Width="30*" />
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <c:OptionCell Grid.Column="0" HorizontalOptions="StartAndExpand" x:Name="optCell" BoxViewColor="Transparent" ImageSource="" Grid.ColumnSpan="2" />
+                            <Label x:Name="lblAmount" Grid.Column="1" HorizontalOptions="End" />
+                        </Grid>
+                    </Grid>
+                  
+                    <Grid Padding="16,0" Grid.Row="1" RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+
+                        </Grid.RowDefinitions>
+
+
+
+                        <!--<Grid Grid.Row="0" VerticalOptions="End" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70*" />
+                                <ColumnDefinition Width="30*" />
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <c:OptionCell Grid.Column="0" x:Name="optCell" BoxViewColor="Transparent" ImageSource="" Grid.ColumnSpan="2" />
+                            <Label x:Name="lblAmount" Grid.Column="1" HorizontalOptions="End" />
+                        </Grid>-->
+
+                        <Grid Grid.Row="1" HeightRequest="80" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40*"/>
+                                <RowDefinition Height="20*"/>
+                                <RowDefinition Height="40*" />
+                            </Grid.RowDefinitions>
+                            <Label Text="{Binding PaymentReference}" IsVisible="False"  Grid.Row="0" />
+                            <Grid Grid.Row="2" ColumnSpacing="16">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="TagCategory" Tapped="TagCategory_Tapped" />
+                                </Grid.GestureRecognizers>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding CategoryID,Converter={StaticResource catimg}}" 
+                                                   Aspect="AspectFit" Grid.Column="0"
+                                                   HorizontalOptions="StartAndExpand"></Image>
+                                <Label Grid.Column="1" Text="{Binding CategoryName}" HorizontalOptions="StartAndExpand" />
+                            </Grid>
+
+                        </Grid>
+                        <BoxView HeightRequest="1" Color="#EDF2F6"  Grid.Row="1" VerticalOptions="EndAndExpand" />
+                        <Grid Grid.Row="2" HeightRequest="120" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40*"/>
+                                <RowDefinition Height="20*"/>
+                                <RowDefinition Height="40*" />
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Margin="10" Text="DETAILS" />
+                            <Label Grid.Row="2" Text="Tap here to add a note" />
+                        </Grid>
+                        <BoxView HeightRequest="1" Color="#EDF2F6" Grid.Row="2" VerticalOptions="EndAndExpand" />
+
+                        <Grid HeightRequest="60" Grid.Row="3">
+                            <c:DoubleLabel  VerticalOptions="CenterAndExpand" LeftText="Transaction ID" IsLineVisible="False" RightText="{Binding ReferenceID}"  />
+                        </Grid>
+                        <BoxView HeightRequest="1" Color="#EDF2F6" Grid.Row="3" VerticalOptions="EndAndExpand" />
+
+
+                        <Grid Grid.Row="4" HeightRequest="120" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40*"/>
+                                <RowDefinition Height="20*"/>
+                                <RowDefinition Height="40*" />
+                            </Grid.RowDefinitions>
+                            <Label x:Name="lblHistory" LineBreakMode="TailTruncation"  Grid.Row="0" Text="{Binding History}" Margin="0,15,0,0" />
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80*" />
+                                    <ColumnDefinition Width="20*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="Number of transactions" />
+                                <Label Grid.Column="1" Text="1" HorizontalOptions="EndAndExpand" />
+                            </Grid>
+
+
+                        </Grid>
+                        <BoxView HeightRequest="1" Color="#EDF2F6" Grid.Row="4" VerticalOptions="EndAndExpand" />
+
+                        <Grid Grid.Row="5"  HeightRequest="60">
+                            <c:DoubleLabel x:Name="lblTotalAmountSent"   LeftText="Total Sent" VerticalOptions="CenterAndExpand" IsLineVisible="False" RightText="{Binding AmountSent}" />
+                        </Grid >
+                        <BoxView HeightRequest="1" Color="#EDF2F6" Grid.Row="5" VerticalOptions="EndAndExpand" />
+
+                        <Grid HeightRequest="60" Grid.Row="6"  >
+                            <c:DoubleLabel x:Name="lblTotalReceived" VerticalOptions="CenterAndExpand"  LeftText="Total recieved " RightText="{Binding AmountReceived}" IsLineVisible="False" />
+                        </Grid>
+                        <BoxView HeightRequest="1" Color="#EDF2F6" Grid.Row="6" VerticalOptions="EndAndExpand" />
+                        <Grid HeightRequest="60" RowSpacing="15" Grid.Row="7"  >
+                            <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="sendMoneyFromTrnxDetail" Tapped="SendMoney_Tapped" />
+                                
+                            </Grid.GestureRecognizers>
+                            
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="sendMoneysmall.png" Grid.Column="0" HorizontalOptions="StartAndExpand"/>
+                            <Label Grid.Column="1" x:Name="lblInitiateTransaction" LineBreakMode="TailTruncation" Text="{Binding BeneficiaryName, StringFormat='Send money to {0}'}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
+                        </Grid>
+                        <BoxView HeightRequest="1" Color="#EDF2F6" Grid.Row="7" VerticalOptions="EndAndExpand" />
+                        <Grid HeightRequest="100" Grid.Row="8">
+
+                        </Grid>
+                    </Grid>
+                </Grid>
+               
+            </ScrollView>
+        </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>

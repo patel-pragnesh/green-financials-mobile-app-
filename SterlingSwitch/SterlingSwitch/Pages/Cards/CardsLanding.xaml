@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             x:Class="SterlingSwitch.Pages.Cards.CardsLanding" BackgroundColor="{DynamicResource BackgroundColor}">
+
+    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,0,10">
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid VerticalOptions="StartAndExpand" HorizontalOptions="Fill" Margin="0,10">
+                <Grid VerticalOptions="FillAndExpand" HeightRequest="200" HorizontalOptions="Start">
+                    <Image x:Name="LeftMoreCardsImg"  Source="morecards.png" WidthRequest="20" HorizontalOptions="End" HeightRequest="200" RotationX="180" IsVisible="False"/>
+                </Grid>
+                <cv:CarouselViewControl
+                    Orientation="Horizontal"
+                    InterPageSpacing="0"
+                    ItemsSource="{Binding CustomerCards}" Grid.Row="0" AnimateTransition="True" HeightRequest="200" HorizontalOptions="FillAndExpand" x:Name="CardsCarousel" PropertyChanged="CardsCarousel_PropertyChanged">
+                    <cv:CarouselViewControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid VerticalOptions="FillAndExpand">
+                                <Frame CornerRadius="13" HasShadow="False" BackgroundColor="#326B85" Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="15,10">
+                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        <Image Source="cardBg.png" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Opacity="0.1"/>
+                                        <StackLayout Orientation="Vertical" Spacing="20" HorizontalOptions="FillAndExpand" VerticalOptions="End">
+                                            <Grid Padding="20">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                <Label Grid.Column="2" Grid.ColumnSpan="2" Text="SWITCH" Style="{DynamicResource BodyStyle}" TextColor="White" HorizontalOptions="End" FontSize="24"/>
+                                                <Label Grid.Row="1" Text="****" Style="{DynamicResource BodyStyle}" TextColor="White" HorizontalOptions="End" VerticalOptions="End" FontSize="20"/>
+                                                <Label Grid.Row="1" Grid.Column="1" Text="****" Style="{DynamicResource BodyStyle}" TextColor="White" HorizontalOptions="End" VerticalOptions="End" FontSize="20"/>
+                                                <Label Grid.Row="1" Grid.Column="2" Text="****" Style="{DynamicResource BodyStyle}" TextColor="White" HorizontalOptions="End" VerticalOptions="End" FontSize="20"/>
+                                                <Label Grid.Row="1" Grid.Column="3" Text="{Binding LastDigits}" Style="{DynamicResource BodyStyle}" TextColor="White" HorizontalOptions="End" VerticalOptions="End" FontSize="20"/>
+                                                <Image Grid.Row="2" Grid.Column="3" Source="{Binding CardLogo}" WidthRequest="70" HorizontalOptions="End" HeightRequest="40"/>
+                                            </Grid>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </cv:CarouselViewControl.ItemTemplate>
+                </cv:CarouselViewControl>
+                <Label x:Name="NoCardTxt" Text="No card found." HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False"/>
+                <Grid VerticalOptions="FillAndExpand" HeightRequest="200" HorizontalOptions="End">
+                    <Image x:Name="MoreCardsImg"  Source="morecards.png" WidthRequest="20" HorizontalOptions="End" HeightRequest="200" IsVisible="False"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1" HorizontalOptions="Center" VerticalOptions="StartAndExpand" ColumnSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Image Source="fund.png" HeightRequest="65" WidthRequest="65" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0"  />
+                    <Label Text="Fund"  Style="{DynamicResource DashBoardStyleSmaller}" HorizontalOptions="CenterAndExpand" Grid.Row="1"></Label>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="FundCard_Tapped"/>
+                    </Grid.GestureRecognizers>
+                </Grid>
+                <Grid Grid.Column="1" IsVisible="false">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Image Source="freeze.png" HeightRequest="65" WidthRequest="65" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Label Text="Freeze"  Style="{DynamicResource DashBoardStyleSmaller}" HorizontalOptions="CenterAndExpand" Grid.Row="1"/>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="FreezeCard_Tapped"/>
+                    </Grid.GestureRecognizers>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Image Source="manage.png" HeightRequest="65" WidthRequest="65" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Label Text="Manage" Style="{DynamicResource DashBoardStyleSmaller}" HorizontalOptions="CenterAndExpand" Grid.Row="1"/>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ManageCard_Tapped"/>
+                    </Grid.GestureRecognizers>
+                </Grid>
+
+            </Grid>
+            <Button x:Name="RequestBtn" Text="Request a card" Grid.Row="3" WidthRequest="150" Clicked="RequestBtn_Clicked"/>
+        </Grid>
+    </ScrollView>
+</ContentView>

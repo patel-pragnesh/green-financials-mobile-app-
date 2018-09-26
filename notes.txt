@@ -1,0 +1,5 @@
+FileType for Unboarding Customers (Enum)
+UploadID
+UploadPhoto
+UploadUtility
+Signature

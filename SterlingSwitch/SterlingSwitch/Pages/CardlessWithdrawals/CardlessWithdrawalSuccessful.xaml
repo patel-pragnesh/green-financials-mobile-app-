@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="SterlingSwitch.Pages.CardlessWithdrawals.CardlessWithdrawalSuccessful"
+                             xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+                            xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls"
+                            IsBackImageVisible="false"  
+                            IsNavBarVisible="false"
+                            IsBottomNavBarVisible="False"
+                            TopNavBarBackgroundColor="White"
+                            ContentPadding="41,40,51,0">
+
+     <templates:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}">
+           
+        <Grid VerticalOptions="FillAndExpand" Padding="0,0,0,35" HorizontalOptions="FillAndExpand" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+           <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+           <Image Source="fundIllustration.png" Margin="0,0,0,30" Aspect="AspectFit"></Image>
+                   <Label FontSize="18" TextColor="Black" FontAttributes="Bold" Margin="0,0,0,10" Text="Transaction Complete" HorizontalTextAlignment="Center"></Label> 
+                     <Label HorizontalTextAlignment="Center" FontSize="14" TextColor="#5c5c5c">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span  Text="We have sent a withdrawal code to your "></Span>
+                                 <Span Text="registered phone number. Use the code at any "></Span>
+                                 <Span Text="ATM, POS or branch to withdraw your cash"></Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label> 
+         </StackLayout>
+
+               
+               
+                <Grid Grid.Row="1" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="19">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Button Text="Find an ATM" HorizontalOptions="CenterAndExpand" x:Name="btnConfirm" Clicked="btnFindAtm_Clicked"/>
+                    <Label Text="Dismiss" FontSize="16" HorizontalOptions="CenterAndExpand" Grid.Row="1" TextColor="{DynamicResource LabelRedColor}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="lblDismiss" Tapped="lblDismiss_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+           
+        </Grid>
+   
+    </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>

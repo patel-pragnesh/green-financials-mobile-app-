@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Pages.BankAccounts.BankAccountsView"
+             xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+                     xmlns:cv="clr-namespace:SterlingSwitch.Converters"
+             xmlns:vw="clr-namespace:SterlingSwitch.Pages.BankAccounts.Views"
+                            
+                            PageContentBackgroundColor="White"
+                            xmlns:syncfussion="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+                            xmlns:cards="clr-namespace:SterlingSwitch.Pages.Cards"
+                            IsBackImageVisible="False"  x:Name="bankPage" IsNavBarVisible="true" CurrentPage="MyBank" ContentPadding="0"  IsBottomNavBarVisible="True" PageTitle=""  
+                            PageTitleColor="Black" IsTopNavBarSeparatorVisible="false" TopNavBarBackgroundColor="White" ContentBackgroundColor="White">
+
+    <templates:SwitchMasterPage.Resources>
+        <ResourceDictionary>
+            <cv:CreditDebitConverter x:Key="cdConvert"/>
+            <!--<Style x:Key="Selected" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="{StaticResource Key=SelectedTab}"/>
+            </Style>
+            <Style x:Key="UnSelectedTab" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>-->
+             
+        </ResourceDictionary>
+    </templates:SwitchMasterPage.Resources>
+    <templates:SwitchMasterPage.PageContent>
+      <ContentView ControlTemplate="{StaticResource masterPage}">
+       
+        <syncfussion:SfTabView x:Name="tabView"  BindingContext="{Binding Path=BindingContext,Source={x:Reference bankPage}}" EnableSwiping="False" VisibleHeaderCount="3" >
+            <syncfussion:SfTabView.SelectionIndicatorSettings>
+                <syncfussion:SelectionIndicatorSettings Color="Transparent" Position="Bottom" StrokeThickness="0"/>
+            </syncfussion:SfTabView.SelectionIndicatorSettings>
+            <syncfussion:SfTabItem>
+                <syncfussion:SfTabItem.HeaderContent>                    
+                    <StackLayout VerticalOptions="Center">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="AccountTapped"/>
+                        </StackLayout.GestureRecognizers>
+                        <Label HorizontalTextAlignment="Center" Text="ACCOUNTS"></Label>
+                        <BoxView x:Name="bxaccount" HorizontalOptions="Center" HeightRequest="3" WidthRequest="35" ></BoxView>
+                    </StackLayout>
+                </syncfussion:SfTabItem.HeaderContent>
+                <syncfussion:SfTabItem.Content>
+                    <vw:AccountContentView BindingContext="{Binding Path=BindingContext,Source={Reference bankPage}}"></vw:AccountContentView>
+                </syncfussion:SfTabItem.Content>
+            </syncfussion:SfTabItem>
+            <syncfussion:SfTabItem >
+                <syncfussion:SfTabItem.HeaderContent>
+                    <StackLayout VerticalOptions="Center">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="CardsTapped"/>
+                        </StackLayout.GestureRecognizers>
+                        <Label HorizontalTextAlignment="Center" Text="CARDS"></Label>
+                        <BoxView x:Name="bxcard"  HorizontalOptions="Center" HeightRequest="3" WidthRequest="35"></BoxView>
+                    </StackLayout>
+                </syncfussion:SfTabItem.HeaderContent>
+                <syncfussion:SfTabItem.Content>
+                    <cards:CardsLanding BindingContext="{Binding Path=BindingContext,Source={Reference bankPage}}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                </syncfussion:SfTabItem.Content>
+            </syncfussion:SfTabItem>
+            <syncfussion:SfTabItem>
+                <syncfussion:SfTabItem.HeaderContent>
+                    <StackLayout VerticalOptions="Center">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="WalletTapped"/>
+                        </StackLayout.GestureRecognizers>
+                        <Label HorizontalTextAlignment="Center" Text="WALLETS"></Label>
+                        <BoxView x:Name="bxwallet" HorizontalOptions="Center" HeightRequest="3" WidthRequest="35"></BoxView>
+                    </StackLayout>
+                </syncfussion:SfTabItem.HeaderContent>
+                <syncfussion:SfTabItem.Content>
+                    <vw:WalletContentView BindingContext="{Binding Path=BindingContext,Source={Reference bankPage}}"></vw:WalletContentView>
+                </syncfussion:SfTabItem.Content>
+            </syncfussion:SfTabItem>
+        </syncfussion:SfTabView>
+
+    </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+
+
+</templates:SwitchMasterPage>

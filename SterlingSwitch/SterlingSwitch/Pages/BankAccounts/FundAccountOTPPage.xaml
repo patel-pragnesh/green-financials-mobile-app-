@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sm:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sm="clr-namespace:SterlingSwitch.Templates"
+             xmlns:c="clr-namespace:SterlingSwitch.Custom.Controls"
+             x:Class="SterlingSwitch.Pages.BankAccounts.FundAccountOTPPage" 
+            IsBackImageVisible="True" IsBottomNavBarVisible="False" 
+             PageTitle="Fund Account" PageTitleColor="Black" HeaderPadding="16,20,0,0"
+             ContentPadding="0">
+    
+    <sm:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}" BackgroundColor="{DynamicResource BackgroundColor}" VerticalOptions="CenterAndExpand">
+            <Grid Padding="16,0,0,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <c:ExtendedEntry x:Name="otpTxt" Placeholder="Enter OTP sent to you" WidthRequest="200" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" Keyboard="Numeric"/>
+                    </StackLayout>
+                </StackLayout>
+                <Button x:Name="SubmitBtn" Text="Submit" Grid.Row="2" Clicked="SubmitBtn_Clicked"/>
+            </Grid>
+        </ContentView>
+    </sm:SwitchMasterPage.PageContent>
+</sm:SwitchMasterPage>

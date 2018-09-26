@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Pages.More.MorePage"
+              xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+                            xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls"
+                            TopNavBarBackgroundColor="{StaticResource Key=SkyBlue}"  BackgroundColor="White"
+                            IsBackImageVisible="False" x:Name="allPage" IsTopNavBarSeparatorVisible="False"  
+                             IsNavBarVisible="True" ContentPadding="0" PageTitle="More" CurrentPage="More" 
+                            IsBottomNavBarVisible="True"  
+                             PageTitleColor="White">
+
+    <templates:SwitchMasterPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="headerColor">#2bade8</Color>
+            <Style TargetType="StackLayout" x:Key="headerBackground">
+                <Setter Property="BackgroundColor" Value="#f6f6f6"></Setter>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="Padding" Value="20,0,0,0"></Setter>
+            </Style>
+            <Style TargetType="Label" x:Key="headerLabel">
+                <Setter Property="TextColor" Value="#7e7e7e"/>
+                <Setter Property="HorizontalTextAlignment" Value="Start"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+            </Style>
+            <Style TargetType="StackLayout" x:Key="contentHolder">
+                <Setter Property="Spacing" Value="0"/>
+                <!--<Setter Property="Padding" Value="20,0"/>-->
+                <Setter Property="BackgroundColor" Value="#ffffff"/>
+            </Style>
+            <Style TargetType="controls:ExtendedLabel">
+                <Setter Property="TextColor" Value="#545454"/>
+                <Setter Property="LineColor" Value="Black"/>
+                <Setter Property="ContentPadding" Value="20,0"/>
+                <Setter Property="LineMargin" Value="16,0,0,0"></Setter>
+            </Style>
+
+            <Style TargetType="controls:ExtendedSwitch">
+                <Setter Property="TextColor" Value="#545454"/>
+                <Setter Property="LineColor" Value="Black"/>
+                <Setter Property="ContentPadding" Value="20,0"/>
+                <Setter Property="LineMargin" Value="16,0,0,0"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </templates:SwitchMasterPage.Resources>
+    <templates:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}">
+            <ScrollView BackgroundColor="White">
+                <StackLayout Spacing="0">
+                    <StackLayout Spacing="0">
+                        <StackLayout Style="{StaticResource Key=headerBackground}">
+                            <Label Text="SUPPORT" Style="{StaticResource Key=headerLabel}"></Label>
+                        </StackLayout>
+                        <StackLayout Style="{StaticResource Key=contentHolder}">
+                            <controls:ExtendedLabel ItemTapped="ExtendedLabel_ItemTapped"  Text="Your Profile"></controls:ExtendedLabel>
+                            <controls:ExtendedLabel ItemTapped="ExtendedLabel_ItemTapped" Text="Notifications"></controls:ExtendedLabel>
+                            <controls:ExtendedLabel ItemTapped="ExtendedLabel_ItemTapped" Text="Accounts &amp; Cards" >
+
+                            </controls:ExtendedLabel>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Spacing="0">
+                        <StackLayout Style="{StaticResource Key=headerBackground}">
+                            <Label Text="SECURITY" Style="{StaticResource Key=headerLabel}"></Label>
+                        </StackLayout>
+                        <StackLayout Style="{StaticResource Key=contentHolder}">
+                            <controls:ExtendedSwitch x:Name="IsTPIN" Text="Transaction PIN" OnToggled="ExtendedSwitch_OnToggled"></controls:ExtendedSwitch>
+                            <!--<controls:ExtendedLabel ItemTapped="ExtendedLabel_ItemTapped"  Text="Transaction PIN"></controls:ExtendedLabel>-->
+                            <controls:ExtendedLabel ItemTapped="ExtendedLabel_ItemTapped" Text="Change Pin"></controls:ExtendedLabel>
+                            <controls:ExtendedLabel ItemTapped="ExtendedLabel_ItemTapped" Text="Devices"></controls:ExtendedLabel>
+                           
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Spacing="0">
+                        <StackLayout Style="{StaticResource Key=headerBackground}">
+                            <Label Text="SUPPORT" Style="{StaticResource Key=headerLabel}"></Label>
+                        </StackLayout>
+                        <StackLayout Style="{StaticResource Key=contentHolder}">
+                            <controls:ExtendedLabel ItemTapped="ExtendedLabel_ItemTapped"  Text="Live Chat"></controls:ExtendedLabel>
+                            <controls:ExtendedLabel ItemTapped="ExtendedLabel_ItemTapped"  Text="Contact Us"></controls:ExtendedLabel>
+                            <controls:ExtendedLabel ItemTapped="ExtendedLabel_ItemTapped" Text="FAQs"></controls:ExtendedLabel>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Spacing="0">
+                        <StackLayout Style="{StaticResource Key=headerBackground}">
+                            <Label Text="LEGALS" Style="{StaticResource Key=headerLabel}"></Label>
+                        </StackLayout>
+                        <StackLayout Style="{StaticResource Key=contentHolder}">
+                            <controls:ExtendedLabel ItemTapped="ExtendedLabel_ItemTapped"  Text="Terms and Conditions"></controls:ExtendedLabel>
+                            <controls:ExtendedLabel ItemTapped="ExtendedLabel_ItemTapped" Text="Privacy Policy"></controls:ExtendedLabel>
+                            <controls:ExtendedLabel ItemTapped="ExtendedLabel_ItemTapped" Text="About Switch"></controls:ExtendedLabel>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Spacing="0">
+                        <StackLayout Style="{StaticResource Key=headerBackground}">
+                            <Label Text="" Style="{StaticResource Key=headerLabel}"></Label>
+                        </StackLayout>
+                        <StackLayout Style="{StaticResource Key=contentHolder}">
+                            <controls:ExtendedLabel ItemTapped="ExtendedLabel_ItemTapped" Text="Log out"></controls:ExtendedLabel>
+                        </StackLayout>
+                    </StackLayout>
+
+                </StackLayout>
+            </ScrollView>
+        </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>

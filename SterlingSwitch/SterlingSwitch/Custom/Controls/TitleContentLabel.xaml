@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Custom.Controls.TitleContentLabel">
+  <ContentView.Content>
+        <StackLayout HeightRequest="50" Spacing="10"  Margin="0,0,0,5">
+            <StackLayout Spacing="0" >
+                <Label x:Name="lblHeader"  FontSize="Micro" />
+                <Label x:Name="lblContent" FontSize="Medium"/>
+            </StackLayout>
+            <BoxView Grid.Row="1"  x:Name="bxLine"  HeightRequest="1" HorizontalOptions="FillAndExpand"></BoxView>           
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

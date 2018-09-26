@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:cv="clr-namespace:SterlingSwitch.Converters"
+             x:Class="SterlingSwitch.Pages.BankAccounts.Views.WalletContentView" >
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <cv:CreditDebitConverter x:Key="cdConvert"/>
+            <x:Double x:Key="contentPadding">20,0</x:Double>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid Padding="20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!--Wallet View and Wallet_ActivityIndicator-->
+            <Grid HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         Grid.Row="0" Padding="0,5,0,0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!--Wallet View-->
+                <StackLayout  IsVisible="{Binding HasWallet}"  Grid.Row="0" VerticalOptions="FillAndExpand">
+                    <Frame VerticalOptions="FillAndExpand"   HasShadow="False" IsClippedToBounds="True" BackgroundColor="{StaticResource Key=CardColorGreen}" CornerRadius="10">
+                        <StackLayout>
+                            <Label Text="Switch Wallet" FontSize="Default" TextColor="{StaticResource Key=CardTextColor}">
+                            </Label>
+                            <Label Text="{Binding WalletNuban}" FontSize="Default" TextColor="{StaticResource Key=CardTextColor}"></Label>
+                            <Label Text="{Binding WalletBalance}" FontSize="Large" TextColor="{StaticResource Key=CardTextColor}">
+                                <!--<Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding WalletCurrencyCode,StringFormat='{0} '}" FontSize="Large" TextColor="{StaticResource Key=CardTextColor}"/>
+                                        <Span Text="{Binding WalletAccountBalance}" FontSize="Large" TextColor="{StaticResource Key=CardTextColor}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>-->
+
+                            </Label>
+                            <Label Text="{Binding WalletBookBalance}" FontSize="Micro" TextColor="{StaticResource Key=CardTextColor}">
+                                <!--<Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding WalletCurrencyCode,StringFormat='Book balance: {0} '}" FontSize="Micro" TextColor="{StaticResource Key=CardTextColor}"/>
+                                        <Span Text="{Binding WalletAvailableBalance}" FontSize="Micro" TextColor="{StaticResource Key=CardTextColor}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>-->
+
+                            </Label>
+                            <!--<Label Text="Book balance: NGN 300, 000, 000" FontSize="Micro" TextColor="{StaticResource Key=CardTextColor}"></Label>-->
+                        </StackLayout>
+                    </Frame>
+
+                </StackLayout>
+                <StackLayout IsVisible="{Binding ShowWalletErrorMessage}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Image Source="ic_refresh_black_24dp.png" Aspect="AspectFit" VerticalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ReloadWallet}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label HorizontalTextAlignment="Center" Text="{Binding WalletErrorMessage}"></Label>
+                </StackLayout>
+                <!--ActivityIndicator-->
+                <StackLayout IsVisible="{Binding WalletLoading}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                    <ActivityIndicator VerticalOptions="CenterAndExpand" IsRunning="{Binding WalletLoading}" IsVisible="{Binding WalletLoading}"></ActivityIndicator>
+
+                </StackLayout>
+            </Grid>
+
+            <Grid IsVisible="{Binding HasWallet}" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0">
+                    <Label Text="This month" HorizontalTextAlignment="Start"></Label>
+                </StackLayout>
+                <StackLayout Grid.Column="1">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding AllWalletTransactionsCommand}"/>
+                    </StackLayout.GestureRecognizers>
+                    
+                    <Label Text="See all transactions" HorizontalTextAlignment="End"></Label>
+                </StackLayout>
+            </Grid>
+            <StackLayout Padding="20,0" Grid.Row="2">
+                <ActivityIndicator IsRunning="{Binding IsWalletTransactionLoading}" IsVisible="{Binding IsWalletTransactionLoading}"></ActivityIndicator>
+                <Label VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" IsVisible="{Binding ShowWalletErrorMessage}" Text="{Binding WalletTransactionErrorMessage}"></Label>
+                <ListView HasUnevenRows="True" BackgroundColor="Transparent"
+                           ItemsSource="{Binding WalletTransacttions}"
+                      SeparatorVisibility="None" 
+                          ItemSelected="ListView_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Margin="0,0,0,5" VerticalOptions="CenterAndExpand" Spacing="10">
+
+                                    <Grid ColumnSpacing="20"  >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Column="0">
+                                            <Frame HasShadow="False" Padding="0" Margin="0"
+                                               CornerRadius="5" BorderColor="Transparent" 
+                                               IsClippedToBounds="True" BackgroundColor="{StaticResource SkyBlue}"
+                                                HeightRequest="50" 
+                                                 WidthRequest="50" 
+                                                 x:Name="bxv">
+
+                                            </Frame>
+
+                                        </StackLayout>
+                                        <StackLayout  Grid.Column="1">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <StackLayout Grid.Column="0">
+                                                    <Label LineBreakMode="TailTruncation"  Text="{Binding remarks}" Style="{StaticResource Key=LabelHeader}"></Label>
+                                                    <Label  Text="{Binding TransactionType}" Style="{StaticResource Key=LabelSubHeader}"></Label>
+                                                </StackLayout>
+                                                <StackLayout Grid.Column="1" HorizontalOptions="End">
+                                                    <Label Text="{Binding AmountFormatted}"
+                                               VerticalOptions="CenterAndExpand" 
+                                               TextColor="{Binding TransactionType,Converter={StaticResource Key=cdConvert}}"
+                                               HorizontalTextAlignment="End"
+                                               FontFamily="{StaticResource ThemeFont}"></Label>
+
+                                                </StackLayout>
+
+                                            </Grid>
+                                            <BoxView HeightRequest="0.5" HorizontalOptions="FillAndExpand" BackgroundColor="Gray"></BoxView>
+
+                                        </StackLayout>
+
+                                    </Grid>
+
+                                </StackLayout>
+
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

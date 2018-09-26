@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:SterlingSwitch.Custom.Controls"
+             x:Class="SterlingSwitch.Pages.Cards.EnableCardFXPage"
+             NavigationPage.HasNavigationBar="False" BackgroundColor="{DynamicResource BackgroundColor}">
+
+    <Grid Margin="0,0,0,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="50,0">
+            <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="Fill" Margin="0,20">
+                <Label Margin="10,20" Text="Enable card for international transactions" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                <Label Margin="10,20" Text="In line with Central Bank of Nigeria directive on card security measures for payment cards issued by Nigerian Banks, you are required to pre-inform Sterling Bank Plc when you intend to travel outside Nigeria, to enable easy and seamless card payments, as new control measures have been introduced to reduce international card fraud, especially for non-EMV compliant countries."/>
+                <Label Margin="10,20" Text="In order to have unrestricted access to payments on your Mastercard and Visa card for international transactions, you agree to irrevocably and unconditionally indemnify Sterling Bank Plc against any liability, loss, cost, expense, damage, injury, claim, distress, action or proceedings which may be incurred, sustained, paid or made against Sterling Bank occasioned or in consequence of the execution of such request."/>
+            </StackLayout>
+        </ScrollView>
+        <StackLayout Grid.Row="1" Spacing="10">
+            <Button x:Name="ConfirmBtn" Text="Confirm" Clicked="ConfirmBtn_Clicked"/>
+            <c:WhiteButton x:Name="DeclineBtn" Text="Decline" Clicked="DeclineBtn_Clicked"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>

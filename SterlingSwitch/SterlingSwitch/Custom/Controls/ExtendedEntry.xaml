@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Custom.Controls.ExtendedEntry"
+             HeightRequest="60">
+
+    <Grid HorizontalOptions="FillAndExpand" Margin="0,5" RowSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <StackLayout>
+            <Label x:Name="HeaderTxt" Style="{DynamicResource FormHeadingStyle}" Text="{Binding PickerTitle}" />
+            <StackLayout Orientation="Horizontal" Spacing="0">
+                <Label Text="NGN" FontSize="17" HorizontalOptions="Start" WidthRequest="14" IsVisible="False" x:Name="currencySymbol"/>
+                <Entry x:Name="EmbeddedEntry" Text="{Binding Text}" FontSize="17" TextColor="Black" HorizontalOptions="FillAndExpand" Completed="EmbeddedEntry_Completed" TextChanged="EmbeddedEntry_TextChanged"/>
+            </StackLayout>
+        </StackLayout>
+        <Grid Grid.Column="1" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="24" WidthRequest="24" Margin="10,0">
+            <Image x:Name="icon" Aspect="Fill" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="24" WidthRequest="24"></Image>
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer x:Name="iconTap" Tapped="Icon_Tapped"/>
+            </Grid.GestureRecognizers>
+        </Grid>
+        <Grid Grid.Column="1" IsVisible="False" x:Name="IndicatirGrid" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="20" WidthRequest="29" Margin="10,0">
+            <ActivityIndicator IsRunning="True" HeightRequest="20" WidthRequest="10" HorizontalOptions="Center" VerticalOptions="Center" x:Name="LoadingActivyIndicator"/>
+        </Grid>
+        <BoxView x:Name="BoxViewLine" Grid.Row="1" Style="{DynamicResource SeparatorStyle}" VerticalOptions="End" Grid.ColumnSpan="2" IsVisible="True"/>
+    </Grid>
+</ContentView>

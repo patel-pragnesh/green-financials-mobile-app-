@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ms:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:ms="clr-namespace:SterlingSwitch.Templates"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            PageTitle="Send Money" 
+            IsBottomNavBarVisible="False"
+            IsBackImageVisible="True"
+            PageTitleColor="Black"
+            ContentPadding="0"
+            IsSubPageTitleVisible="true"   
+            HeaderPadding="16,20,0,0"
+            SubPageTitle="{Binding Balance}"  
+            SubPageTitleColor="#818181"         
+            IsTopNavBarSeparatorVisible="False" ContentBackgroundColor="#EDEDED"
+            xmlns:custom="clr-namespace:SterlingSwitch.Custom.Controls"
+            x:Class="SterlingSwitch.Pages.LocalTransfer.SendMoneyConclusion">
+
+    <ms:SwitchMasterPage.Resources>
+        <Style TargetType="custom:ExtendedEntry">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates" >
+                        <VisualState x:Name="Focused" >
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="LightYellow"/>
+                            </VisualState.Setters>
+                            
+                        </VisualState>
+                        
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ms:SwitchMasterPage.Resources>
+    <ms:SwitchMasterPage.PageContent>
+       <ContentView ControlTemplate="{StaticResource masterPage}">
+    <Grid BackgroundColor="#EDEDED" Padding="0,0,0,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"/>
+           <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+       <StackLayout BackgroundColor="White" Grid.Row="0" VerticalOptions="StartAndExpand">         
+        <ScrollView VerticalScrollBarVisibility="Never" >
+            <StackLayout VerticalOptions="StartAndExpand" BackgroundColor="White" Padding="16,8,0,-2">
+                <StackLayout IsVisible="{Binding IsNewRecipient}">
+                    <custom:ExtendedPicker x:Name="TransfertypePicker" Title="Transfer Type" SelectedIndexChanged="TransfertypePicker_SelectedIndexChanged"   />
+                </StackLayout>
+                <StackLayout IsVisible="{Binding IsNewRecipient}">
+
+                                <custom:ExtendedEntry   Title="Account Number" Placeholder="e.g 607856435" TextChanged="txtToAccount_TextChanged" x:Name="txtToAccount" MaxLength="10" Keyboard="Numeric"/>
+                </StackLayout>
+                        <StackLayout IsVisible="False" x:Name="stackForGuessedBank">
+                            <custom:ExtendedPicker x:Name="GuessBankPicker" Title="Destination Bank" Placeholder="Select bank" SelectedIndexChanged="GuessBankPicker_SelectedIndexChanged"  />
+                        </StackLayout>
+                <StackLayout IsVisible="False" x:Name="StackForOtherbanksPicker" IsEnabled="False">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="TapForBankList" Tapped="BankNamePicker_SelectedIndexChanged" />
+                    </StackLayout.GestureRecognizers>
+                    <!--<custom:ExtendedEntry Title="Select Bank" x:Name="txtRecipientBank" InputTransparent="True" />-->
+                            <custom:ExtendedEntry Title="Select Bank"  Placeholder="Select bank" Text="{Binding NameofBeneficiaryBank}" x:Name="txtRecipientBank" InputTransparent="True" />
+                        </StackLayout>
+                <StackLayout IsVisible="False">
+                    <custom:LabelUnderline SubHeaderText="{Binding SavedBeneficiaries.BenName}" />
+                    <!--<custom:ExtendedEntry Title="Name of beneficiary" Text="{Binding Funds.BeneficiaryName}" InputTransparent="True" />-->
+                    <!--<custom:ExtendedEntry Title="Name of beneficiary" Text="ololade ahmed" InputTransparent="True" />-->
+
+                </StackLayout>
+                <StackLayout>
+                    <custom:ExtendedPicker Title="Account to debit" Placeholder="Select an account" x:Name="AccountListPicker"  SelectedIndexChanged="DebitAccount_OnSelectedIndexChanged"/>
+                </StackLayout>
+                <StackLayout>
+                    <custom:ExtendedEntry Title="Amount" x:Name="txtAmount" IsAmount="True"  Keyboard="Numeric" CurrencySymbol="NGN" IsCurrencyVisible="True" Placeholder="e.g 50,000" />
+                </StackLayout>
+                <StackLayout>
+                    <custom:ExtendedEntry Title="Reference" x:Name="txtReference" Placeholder="e.g Family transfer" Text="{Binding testAmount}" MaxLength="20" />
+                </StackLayout>
+                <StackLayout IsVisible="{Binding IsNewRecipient}">
+                    <Grid Padding="0,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80*"/>
+                            <ColumnDefinition Width="20*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Save Beneficiary?" Style="{DynamicResource FormHeadingStyle}" FontSize="17" VerticalOptions="Center"/>
+                        <Switch x:Name="SavebeneficiarySwitch" IsToggled="{Binding IsSaveAsBeneficiary}"  HorizontalOptions="End" Grid.Column="1" VerticalOptions="Center" Margin="0,0,16,0"/>
+                    </Grid>
+                    <BoxView HorizontalOptions="FillAndExpand" Style="{DynamicResource SeparatorStyle}" Grid.ColumnSpan="2" VerticalOptions="End"/>
+                </StackLayout>
+                <StackLayout>
+                    <Grid Padding="0,0,16,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80*"/>
+                            <ColumnDefinition Width="20*" />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0" Orientation="Vertical">
+                            <Label Text="Schedule Payment" Style="{DynamicResource FormHeadingStyle}" FontSize="17" />
+                            <Label Text="Or create a standing Order " Style="{DynamicResource FormHeadingStyle}"/>
+                        </StackLayout>
+                        <Switch x:Name="SwitchSchedulePayment"  Toggled="SwitchSchedulePayment_Toggled"   HorizontalOptions="End" Grid.Column="1" VerticalOptions="Center"  />
+                    </Grid>
+                    <BoxView HorizontalOptions="FillAndExpand" Style="{DynamicResource SeparatorStyle}"   VerticalOptions="Start"/>
+                    <!--<custom:LabelUnderline />-->
+                </StackLayout>
+                <StackLayout IsVisible="False" x:Name="IsSchdule" >
+                    <Grid HeightRequest="58">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="7*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <!--<custom:LabelUnderline Grid.Column="0" VerticalOptions="Center" Grid.ColumnSpan="2" SubHeaderText="Payment Date"/>-->
+                        <Label Text="Payment Date" FontSize="17" Style="{DynamicResource FormHeadingStyle}" VerticalOptions="Center"/>
+                        <custom:BorderlessDatePicker x:Name="ScheduleDatePicker" Grid.Column="1" HeightRequest="25" VerticalOptions="Center" HorizontalOptions="End" DateSelected="ScheduleDatePicker_DateSelected"  Format="dd MMM yy" Margin="0,0,16,0"/>
+                        <BoxView HorizontalOptions="FillAndExpand" Style="{DynamicResource SeparatorStyle}" Grid.ColumnSpan="2" VerticalOptions="End"/>
+                    </Grid>
+                    <!--<custom:LabelUnderline/>-->
+                    <!--<custom:ExtendedPicker Title="Repeat Payment" x:Name="RepeatSchedule" />-->
+                            <custom:DoubleLabelPicker LeftText="Repeat" x:Name="RepeatSchedule" />
+                                <Grid HeightRequest="58">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="7*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Schedule end date" FontSize="17" Style="{DynamicResource FormHeadingStyle}" VerticalOptions="Center" Grid.Column="0"/>
+                                    <custom:BorderlessDatePicker x:Name="scheduleEndDatePicker" Grid.Column="1" HeightRequest="25"   VerticalOptions="Center" HorizontalOptions="End" Format="dd MMM yy" Margin="0,0,16,0" DateSelected="scheduleEndDatePicker_DateSelected"/>
+                                    <BoxView HorizontalOptions="FillAndExpand" Style="{DynamicResource SeparatorStyle}" Grid.ColumnSpan="2" VerticalOptions="End"/>
+                                </Grid> 
+                            <!--<custom:ExtendedEntry Title="Frequency" x:Name="txtFreq" Placeholder="Enter frequency e.g 2" Keyboard="Numeric"/>-->
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+        </StackLayout>
+       <StackLayout Grid.Row="1" VerticalOptions="CenterAndExpand">
+                    <!--<Button Text="Continue" Command="{Binding BeginSendMoney}" />-->
+            <Button Text="Continue"  Clicked="BtnPay_Clicked" Grid.Row="1"/>  
+       </StackLayout>
+          
+       
+    </Grid>
+    </ContentView>
+    </ms:SwitchMasterPage.PageContent>
+</ms:SwitchMasterPage>

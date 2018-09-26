@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:SterlingSwitch.Custom.Controls"
+             x:Class="SterlingSwitch.Pages.Investments.TreasuryBills.ConfirmTreasuryBillsPage"
+             NavigationPage.HasNavigationBar="False" BackgroundColor="{DynamicResource BackgroundColor}">
+
+    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="40,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="1.5*"/>
+            </Grid.RowDefinitions>
+            <Label Text="Please review the transaction details before confirming payment" Margin="50,0" TextColor="{DynamicResource offTextColor}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontSize="14"/>
+            <Grid Grid.Row="1" HorizontalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Text="Bill Amount:" TextColor="{DynamicResource offTextColor}"  VerticalOptions="CenterAndExpand" FontSize="17"/>
+                <Label Text="Duration:" Grid.Row="1" TextColor="{DynamicResource offTextColor}"  VerticalOptions="CenterAndExpand" FontSize="17"/>
+                <Label Text="Value at maturity:" Grid.Row="2" TextColor="{DynamicResource offTextColor}"  VerticalOptions="CenterAndExpand" FontSize="17"/>
+                <Label x:Name="BillAmountTxt" Grid.Column="1" TextColor="{DynamicResource offTextColor}"  VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" FontSize="17"/>
+                <Label x:Name="DurationTxt" Grid.Row="1" Grid.Column="1" TextColor="{DynamicResource offTextColor}"  VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" FontSize="17"/>
+                <Label x:Name="ValueTxt" Grid.Row="2" Grid.Column="1" TextColor="{DynamicResource offTextColor}"  VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" FontSize="17"/>
+
+                <c:ExtendedPicker x:Name="AccountPicker" Grid.Row="3" Grid.ColumnSpan="2" Margin="0,50,0,0" Title="Select an account or card to debit" Placeholder="Select Account" SelectedIndexChanged="AccountPicker_SelectedIndexChanged"/>
+            </Grid>
+            <StackLayout Grid.Row="2" Spacing="20" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="0,20">
+                <Button x:Name="ConfirmBtn" Text="Confirm" Clicked="Confirm"/>
+                <Label Text="Dismiss" TextColor="{DynamicResource LabelRedColor}" HorizontalOptions="CenterAndExpand">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Dismiss"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>

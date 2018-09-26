@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Custom.Controls.PinItemView"
+             HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+    <Frame Padding="0" CornerRadius="5" WidthRequest="70">
+        <Frame.BorderColor>
+            <Color x:FactoryMethod="FromRgba">
+                <x:Arguments>
+                    <x:Int32>0</x:Int32>
+                    <x:Int32>0</x:Int32>
+                    <x:Int32>0</x:Int32>
+                    <x:Int32>78.75</x:Int32>
+                </x:Arguments>
+            </Color>
+        </Frame.BorderColor>
+        <Frame.HasShadow>
+            <OnPlatform x:TypeArguments="x:Boolean">
+                <On Platform="iOS" Value="False"/>
+                <On Platform="Android" Value="True"/>
+            </OnPlatform>
+        </Frame.HasShadow>
+        <Grid HorizontalOptions="Center" VerticalOptions="Center" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" x:Name="PinTxt" Text="{Binding Text}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="25"/>
+        </Grid>
+    </Frame>
+</ContentView>

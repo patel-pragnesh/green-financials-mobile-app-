@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="SterlingSwitch.Pages.QuickActions.QuickActionsV2"
+             xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+             IsBottomNavBarVisible="True" IsNavBarVisible="False"
+             CurrentPage="Actions"  ContentPadding="0"  
+             TopNavBarBackgroundColor="White"
+             IsBackImageVisible="False" x:Name="Main">
+    <templates:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}">
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid HeightRequest="96" BackgroundColor="White" Grid.Row="0" Grid.ColumnSpan="3">
+                    <Grid Margin="0,0,0,24" VerticalOptions="EndAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Margin="25,0,0,0" Source="BlackBackArrow.png" Aspect="AspectFit" WidthRequest="17" HeightRequest="17" VerticalOptions="Center" IsVisible="False">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            </Image.GestureRecognizers>
+
+                        </Image>
+                        <Label Text="Actions" Style="{DynamicResource PageHeader}"   TextColor="#191919" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Grid>
+                    <BoxView VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="1"  Opacity="0.21" Color="#e3e3dd"/>
+                </Grid>
+                <ScrollView BackgroundColor="White" VerticalScrollBarVisibility="Never" Grid.Row="1" HorizontalOptions="FillAndExpand" Grid.ColumnSpan="3">
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" Margin="0,0,0,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="152"/>
+                            <RowDefinition Height="152"/>
+                            <RowDefinition Height="152"/>
+                            <RowDefinition Height="152"/>
+                            <RowDefinition Height="152"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <BoxView Grid.Column="1" Grid.RowSpan="6"  Color="#ededd3" Opacity="0.21"/>
+                        <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="0">
+                            <StackLayout Spacing="23" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                <Image Source="bills.png" WidthRequest="26" HeightRequest="26" HorizontalOptions="Center"/>
+                                <Label Text="Pay Bills" HorizontalOptions="Center" FontSize="16" TextColor="#272727"/>
+                            </StackLayout>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="Bill" Tapped="Bill_OnTapped"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                        <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="2">
+                            <StackLayout Spacing="23" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                <Image Source="airtime.png" WidthRequest="26" HeightRequest="26" HorizontalOptions="Center"/>
+                                <Label Text="Airtime &amp; data" HorizontalOptions="Center" FontSize="16" TextColor="#272727"/>
+                            </StackLayout>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="AirtimeandData" Tapped="AirtimeandData_Tapped"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                        <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="0">
+                            <StackLayout Spacing="23" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                <Image Source="loans.png" WidthRequest="26" HeightRequest="26" HorizontalOptions="Center"/>
+                                <Label Text="Quick loan" HorizontalOptions="Center" FontSize="16" TextColor="#272727"/>
+                            </StackLayout>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="QuickLoan" Tapped="QuickLoan_Tapped"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                        <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="2">
+                            <StackLayout Spacing="23" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                <Image Source="investment.png" WidthRequest="26" HeightRequest="26" HorizontalOptions="Center" />
+                                <Label Text="Investments" HorizontalOptions="Center" FontSize="16" TextColor="#272727"/>
+                            </StackLayout>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="investmentTap" Tapped="investmentTap_Tapped"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                        <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="2" Grid.Column="0">
+                            <StackLayout Spacing="23" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                <Image Source="withdrawal.png" WidthRequest="26" HeightRequest="26" HorizontalOptions="Center"/>
+                                <Label Text="Withdrawals" HorizontalOptions="Center" FontSize="16" TextColor="#272727"/>
+                            </StackLayout>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Withdrawal_Tapped"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                        <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="2" Grid.Column="2">
+                            <StackLayout Spacing="23" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                <Image Source="budgets.png" WidthRequest="26" HeightRequest="26" HorizontalOptions="Center" Opacity="0.2"/>
+                                <Label Text="Budgets" HorizontalOptions="Center" FontSize="16" TextColor="#272727" Opacity="0.5"/>
+                            </StackLayout>
+                        </Grid>
+                        <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="3" Grid.Column="2">
+                            <StackLayout Spacing="23" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                <Image Source="insurance.png" WidthRequest="26" HeightRequest="26" HorizontalOptions="Center" Opacity="0.2"/>
+                                <Label Text="Insurance" HorizontalOptions="Center" FontSize="16" TextColor="#272727" Opacity="0.5"/>
+                            </StackLayout>
+                        </Grid>
+                        <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="3" Grid.Column="0">
+                            <StackLayout Spacing="23" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                <Image Source="fx.png" WidthRequest="26" HeightRequest="26" HorizontalOptions="Center" Opacity="0.2"/>
+                                <Label Text="FX transfer" HorizontalOptions="Center" FontSize="16" TextColor="#272727" Opacity="0.5"/>
+                            </StackLayout>
+                        </Grid>
+                        <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="4" Grid.Column="0">
+                            <StackLayout Spacing="23" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                <Image Source="safe.png" WidthRequest="26" HeightRequest="26" HorizontalOptions="Center" Opacity="0.2"/>
+                                <Label Text="Targeted Savings" HorizontalOptions="Center" FontSize="16" TextColor="#272727" Opacity="0.5"/>
+                            </StackLayout>
+                        </Grid>
+                        <BoxView VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="1" Color="#e3e3dd" Grid.Row="0" Grid.Column="0" Opacity="0.21"/>
+                        <BoxView VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="1" Color="#e3e3dd" Grid.Row="0" Grid.Column="2" Opacity="0.21"/>
+                        <BoxView VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="1" Color="#e3e3dd" Grid.Row="1" Grid.Column="0" Opacity="0.21"/>
+                        <BoxView VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="1" Color="#e3e3dd" Grid.Row="1" Grid.Column="2" Opacity="0.21"/>
+                        <BoxView VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="1" Color="#e3e3dd" Grid.Row="2" Grid.Column="0" Opacity="0.21"/>
+                        <BoxView VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="1" Color="#e3e3dd" Grid.Row="2" Grid.Column="2" Opacity="0.21"/>
+                        <BoxView VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="1" Color="#e3e3dd" Grid.Row="3" Grid.Column="0" Opacity="0.21"/>
+                        <BoxView VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="1" Color="#e3e3dd" Grid.Row="3" Grid.Column="2" Opacity="0.21"/>
+                        <BoxView VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" HeightRequest="1" Color="#e3e3dd" Grid.Row="4" Grid.Column="0" Opacity="0.21"/>
+                    </Grid>
+                </ScrollView>
+            </Grid>
+        </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>

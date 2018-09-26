@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Pages.Specta.QuickLoan"
+              xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+              xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls"
+              IsBackImageVisible="True"
+              TopNavBarBackgroundColor="#5AC8FA"
+              HeaderPadding="16,20,0,0"              
+              BackImageSource="BackIcon.png"              
+              ContentPadding="0" PageTitle="Quick Loan"
+              IsBottomNavBarVisible="False" IsTopNavBarSeparatorVisible="False">
+    <templates:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}">
+            <Grid BackgroundColor="White" Padding="16,8,0,0"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" RowSpacing="0">
+                    <ScrollView VerticalScrollBarVisibility="Never" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <StackLayout>
+                            <controls:ExtendedPicker x:Name="dpdDebitAccount" Title="Sterling Currenct Account" Placeholder="00000002435" SelectedItem="{Binding acctNo}" SelectedIndexChanged="dpdDebitAccount_SelectedIndexChanged"/>
+                            <controls:ExtendedPicker x:Name="dpdLoanPurpose" Title="Purpose of loan" Placeholder="Business" SelectedItem="{Binding loanPurpose}" SelectedIndexChanged="dpdLoanPurpose_SelectedIndexChanged"/>
+                            <controls:ExtendedEntry x:Name="txtEmployer" Title="Current employer name" Text="{Binding empName}" Placeholder="Sterling bank Plc"/>
+                            <controls:ExtendedEntry x:Name="txtEmployerAddress" Title="Current employer address" Text="{Binding empAddress}" Placeholder="20 Marina, Lagos Islad"/>
+                            <controls:ExtendedEntry x:Name="txtOfficialEmailAddress" Text="{Binding empEmail}" Title="Official email" Placeholder="e.g jon@example.com"/>
+                            <controls:ExtendedPicker x:Name="dpdJobChangeCount" Title="Select job changes in the past 5 years" SelectedItem="{Binding jobChangeCount}"  Placeholder="3" SelectedIndexChanged="dpdJobChangeCount_SelectedIndexChanged"/>
+                            <controls:ExtendedEntry  x:Name="txtMonthlySalary" Title="How much do you earn monthly" Placeholder="NGN 150,000" Text="{Binding salaryAmt}" IsAmount="True"/>
+                            <controls:ExtendedPicker x:Name="dpdAccomodation" Title="Accomodation Type" Placeholder="Rented" SelectedItem="{Binding accomodationType}" SelectedIndexChanged="dpdAccomodation_SelectedIndexChanged"/>
+                            <controls:ExtendedPicker x:Name="dpdMaritalStatus" Title="Marital Status" Placeholder="Single" SelectedItem="{Binding maritalStatus}" SelectedIndexChanged="dpdMaritalStatus_SelectedIndexChanged"/>
+                            <controls:ExtendedPicker x:Name="dpdDependants" Title="How many people are dependent on you ?" SelectedItem="{Binding numberOfDependants}" Placeholder="No of Dependants" SelectedIndexChanged="dpdDependants_SelectedIndexChanged"/>
+                            <controls:ExtendedPicker x:Name="dpdPaybackPeriod" Title="In how many months will you pay back" SelectedItem="{Binding tenor}" Placeholder="5 months" SelectedIndexChanged="dpdPaybackPeriod_SelectedIndexChanged"/>
+                            <controls:ExtendedEntry x:Name="txtResidentialAddress" Title="Residential Address" Text="{Binding address}" Placeholder="20 Marina, Lagos Island"/>
+                            <controls:ExtendedPicker x:Name="dpdResidencyPeriod" Title="Residency Period" SelectedItem="{Binding howLongInResidence}" Placeholder="6-12 months, 1-2 yrs, etc" SelectedIndexChanged="dpdResidencyPeriod_SelectedIndexChanged"/>
+                            <controls:ExtendedEntry x:Name="txtAmount" Title="Amount to Borrow" Text="{Binding amount}" IsAmount="True" Placeholder="NGN 50,000"/>
+                        </StackLayout>
+                    </ScrollView>
+                </Grid>
+                <Grid Grid.Row="1" HeightRequest="100" VerticalOptions="EndAndExpand">
+                    <Button Text="Continue" VerticalOptions="Center" x:Name="BtnContinue" Clicked="BtnContinue_Clicked"/>
+                </Grid>
+            </Grid>
+        </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>

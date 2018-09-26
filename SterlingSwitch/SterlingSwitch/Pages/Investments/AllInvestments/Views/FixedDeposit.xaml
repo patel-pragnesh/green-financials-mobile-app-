@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls;assembly=SterlingSwitch" 
+             xmlns:local="clr-namespace:SterlingSwitch.Converters"
+             x:Class="SterlingSwitch.Pages.Investments.AllInvestments.Views.FixedDeposit">
+     <ContentView.Resources>
+         <ResourceDictionary>
+               
+               <local:CurrencyConverter x:Key="CurrencyConverter" />
+         </ResourceDictionary>
+    </ContentView.Resources>
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <controls:CustomListView x:Name="DepositsListView" SeparatorVisibility="None"  HasUnevenRows="True" ItemsSource="{Binding RunningFixedDeposit}" RowHeight="94"  ItemTapped="DepositsListView_OnItemTapped" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame HasShadow="false" Padding="0"  HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand"  Margin="16,0,16,9" CornerRadius="5">
+                            <Frame.BorderColor>
+                                <Color x:FactoryMethod="FromRgba">
+                                    <x:Arguments>
+                                        <x:Int32>151</x:Int32>
+                                        <x:Int32>151</x:Int32>
+                                        <x:Int32>151</x:Int32>
+                                        <x:Int32>66</x:Int32>
+                                    </x:Arguments>
+                                </Color>
+                            </Frame.BorderColor>
+                            <Grid  Padding="20" HorizontalOptions="FillAndExpand" VerticalOptions="Start" RowSpacing="3">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <StackLayout Grid.Row="0" Orientation="Horizontal">
+                                    <Label Text="{Binding Amount,Converter={StaticResource CurrencyConverter},ConverterParameter=NGN}" FontSize="12" TextColor="#b1b1b1" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                    <Image HorizontalOptions="EndAndExpand" Source="forwardarrow.png" VerticalOptions="Center"/>
+                                </StackLayout>
+                                <StackLayout Grid.Row="1" Orientation="Horizontal">
+                                    <Label Text="{Binding MATURITY_VALUE, Converter={StaticResource CurrencyConverter},ConverterParameter=NGN}" FontSize="18" TextColor="#1b5190" HorizontalOptions="Start" VerticalOptions="Center" FontAttributes="Bold"/>
+                                    <Label Text="{Binding FIXED_RATE, StringFormat=' {0}%'}" FontSize="18" TextColor="#82bcff" HorizontalOptions="EndAndExpand"/>
+                                </StackLayout>
+                                <StackLayout Grid.Row="2" Orientation="Horizontal">
+                                    <Label Text="{Binding MATURITY_DATE}" FontSize="12" TextColor="#c2c2c2" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </controls:CustomListView>
+    </Grid>
+</ContentView>

@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            
+            <!--============Colors Begin Here===============-->
+            <Color x:Key="PrimaryColor">#5AC8FA</Color>
+            <Color x:Key="SeparatorColor">#C7C7CC</Color>
+            <Color x:Key="ElementBackground">#FFFFFF</Color>
+            <Color x:Key="BackgroundColor">#FFFFFF</Color>
+            <Color x:Key="PaleGray">#EDF2F6</Color>
+            <Color x:Key="FormHeadingsColor">#A7A7A7</Color>
+            <Color x:Key="EntryTextColor">#4A4A4A</Color>
+            <Color x:Key="CardTextColor">#FFFFFF</Color>
+            <Color x:Key="ContentTextColor">#757575</Color>
+            <Color x:Key="CardColor">#1F5594</Color>
+            <Color x:Key="CardColorGreen">#33adc4</Color>
+            <Color x:Key="TabViewTextColor">#616161</Color>
+            <Color x:Key="SelectedTab">#5AC8FA</Color>            
+            <Color x:Key="UnSelectedTab">Transparent</Color>
+            <Color x:Key="DisabledShortcutLabelColor">#8e8e93</Color>
+            <Color x:Key="EnabledShortcutLabelColor">#222222</Color>
+            <Color x:Key="SkyBlue">#5ac8fa</Color>
+            <Color x:Key="TextColor">#858585</Color>
+            <Color x:Key="TabbedPageTileColor">#222222</Color>
+            <Color x:Key="ActionsSeperatorColor">#979797</Color>
+            <Color x:Key="LabelRedColor">#d0021b</Color>
+            <Color x:Key="PurpleColor">#5b5cde</Color>
+            <Color x:Key="PrimaryWhite">#ffffff</Color>
+            <Color x:Key="offTextColor">#424242</Color>    
+            <Color x:Key="dashboardStyle">#1f3958</Color>
+      
+
+            <!--TabView-->
+
+            <Style x:Key="SelectedTabView" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="{StaticResource Key=SelectedTab}"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                 <Setter Property="HeightRequest" Value="3"/>
+                 <Setter Property="WidthRequest" Value="35"/>
+            </Style>
+           
+            <Style x:Key="UnSelectedTabView" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+            <Style x:Key="SelectedTabviewWhite" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="#FFFFFF"/>
+            </Style>
+            <Style x:Key="DashBoardStyleSmaller" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource dashboardStyle}" />
+            </Style>
+            
+            <!--============Fonts Begin Here===============-->
+            <OnPlatform x:TypeArguments="x:String" x:Key="ThemeFont">
+                <On Platform="Android" Value="Roboto-Regular.ttf#Roboto" />
+                <On Platform="iOS" Value="SF Pro Text" />
+                <!--<On Platform="iOS" Value="Sunset Beach" />-->
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="ThemeFontMedium">
+                <On Platform="Android" Value="Roboto-Medium.ttf#Roboto Medium" />
+                <On Platform="iOS" Value="SF Pro Text" />
+                <!--<On Platform="iOS" Value="Sunset Beach" />-->
+            </OnPlatform>
+
+            <!--============Styles Begin Here===============-->
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="{DynamicResource ThemeFont}"/>
+                <Setter Property="FontSize" Value="17"></Setter>
+            </Style>
+            <Style TargetType="Picker">
+                <Setter Property="FontFamily" Value="{DynamicResource ThemeFont}"/>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="FontFamily" Value="{DynamicResource ThemeFont}"/>
+            </Style>
+            <Style TargetType="TimePicker">
+                <Setter Property="FontFamily" Value="{DynamicResource ThemeFont}"/>
+            </Style>
+            <Style TargetType="DatePicker">
+                <Setter Property="FontFamily" Value="{DynamicResource ThemeFont}"/>
+            </Style>
+            <Style x:Key="LabelHeader" TargetType="Label">
+                <Setter Property="TextColor" Value="#1f3958"/>
+                <Setter Property="FontSize" Value="17"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontFamily" Value="{DynamicResource ThemeFont}"/>
+            </Style>
+            <Style x:Key="LabelHeaderFD" TargetType="Label">
+                <Setter Property="TextColor" Value="#424242"/>
+                <Setter Property="FontSize" Value="17"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontFamily" Value="{DynamicResource ThemeFont}"/>
+            </Style>
+            <Style x:Key="LabelHeaderFD2" TargetType="Label">
+                <Setter Property="TextColor" Value="#464646"/>
+                <Setter Property="FontSize" Value="17"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontFamily" Value="{DynamicResource ThemeFont}"/>
+            </Style>
+            <Style x:Key="LabelSubHeader" TargetType="Label">
+                <Setter Property="TextColor" Value="#657786"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="FontFamily" Value="{DynamicResource ThemeFont}"/>
+            </Style>
+            
+            <Style x:Key="FormHeadingStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="TextColor" Value="{DynamicResource Key=FormHeadingsColor}" />
+                <Setter Property="FontFamily" Value="{DynamicResource ThemeFont}"/>
+            </Style>
+            <Style x:Key="EntryLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="17" />
+                <Setter Property="TextColor" Value="{DynamicResource Key=FormHeadingsColor}" />
+                <Setter Property="FontFamily" Value="{DynamicResource ThemeFont}"/>
+            </Style>
+            <Style x:Key="BodyStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="17" />
+                <Setter Property="TextColor" Value="{DynamicResource Key=EntryTextColor}" />
+                <Setter Property="FontFamily" Value="{DynamicResource ThemeFont}"/>
+            </Style>
+            <Style x:Key="SeparatorStyle" TargetType="BoxView">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="Color" Value="{DynamicResource Key=SeparatorColor}" />
+                <Setter Property="HeightRequest" Value="1.3"/>
+            </Style>
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="TextColor" Value="{DynamicResource Key=EntryTextColor}" />
+                <Setter Property="FontSize" Value="17" />
+                <Setter Property="FontFamily" Value="{DynamicResource ThemeFont}"/>
+            </Style>
+            <Style x:Key="DisabledShortcutStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource Key=DisabledShortcutLabelColor}" />
+                <Setter Property="FontSize" Value="10" />
+                <Setter Property="FontFamily" Value="{DynamicResource ThemeFont}"/>
+            </Style>
+            <Style x:Key="EnabledShortcutStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource Key=EnabledShortcutLabelColor}" />
+                <Setter Property="FontSize" Value="10" />
+                <Setter Property="FontFamily" Value="{DynamicResource ThemeFont}"/>
+            </Style>
+
+            <Style x:Key="PageHeader" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="17" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+                <Setter Property="FontFamily" Value="{DynamicResource ThemeFont}"/>
+            </Style>
+
+            <Style x:Key="PageHeaderBlack" TargetType="Label">
+                <Setter Property="TextColor" Value="#191919" />
+                <Setter Property="FontSize" Value="17" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+                <Setter Property="FontFamily" Value="{DynamicResource ThemeFont}"/>
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="WidthRequest" Value="300"/>
+                <Setter Property="HeightRequest" Value="45"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="BorderColor" Value="{DynamicResource PrimaryColor}"/>
+                <Setter Property="CornerRadius" Value="23"/>
+                <Setter Property="FontFamily" Value="{DynamicResource ThemeFont}"/>
+            </Style>
+            <Style TargetType="SearchBar">
+                <Setter Property="FontFamily" Value="{DynamicResource ThemeFont}"/>
+                <Setter Property="FontSize" Value="17"/>
+                
+
+            </Style>
+
+            <Style TargetType="Frame" x:Key="ButtonFrame">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="BorderColor" Value="{DynamicResource SkyBlue}"/>
+                <Setter Property="WidthRequest" Value="300"/>
+                <Setter Property="CornerRadius" Value="22"/>
+                <Setter Property="HasShadow" Value="False"/>
+                <Setter Property="HeightRequest" Value="45"></Setter>
+            </Style>
+            <Style x:Key="CaptionTwoStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="11" />
+                <Setter Property="TextColor" Value="{DynamicResource Key=TextColor}" />               
+            </Style>
+            <Style x:Key="HeadlineStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="17" />
+                <Setter Property="TextColor" Value="{DynamicResource Key=TextColor}" />                 
+            </Style>
+            <Style x:Key="TitleTwoStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="TextColor" Value="{DynamicResource Key=TextColor}" /> 
+            </Style>
+            <Style x:Key="CaptionOneStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="TextColor" Value="{DynamicResource Key=TextColor}" />                
+            </Style>
+            <Style x:Key="unselectedHome" TargetType="Image">
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="HeightRequest" Value="32"/>
+                <Setter Property="WidthRequest" Value="48"/>
+                <Setter Property="Source" Value="homeUnselected.png"/>
+            </Style>
+            <Style x:Key="selectedHome" TargetType="Image">
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="HeightRequest" Value="32"/>
+                <Setter Property="WidthRequest" Value="48"/>
+                <Setter Property="Source" Value="home.png"/>
+            </Style>
+
+            <Style x:Key="unselectedAction" TargetType="Image">
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="HeightRequest" Value="32"/>
+                <Setter Property="WidthRequest" Value="48"/>
+                <Setter Property="Source" Value="MyActions.png"/>
+            </Style>
+            <Style x:Key="selectedAction" TargetType="Image">
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="HeightRequest" Value="32"/>
+                <Setter Property="WidthRequest" Value="48"/>
+                <Setter Property="Source" Value="selectedfavoriteMyActionsFilled.png"/>
+            </Style>
+
+            <Style x:Key="unselectedPayments" TargetType="Image">
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="HeightRequest" Value="32"/>
+                <Setter Property="WidthRequest" Value="48"/>
+                <Setter Property="Source" Value="Payments.png"/>
+            </Style>
+            <Style x:Key="selectedPayments" TargetType="Image">
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="HeightRequest" Value="32"/>
+                <Setter Property="WidthRequest" Value="48"/>
+                <Setter Property="Source" Value="selectedfavoritePaymentsCopy.png"/>
+            </Style>
+
+            <Style x:Key="unselectedMyBank" TargetType="Image">
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="HeightRequest" Value="32"/>
+                <Setter Property="WidthRequest" Value="48"/>
+                <Setter Property="Source" Value="MyBank.png"/>
+            </Style>
+            <Style x:Key="selectedMyBank" TargetType="Image">
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="HeightRequest" Value="32"/>
+                <Setter Property="WidthRequest" Value="48"/>
+                <Setter Property="Source" Value="SelectedBank.png"/>
+            </Style>
+            <!--Dashboard Template-->
+            <ControlTemplate x:Key="masterPage">
+                <Grid RowSpacing="0"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+                    <Grid.Padding>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="iOS" Value="0,0,0,0"/>
+                            <On Platform="Android" Value="0,0,0,-20"/>
+                        </OnPlatform>
+                    </Grid.Padding>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid HeightRequest="50" BackgroundColor="{TemplateBinding Parent.TopNavBarBackgroundColor}" 
+                          HorizontalOptions="FillAndExpand" RowSpacing="0" VerticalOptions="StartAndExpand" Padding="{TemplateBinding Parent.HeaderPadding}" IsVisible="{TemplateBinding Parent.IsNavBarVisible}">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{TemplateBinding Parent.GoBackCommand}"></TapGestureRecognizer>
+                        </Grid.GestureRecognizers>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                             <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Column="0"  HeightRequest="30" WidthRequest="60">
+                            
+                            <Image IsVisible="{TemplateBinding Parent.IsBackImageVisible}"
+                                   Source="{TemplateBinding Parent.BackImageSource}" 
+                                   HorizontalOptions="Start" Aspect="AspectFit" VerticalOptions="CenterAndExpand">
+                                <Image.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{TemplateBinding Parent.GoBackCommand}"></TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                        <Label Style="{DynamicResource EntryLabelStyle}" Margin="0"  Text="{TemplateBinding Parent.PageTitle}" TextColor="{TemplateBinding Parent.PageTitleColor}" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+                        <Label Grid.ColumnSpan="2" Margin="0" IsVisible="{TemplateBinding Parent.IsSubPageTitleVisible}"  Text="{TemplateBinding Parent.SubPageTitle}" Grid.Row="1" HorizontalTextAlignment="Center" HorizontalOptions="Center"  FontSize="12" TextColor="{TemplateBinding Parent.SubPageTitleColor}"></Label>
+                       <BoxView Grid.ColumnSpan="2" IsVisible="{TemplateBinding Parent.IsTopNavBarSeparatorVisible}" Style="{DynamicResource SeparatorStyle}" Grid.Row="2" VerticalOptions="End" Margin="-30,0"/>
+                       
+                    </Grid>
+                    <ContentPresenter Padding="{TemplateBinding Parent.ContentPadding}"  Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    </ContentPresenter>
+                    <Grid Row="2" BackgroundColor="White" IsVisible="{TemplateBinding Parent.IsBottomNavBarVisible}"  HeightRequest="88" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" RowSpacing="0">
+                        <Grid Row="0" ColumnSpacing="0" VerticalOptions="StartAndExpand" Margin="0,7,0,0" RowSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Orientation="Vertical" Spacing="9" Grid.Column="0">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer  NumberOfTapsRequired="1" Tapped="Home_Tapped"/>
+                                </StackLayout.GestureRecognizers>
+                                <Image Style="{DynamicResource homeImage}">
+                                    
+                                </Image>
+                                <Label Text="Home" HorizontalOptions="Center" Style="{DynamicResource homeNavBar}"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical" Spacing="9" Grid.Column="1">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer  NumberOfTapsRequired="1" Tapped="QuickAction_Tapped"/>
+                                </StackLayout.GestureRecognizers>
+                                <Image Style="{DynamicResource actionImage}">
+                                   
+                                </Image>
+                                <Label Text="Actions" HorizontalOptions="Center" Style="{DynamicResource actionsNavBar}"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical" Spacing="9" Grid.Column="2">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1"  Tapped="MyBank_Tapped"/>
+                                </StackLayout.GestureRecognizers>
+                                <Image Style="{DynamicResource actionMyBank}">
+                                   
+                                </Image>
+                                <Label Text="My bank" HorizontalOptions="Center" Style="{DynamicResource myBankNavBar}"></Label>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Vertical" Spacing="9" Grid.Column="3">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="PaymentOndashboard" NumberOfTapsRequired="1" Tapped="PaymentOndashboard_Tapped" />
+                                </StackLayout.GestureRecognizers>
+                                <Image Style="{DynamicResource paymentsImage}">
+                                </Image>
+                                <Label Text="Payments" HorizontalOptions="Center" Style="{DynamicResource paymentsNavBar}"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical" Spacing="9" Grid.Column="4">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="More_Tapped"/>
+                                </StackLayout.GestureRecognizers>
+                                <Image VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="32" WidthRequest="48" Source="More.png"/>
+                                <Label Text="More" HorizontalOptions="Center" Style="{DynamicResource moreNavBar}"></Label>
+                            </StackLayout>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </ControlTemplate>
+
+            <!--<ControlTemplate x:Key="bottomNav">
+                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <ContentPresenter Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    </ContentPresenter>
+                    <StackLayout Grid.Row="1" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                        <Grid Margin="10,0" ColumnSpacing="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Orientation="Vertical" Grid.Column="0">
+                                <BoxView BackgroundColor="Red" HeightRequest="{StaticResource hw}" WidthRequest="{StaticResource hw}"></BoxView>
+                                <Label Text="Red" HorizontalTextAlignment="Center"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical" Grid.Column="1">
+                                <BoxView BackgroundColor="Green" HeightRequest="{StaticResource hw}" WidthRequest="{StaticResource hw}"></BoxView>
+                                <Label Text="Green" HorizontalTextAlignment="Center"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical" Grid.Column="2">
+                                <BoxView BackgroundColor="Blue" HeightRequest="{StaticResource hw}" WidthRequest="{StaticResource hw}"></BoxView>
+                                <Label Text="Blue" HorizontalTextAlignment="Center"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical" Grid.Column="3">
+                                <BoxView BackgroundColor="Yellow" HeightRequest="{StaticResource hw}" WidthRequest="{StaticResource hw}"></BoxView>
+                                <Label Text="Yellow" HorizontalTextAlignment="Center"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical" Grid.Column="4">
+                                <BoxView BackgroundColor="Purple" HeightRequest="{StaticResource hw}" WidthRequest="{StaticResource hw}"></BoxView>
+                                <Label Text="Purple" HorizontalTextAlignment="Center"></Label>
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+            </ControlTemplate>-->
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

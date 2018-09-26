@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Pages.AllTransactions.AllTransactionsView"
+              xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+                              xmlns:syncfussion="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+                            xmlns:vw="clr-namespace:SterlingSwitch.Pages.AllTransactions.Views" 
+                            TopNavBarBackgroundColor="#5ac8fa"  BackgroundColor="#f9f9f9"
+                            IsBackImageVisible="True" x:Name="allPage" IsTopNavBarSeparatorVisible="False" 
+                            BackImageSource="BackIcon.png"
+                            BackCommand="{Binding BackCommand}" IsNavBarVisible="True" PageTitle="All Transactions" ContentPadding="0"  IsBottomNavBarVisible="False"  
+                             PageTitleColor="White">
+    <templates:SwitchMasterPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="headerColor">#2bade8</Color>            
+        </ResourceDictionary>
+    </templates:SwitchMasterPage.Resources>
+    <templates:SwitchMasterPage.PageContent>
+      <ContentView ControlTemplate="{StaticResource masterPage}">
+            
+        <syncfussion:SfTabView x:Name="tabView"  BindingContext="{Binding Path=BindingContext,Source={Reference allPage}}" EnableSwiping="False" VisibleHeaderCount="1" >
+            <syncfussion:SfTabView.SelectionIndicatorSettings>
+                <syncfussion:SelectionIndicatorSettings Color="Transparent" Position="Bottom" StrokeThickness="0"/>
+            </syncfussion:SfTabView.SelectionIndicatorSettings>
+            <syncfussion:SfTabItem >
+                <syncfussion:SfTabItem.HeaderContent>
+                    <StackLayout BackgroundColor="#5ac8fa" VerticalOptions="Center">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" />
+                        </StackLayout.GestureRecognizers>
+                        <Label HorizontalTextAlignment="Center" TextColor="White" Text="All"></Label>
+                        <BoxView Style="{DynamicResource Key=accounts}" HorizontalOptions="Center" HeightRequest="3" WidthRequest="35"></BoxView>
+                    </StackLayout>
+                </syncfussion:SfTabItem.HeaderContent>
+                <syncfussion:SfTabItem.Content>
+                    <vw:AllContentView BindingContext="{Binding Path=BindingContext,Source={Reference allPage}}"></vw:AllContentView>
+                </syncfussion:SfTabItem.Content>
+            </syncfussion:SfTabItem>
+            
+        </syncfussion:SfTabView>
+        </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+
+</templates:SwitchMasterPage>

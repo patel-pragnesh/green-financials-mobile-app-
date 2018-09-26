@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+             x:Class="SterlingSwitch.Pages.CurrencySwap.CurrencySwapConclusion"
+             xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls" TopNavBarBackgroundColor="Transparent"
+                            ContentPadding="50"  IsTopNavBarSeparatorVisible="False"
+             IsBackImageVisible="False" IsBottomNavBarVisible="False">
+
+    <templates:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}">
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                   
+                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" >
+                    <StackLayout  Spacing="10"  HeightRequest="80">
+                        <Label HorizontalOptions="Center"  Text="Please review the transaction" FontSize="14"/>
+                        <Label HorizontalOptions="Center"  Text="details before confirming payment" FontSize="14"/>
+                    </StackLayout>
+                    <StackLayout Spacing="10" HeightRequest="150" >
+                        <controls:DoubleLabel LeftText="Amount to send:"    LineColor="Transparent" x:Name="AmountSent"/>
+                        <controls:DoubleLabel LeftText="Recipient Gets:"    LineColor="Transparent" x:Name="RecipentGet"/>
+                        <controls:DoubleLabel LeftText="Exchange Rate:"    LineColor="Transparent" x:Name="ExchangeRate"/>
+                    </StackLayout>
+                    <StackLayout Spacing="10">
+                        <controls:ExtendedPicker Title="Select an account" x:Name="SelectedAccount"/>
+                        <controls:ExtendedEntry Title="Enter a recipient" Placeholder="Enter account number" Keyboard="Numeric" x:Name="BeneficiaryAccount" MaxLength="10" TextChanged="ExtendedEntry_TextChanged" />
+                        <!--<controls:ExtendedEntry x:Name="xBeneficaryNameEnquire" IsVisible="False" InputTransparent="True" />-->
+                        <controls:TitleContentLabel x:Name="xBeneficaryNameEnquire" HeaderText="Beneficiary account" LineColor="#c7c7cc" IsVisible="False"/>
+                        <!--<controls:ExtendedEntry Title="Select a recipient"/>-->
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Grid.Row="2" HeightRequest="60" Spacing="20">
+                    <Button Text="Confirm" x:Name="btnFindAtm" Clicked="btnConfirm_Clicked"/>
+                        <StackLayout>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="btnDismiss_Tapped"/>
+                            </StackLayout.GestureRecognizers>
+                            <Label Text="Dismiss" HorizontalOptions="Center" HeightRequest="60" VerticalOptions="Center" TextColor="#d0021b" FontSize="17">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="btnDismiss" Tapped="btnDismiss_Tapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+        </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>

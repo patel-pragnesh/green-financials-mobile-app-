@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Custom.Controls.LabelUnderline">
+  <ContentView.Content>
+        <StackLayout  Margin="0,0,0,5" VerticalOptions="CenterAndExpand" Spacing="10">
+         
+            <Grid ColumnSpacing="5" Padding="0,0,16,0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+            
+                <StackLayout Orientation="Horizontal" Grid.Column="0">
+                    <StackLayout>
+                        <Label x:Name="lblHeader" Style="{StaticResource Key=LabelHeader}"></Label>
+                        <Label x:Name="lblSubHeader" Style="{StaticResource Key=LabelSubHeader}"></Label>
+                    </StackLayout>
+
+                  
+                </StackLayout>
+                <Image  Aspect="AspectFit" HorizontalOptions="End" Grid.Column="1" VerticalOptions="Center" x:Name="ArrowImage" HeightRequest="8" WidthRequest="10"></Image>
+            </Grid>
+            <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" x:Name="xLineColor" Style="{DynamicResource SeparatorStyle}"></BoxView>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,362 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Configurations>Debug;Release;TestPilot</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Custom\NewFolder\**" />
+    <EmbeddedResource Remove="Custom\NewFolder\**" />
+    <None Remove="Custom\NewFolder\**" />
+    <Compile Remove="Pages\QuickActions\EmptyClass.cs" />
+    <Compile Remove="Pages\LocalTransfer\SendMoneyConclusion.xaml_BASE_5838.cs" />
+    <Compile Remove="Pages\LocalTransfer\SendMoneyConclusion.xaml_LOCAL_5838.cs" />
+    <Compile Remove="Pages\LocalTransfer\SendMoneyConclusion.xaml_REMOTE_5838.cs" />
+    <None Remove="Pages\LocalTransfer\SendMoneyConclusion.xaml.cs.orig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Pages\BillPayments\**" />
+    <EmbeddedResource Remove="Pages\BillPayments\**" />
+    <None Remove="Pages\BillPayments\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Custom\Controls\AccordionView.cs" />
+    <Compile Remove="Services\Abstractions\Entities\IBSRequest.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Custom\Controls\CountryInfo.xml" />
+    <None Remove="Pages\LocalTransfer\File\GetParticipatingBanks.json" />
+    <None Remove="Resources\CountryInfo.xml" />
+    <None Remove="Resources\Currencies.json" />
+    <None Remove="App.xaml.orig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="App_BACKUP_57645.xaml" />
+    <EmbeddedResource Remove="App_BASE_57645.xaml" />
+    <EmbeddedResource Remove="App_LOCAL_57645.xaml" />
+    <EmbeddedResource Remove="App_REMOTE_57645.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Custom\Controls\CountryInfo.xml" />
+    <EmbeddedResource Include="Pages\LocalTransfer\File\GetParticipatingBanks.json" />
+    <EmbeddedResource Include="Resources\CountryInfo.xml" />
+    <EmbeddedResource Include="Resources\Currencies.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Acr.DeviceInfo" Version="6.5.0" />
+    <PackageReference Include="Acr.Settings" Version="9.0.0" />
+    <PackageReference Include="AppCenter.Analytics.Metrics" Version="1.0.0" />
+    <PackageReference Include="CarouselView.FormsPlugin" Version="5.2.0" />
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="2.5.4" />
+    <PackageReference Include="DLToolkit.Forms.Controls.FlowListView" Version="2.0.11" />
+    <PackageReference Include="Microcharts.Forms" Version="0.6.2" />
+    <PackageReference Include="Microsoft.AppCenter" Version="1.7.0" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.7.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="1.7.0" />
+    <PackageReference Include="Microsoft.AppCenter.Distribute" Version="1.7.0" />
+    <PackageReference Include="Microsoft.AppCenter.Push" Version="1.7.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="PCLCrypto" Version="2.0.147" />
+    <PackageReference Include="Plugin.Fingerprint" Version="1.4.7" />
+    <PackageReference Include="Polly" Version="6.1.0" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.0.4" />
+    <PackageReference Include="SkiaSharp" Version="1.60.2" />
+    <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
+    <PackageReference Include="Xam.Plugin.Geolocator" Version="4.5.0.6" />
+    <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.1" />
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
+    <PackageReference Include="Xamanimation" Version="1.1.0" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.3.840" />
+    <PackageReference Include="Xamarin.Forms" Version="3.1.0.583944" />
+    <PackageReference Include="Xamarin.Forms.Contacts" Version="1.0.5" />
+    <PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.0.1" />
+    <PackageReference Include="XForms.Plugin.AnimationNavigationPage" Version="1.0.4" />
+    <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
+    <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Behaviours\" />
+    <Folder Include="Helper\" />
+    <Folder Include="Services\Repository\" />
+    <Folder Include="Styles\" />
+    <Folder Include="Effects\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Syncfusion.SfTabView.XForms">
+      <HintPath>lib\Syncfusion.SfTabView.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Xam.Plugin.TabView">
+      <HintPath>lib\Xam.Plugin.TabView.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Custom\Controls\BackButton.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Custom\Controls\CallingCode.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Custom\Controls\DoubleLabel.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Custom\Controls\DoubleLabelPicker.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Custom\Controls\ExtendedEntry.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Custom\Controls\ExtendedLabel.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Custom\Controls\ExtendedPicker.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Custom\Controls\ExtendedSwitch.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Custom\Controls\PinItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Custom\Controls\TitleContentLabel.xaml" />
+    <EmbeddedResource Update="Custom\Controls\ProfileImageVerification.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Custom\Controls\WhiteButton.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Custom\TipCardCustomView\tipCard.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Custom\DealCardCustomView\DealCard.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Custom\TipCardCustomView\tipCard.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\AirtimeAndData\AirtimeAndData.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\AirtimeAndData\PhonebookList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\AllTransactions\DetailedTransactionView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\BankAccounts\FundAccountOTPPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\BankAccounts\FundAccountPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\BankAccounts\Views\TransactionDetails.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\BankAccounts\Views\WalletContentView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Beneficiary\BeneficiaryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\BillsPayment\PayBillsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\CardlessWithdrawals\CardlessWithdrawView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\CardlessWithdrawals\FindATMPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Cards\ActivateCardPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Cards\CardDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Cards\CardLimitPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Cards\CardsLanding.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Cards\EnableCardFXPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Cards\FreezeCardPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Cards\FundCardPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Cards\ManageCardPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\CardToCard\CardToCardPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\CurrencySwap\CurrencySwapConclusion.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\CurrencySwap\CurrencySwapPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Investments\AllInvestments\AllInvestments.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Investments\AllInvestments\Views\FixedDeposit.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Investments\AllInvestments\Views\TreasuryBills.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Investments\FixedDeposit\TerminateFDPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Investments\LandingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Investments\TreasuryBills\SellTreasuryBillsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\LiveChat\LiveChatPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\LocalTransfer\ManageRecipientLocalTransfer.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\LocalTransfer\SendMoneyConclusion.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Dashboard\Dashboard.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Investments\FixedDeposit\FixedDepositAccountReinvestPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Investments\FixedDeposit\FixedDepositPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Investments\TreasuryBills\view\TreasuryBillView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\More\Account\Accounts.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\More\Account\Views\AccountList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\More\Device\DeviceView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\More\FAQ\FrequenceyQuestion.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\More\ProfilePhoto\ProfileVerification.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Onboarding\ForgotPin\ForgotPasswordPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Onboarding\ForgotPin\SetNewPinPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Onboarding\Login\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Onboarding\Login\UnProfiledLoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Onboarding\OtpAndPinVerification\AccountPinCreation.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Onboarding\OtpAndPinVerification\OtpVerification.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Onboarding\SecurityQuestion\CreateSecurityQuestion.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Onboarding\SecurityQuestion\SecurityAnswerPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Onboarding\SecurityQuestion\SecurityQuestionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Onboarding\TPin\TransactionPinPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Onboarding\UserInformation\UserInformationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Pagelanding\CategoryTagLanding.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Pagelanding\InvestmentLanding.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Profile\AddressDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Profile\PersonalDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Profile\ProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Profile\ProfileVerificationDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\QuickActions\QuickActions.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Specta\FinishQuickLoan.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Specta\QuickLoan.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\TargetSaving\Savinglanding.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\TargetSaving\TargetSavings.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\WalletAllTransaction\View\WalletAllTransactionView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\WalletAllTransaction\WalletAllTransactionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="PopUps\ExtendedPickerPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="PopUps\MessageDialog.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="PopUps\ProgressDialog.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="PopUps\SearchablePickerPopUp.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="PopUps\VerifyPinPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Pages\QuickActions\QuickActionsV2.xaml.cs">
+      <DependentUpon>QuickActionsV2.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\CardlessWithdrawals\CardlessWithdrawalSuccessful.xaml.cs">
+      <DependentUpon>CardlessWithdrawalSuccessful.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

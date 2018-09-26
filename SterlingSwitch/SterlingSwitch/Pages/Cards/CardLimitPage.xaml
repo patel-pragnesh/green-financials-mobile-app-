@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sm:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sm="clr-namespace:SterlingSwitch.Templates"
+             xmlns:c="clr-namespace:SterlingSwitch.Custom.Controls"
+             x:Class="SterlingSwitch.Pages.Cards.CardLimitPage"
+             IsBackImageVisible="True" IsBottomNavBarVisible="False" 
+             PageTitle="Card Limits" PageTitleColor="Black" ContentPadding="0" ContentBackgroundColor="White" HeaderPadding="16,20,0,0">
+
+    <sm:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}" BackgroundColor="{DynamicResource BackgroundColor}">
+            <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Padding="16,0,0,0">
+                <c:ExtendedLabel Text="Local" ItemTapped="LocalTapped"/>
+                <StackLayout x:Name="LocalView" HorizontalOptions="FillAndExpand" Spacing="0" IsVisible="False">
+                    <c:DoubleLabel x:Name="PurcahseLimitTxt" LeftText="Purchase Limit" RightTextColor="#1f3958" Margin="0,10,0,0"/>
+                    <c:DoubleLabel x:Name="CashWithdrawalLimitTxt" LeftText="Withdrawal Limit" RightTextColor="#1f3958" Margin="0,10,0,0"/>
+                    <c:DoubleLabel x:Name="PaymentLimitTxt" LeftText="Payment Limit" RightTextColor="#1f3958" Margin="0,10,0,0"/>
+                </StackLayout>
+                <c:ExtendedLabel Text="International" ItemTapped="IntlTapped"/>
+                <StackLayout x:Name="InternationalView" HorizontalOptions="FillAndExpand" Spacing="0" IsVisible="False">
+                    <c:DoubleLabel x:Name="ForeignLimitTxt" LeftText="Transaction Limit" RightTextColor="#1f3958" Margin="0,10,0,0"/>
+                </StackLayout>
+            </StackLayout>
+        </ContentView>
+    </sm:SwitchMasterPage.PageContent>
+            
+</sm:SwitchMasterPage>

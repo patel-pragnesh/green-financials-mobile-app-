@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sm:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sm="clr-namespace:SterlingSwitch.Templates"
+             x:Class="SterlingSwitch.Pages.Cards.CardDetailsPage"
+             IsBackImageVisible="True" IsBottomNavBarVisible="False" 
+             PageTitle="" BackImageSource="crossLittle.png" ContentBackgroundColor="White" IsTopNavBarSeparatorVisible="false" TopNavBarBackgroundColor="White"> 
+    
+    <sm:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}" BackgroundColor="{DynamicResource BackgroundColor}">
+            <Grid VerticalOptions="StartAndExpand" HorizontalOptions="Fill" Padding="20,0">
+                <Frame CornerRadius="20" HasShadow="False" HorizontalOptions="FillAndExpand" HeightRequest="160" BackgroundColor="#326B85" Margin="0,20">
+                    <StackLayout Orientation="Vertical" Spacing="20" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                        <Image x:Name="CardLogo" WidthRequest="50" HeightRequest="15" HorizontalOptions="StartAndExpand"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="DigitSegOneTxt" TextColor="White"/>
+                            <Label x:Name="DigitSegTwoTxt" Grid.Column="1" TextColor="White"/>
+                            <Label x:Name="DigitSegThreeTxt" Grid.Column="2" TextColor="White" />
+                            <Label x:Name="DigitSegFourTxt" Grid.Column="3" TextColor="White" />
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Orientation="Vertical">
+                                <Label x:Name="CardNameTxt" Opacity="0.5" TextColor="White" FontSize="13"/>
+                                <Label x:Name="CardExpiryTxt" Margin="0,-7,0,0" TextColor="White" FontSize="13"/>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1" Orientation="Vertical">
+                                <Label Text="CVV" Opacity="0.5" TextColor="White" FontSize="13"/>
+                                <Label x:Name="CardCVVTxt" Margin="0,-7,0,0" TextColor="White" FontSize="13"/>
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+        </ContentView>
+    </sm:SwitchMasterPage.PageContent>
+</sm:SwitchMasterPage>

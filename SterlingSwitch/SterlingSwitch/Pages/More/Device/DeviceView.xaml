@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Pages.More.Device.DeviceView"
+             xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+                            xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls"
+                            TopNavBarBackgroundColor="{StaticResource Key=SkyBlue}"  BackgroundColor="White"
+                            IsBackImageVisible="True" IsTopNavBarSeparatorVisible="False"  
+                             IsNavBarVisible="True" ContentPadding="0" PageTitle="Devices"  
+                            IsBottomNavBarVisible="False"  BackImageSource="BackIcon.png"
+                             PageTitleColor="White">
+    <templates:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}">
+            <StackLayout Padding="20,0,0,0" BackgroundColor="White">
+                <ListView SeparatorVisibility="None" ItemsSource="{Binding Devices}" HasUnevenRows="True" ItemTapped="ListView_ItemTapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <controls:ExtendedSwitch Text="{Binding DeviceName}" IsToggled="{Binding IsActive}" IsEnabled="{Binding IsEnabled}" OnToggled="ExtendedSwitch_OnToggled"></controls:ExtendedSwitch>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>

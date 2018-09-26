@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:ms="clr-namespace:SterlingSwitch.Templates"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Pages.Pagelanding.CategoryTagLanding"
+             Padding="22" NavigationPage.HasNavigationBar="False">
+    
+    <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Image Source="cross.png" WidthRequest="28" HeightRequest="28" HorizontalOptions="Start" VerticalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Cancel"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <StackLayout Grid.Row="1" Spacing="20" HorizontalOptions="Center" Margin="30">
+                <Label Text="Choose a category for this payment" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" FontSize="17" Opacity="0.87"/>
+                <Label Text="This is used to provide you with spending insights. Choose the right category for accurate results." TextColor="#4a4a4a" FontSize="14" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+            </StackLayout>
+            <flv:FlowListView Grid.Row="2" FlowItemsSource="{Binding CategoriesList}" FlowItemTapped="FlowListView_FlowItemTapped" FlowColumnCount="3" SeparatorVisibility="None"  HasUnevenRows="True" >
+                <flv:FlowListView.FlowColumnTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="96">
+                            <StackLayout Orientation="Vertical" Spacing="12" VerticalOptions="Center" HorizontalOptions="Center">
+                                <Image Source="{Binding ImageSource}" HeightRequest="26" WidthRequest="26" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label Text="{Binding Text}" Grid.Row="1" TextColor="#858585" FontSize="11" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </flv:FlowListView.FlowColumnTemplate>
+            </flv:FlowListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

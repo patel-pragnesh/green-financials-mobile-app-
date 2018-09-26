@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls;assembly=SterlingSwitch"
+             x:Class="SterlingSwitch.Pages.AirtimeAndData.AirtimeAndData"
+             IsBackImageVisible="True" 
+             x:Name="Main"
+             BackImageSource="BackIcon.png"
+             PageContentBackgroundColor="#EDEDED"
+             IsBottomNavBarVisible="False" 
+             HeaderPadding="16,20,0,0"
+             ContentPadding="0"
+             IsNavBarVisible="True"
+             TopNavBarBackgroundColor="{DynamicResource SkyBlue}"
+             ContentBackgroundColor="#EDEDED"
+             IsTopNavBarSeparatorVisible="false" 
+             IsSubPageTitleVisible="true"               
+             PageTitle="Airtime &amp; data"              
+             PageTitleColor="White"
+             SubPageTitle="{Binding Balance}"               
+             BackCommand="{Binding BackCommand}">
+    <templates:SwitchMasterPage.PageContent>
+            <ContentView ControlTemplate="{StaticResource masterPage}">
+           <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0" Padding="0,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <Grid HorizontalOptions="FillAndExpand" BackgroundColor="White"  RowSpacing="0" VerticalOptions="StartAndExpand" Padding="0,7,0,-6">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  HeightRequest="60">
+                    <controls:ExtendedPicker Title="Category" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  Margin="16,0,0,0" x:Name="Category" Placeholder="Select a Category" SelectedIndexChanged="Category_OnSelectedIndexChanged"  />
+                </Grid>
+                <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  HeightRequest="60">
+                    <controls:ExtendedPicker Placeholder="Select a Provider" Title="Network provider" ItemsSource="{Binding NetWorkProviders}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  Margin="16,0,0,0" SelectedItem="{Binding SelectedProvider}" x:Name="Providers" SelectedIndexChanged="Providers_OnSelectedIndexChanged"/>
+                </Grid>
+                <Grid Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  IsVisible="{Binding IsListofBundleVisible}" HeightRequest="60">
+                    <controls:ExtendedPicker x:Name="AvailableBundle" Placeholder="Select a Bundle" Title="Available bundles" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  Margin="16,0,0,0" SelectedIndex="{Binding SelectedBundle}" SelectedIndexChanged="AvailableBundle_OnSelectedIndexChanged"/>
+                </Grid>
+                <Grid Grid.Row="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  HeightRequest="60">
+                    <controls:ExtendedEntry IsCurrencyVisible="True" CurrencySymbol="NGN" x:Name="Amount"  Title="Amount" HorizontalOptions="FillAndExpand" Placeholder="e.g 300" VerticalOptions="FillAndExpand"  Margin="16,0,0,0" IsAmount="True" Text="{Binding EnteredAmount}" TextChanged="Amount_OnTextChanged"/>
+                </Grid>
+                <Grid Grid.Row="4" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  HeightRequest="60">
+                    <controls:ExtendedEntry x:Name="BeneficiaryNumber" Icon="phoneBook.png" Title="Mobile number" HorizontalOptions="FillAndExpand" Placeholder="e.g 08135732187" VerticalOptions="FillAndExpand"  Margin="16,0,0,0" Keyboard="Numeric" Text="{Binding EnteredPhoneNumber}" TextChanged="ExtendedEntry_OnTextChanged" IconTapped="BeneficiaryNumber_OnIconTapped"/>
+                </Grid>
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Grid.Row="5" HeightRequest="60" Grid.RowSpacing="0">
+                    <controls:ExtendedPicker x:Name="DebitAccount" Title="From account" Placeholder="Select an Account" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="16,0,0,0" SelectedIndex="{Binding SelectedAccount}" SelectedIndexChanged="DebitAccount_OnSelectedIndexChanged"/>
+                </Grid>
+            </Grid>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Row="1" Margin="0,0,0,40">
+                <Button x:Name="ContinueButton" Text="Continue" VerticalOptions="Center" Command="{Binding ContinueCommand}"/>
+            </Grid>
+        </Grid>
+        </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>

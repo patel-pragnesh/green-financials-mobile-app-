@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Pages.Profile.PersonalDetailsPage"
+              xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+                             xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls"
+                            xmlns:circle="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+                              TopNavBarBackgroundColor="White" ContentPadding="0" HeaderPadding="16,20,0,0"
+                            IsBackImageVisible="True" x:Name="allPage" IsTopNavBarSeparatorVisible="False"  
+                             IsNavBarVisible="True"  PageTitle="Personal Details"  IsBottomNavBarVisible="False"  
+                             PageTitleColor="Black">
+   <templates:SwitchMasterPage.PageContent>
+      <ContentView ControlTemplate="{StaticResource masterPage}">
+        <ScrollView Padding="16,0,0,0" BackgroundColor="White">
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0,10,0,0" >
+                <controls:TitleContentLabel HeaderText="First name" ContentText="{Binding Firstname}"></controls:TitleContentLabel>
+                <controls:TitleContentLabel HeaderText="Last name" ContentText="{Binding Lastname}"></controls:TitleContentLabel>
+                <controls:TitleContentLabel HeaderText="Date of Birth" ContentText="{Binding DateOfBirth}"></controls:TitleContentLabel>
+                <controls:TitleContentLabel HeaderText="Gender" ContentText="{Binding Gender}"></controls:TitleContentLabel>
+                <controls:TitleContentLabel HeaderText="Email Address" LineBreakMode="TailTruncation"  ContentText="{Binding Email}"></controls:TitleContentLabel>
+                <controls:TitleContentLabel HeaderText="Phone number" ContentText="{Binding Phonenumber}"></controls:TitleContentLabel>
+                <controls:TitleContentLabel HeaderText="BVN" ContentText="{Binding BVN}"></controls:TitleContentLabel>
+            </StackLayout>
+        </ScrollView>
+   </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+    
+</templates:SwitchMasterPage>

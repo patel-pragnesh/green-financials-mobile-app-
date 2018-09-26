@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sm:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sm="clr-namespace:SterlingSwitch.Templates"
+             x:Class="SterlingSwitch.Pages.Cards.FreezeCardPage"
+             IsBackImageVisible="True" IsBottomNavBarVisible="False" 
+             PageTitle="Freeze Card" ContentPadding="0" HeaderPadding="16,20,0,0" PageTitleColor="Black">
+    <sm:SwitchMasterPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Switch">
+                <Setter Property="Margin" Value="0,0,0,10"/>
+            </Style>
+        </ResourceDictionary>
+    </sm:SwitchMasterPage.Resources>
+    <sm:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}" BackgroundColor="{DynamicResource BackgroundColor}">
+            <Grid Padding="16,0,0,30" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Grid Padding="0,5" HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="All Terminals" Style="{DynamicResource BodyStyle}" VerticalOptions="Center"/>
+                        <Switch x:Name="AllCheckBx"  Grid.Column="1" VerticalOptions="Center" HorizontalOptions="End" Toggled="AllCheckBx_Toggled"/>
+                    </Grid>
+                    <BoxView Style="{DynamicResource SeparatorStyle}"></BoxView>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Grid.Row="1" HorizontalOptions="FillAndExpand">
+                    <Grid Padding="0,5" HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Web" Style="{DynamicResource BodyStyle}" VerticalOptions="Center"/>
+                        <Switch x:Name="WebCheckBx" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="End"/>
+                    </Grid>
+                    <BoxView Style="{DynamicResource SeparatorStyle}"></BoxView>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Grid.Row="2" HorizontalOptions="FillAndExpand">
+                    <Grid Padding="0,5" HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="ATM/POS" Style="{DynamicResource BodyStyle}" VerticalOptions="Center"/>
+                        <Switch x:Name="PosCheckBx" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="End"/>
+                    </Grid>
+                    <BoxView Style="{DynamicResource SeparatorStyle}"></BoxView>
+                </StackLayout>
+                <!--<StackLayout Orientation="Vertical" Grid.Row="3" HorizontalOptions="FillAndExpand">
+                    <Grid Padding="0,5" HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="ATM" Style="{DynamicResource BodyStyle}" VerticalOptions="Center"/>
+                        <Switch x:Name="AtmCheckBx" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="End" Toggled="AtmCheckBx_Toggled"/>
+                    </Grid>
+                    <BoxView Style="{DynamicResource SeparatorStyle}"></BoxView>
+                </StackLayout>-->
+                <Button x:Name="DoneBtn" Text="Done" Grid.Row="4" Clicked="DoneBtn_Clicked" VerticalOptions="End"/>
+            </Grid>
+        </ContentView>
+    </sm:SwitchMasterPage.PageContent>
+</sm:SwitchMasterPage>

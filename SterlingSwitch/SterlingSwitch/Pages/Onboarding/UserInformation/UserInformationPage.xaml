@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+             xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls;assembly=SterlingSwitch"
+             IsBottomNavBarVisible="False"
+             IsTopNavBarSeparatorVisible="False"
+             TopNavBarBackgroundColor="White"
+             IsBackImageVisible="True"
+             IsNavBarVisible="False"
+             BackgroundColor="White"               
+             x:Class="SterlingSwitch.Pages.Onboarding.UserInformation.UserInformationPage">
+    <templates:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}" BackgroundColor="White">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Row="0" VerticalOptions="Start" Padding="0,20,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="2">
+                        <Image Source="crossLittle.png" WidthRequest="23" HeightRequest="23" Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="End" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="cross" Tapped="Cross_Tapped"></TapGestureRecognizer>
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </Grid>
+                <Grid Row="1" VerticalOptions="Center" RowSpacing="30" Margin="0,0,0,150">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid x:Name="grdStep1" Grid.Row="0" RowSpacing="30" IsVisible="True">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="What's your first name ?" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="17" Grid.Row="0"/>
+                        <Grid Grid.Row="1" RowSpacing="10" HorizontalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Entry HorizontalTextAlignment="Center" Text="{Binding Firstname}" Placeholder="Your First Name" HorizontalOptions="FillAndExpand"/>
+                            <BoxView x:Name="BoxViewLine" Grid.Row="1" Style="{DynamicResource SeparatorStyle}" VerticalOptions="End"/>
+                        </Grid>
+                        <Grid Row="2" VerticalOptions="EndAndExpand" Margin="0,20,0,0" RowSpacing="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Button Grid.Row="0" x:Name="btnStep1" Text="NEXT" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Clicked="btnStep1_Clicked"/>
+                            
+                        </Grid>
+                    </Grid>
+                    <Grid x:Name="grdStep2" Grid.Row="1" RowSpacing="30" IsVisible="False">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="What's your last name ?" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="17" Grid.Row="0"/>
+                        <Grid Grid.Row="1" RowSpacing="10" HorizontalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Entry HorizontalTextAlignment="Center" Text="{Binding Lastname}" Placeholder="Your Last Name" HorizontalOptions="FillAndExpand"/>
+                            <BoxView x:Name="BoxViewLine3" Grid.Row="1" Style="{DynamicResource SeparatorStyle}" VerticalOptions="End"/>
+                        </Grid>
+                        <Grid Row="2" VerticalOptions="EndAndExpand" Margin="0,20,0,0" RowSpacing="30">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Button x:Name="btnStep2" Text="NEXT" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Clicked="btnStep2_Clicked"/>
+                            <Label x:Name="grdStep2Previous" Grid.Row="1" FontSize="17" Text="PREVIOUS" TextColor="{DynamicResource SkyBlue}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="PreviousStepOne_Tapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
+                    </Grid>
+                    <Grid x:Name="grdStep3" Grid.Row="2" RowSpacing="30" IsVisible="False">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <StackLayout Grid.Row="0" Spacing="7">
+                            <Label Text="{Binding Firstname, StringFormat='When were you born {0} ?'}" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="17" />
+                            <Label Text="So that we'll remember to send you lovely messages." HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" FontSize="14" />
+                        </StackLayout>
+                        
+                        <Grid Grid.Row="1" RowSpacing="10" HorizontalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <controls:BorderlessDatePicker Date="{Binding DateOfBirth}" Format="D" Grid.Row="0" HorizontalOptions="CenterAndExpand" />
+                            <BoxView x:Name="BoxViewLine4" Grid.Row="1" Style="{DynamicResource SeparatorStyle}" VerticalOptions="End"/>
+                        </Grid>
+                        <Grid Row="2" VerticalOptions="EndAndExpand" Margin="0,20,0,0" RowSpacing="30">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Button x:Name="btnStep3" Text="NEXT" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Clicked="btnStep3_Clicked"/>
+                            <Label x:Name="grdStep3Previous" Grid.Row="1" FontSize="17" Text="PREVIOUS" TextColor="{DynamicResource SkyBlue}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="PreviousStepTwo_Tapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
+                    </Grid>
+                    <Grid x:Name="grdStep4" Grid.Row="3" RowSpacing="20" IsVisible="False">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Select Your Gender" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="17" Grid.Row="0"/>
+                        <Grid Grid.Row="1" RowSpacing="0" HorizontalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <controls:ExtendedPicker x:Name="dpdGender" SelectedIndexChanged="dpdGender_SelectedIndexChanged"  Placeholder="Your Gender" HorizontalOptions="CenterAndExpand" IsArrowVisible="False" IsUnderLineVisible="False" Padding="0"/>
+                            <BoxView x:Name="BoxViewLine2" Grid.Row="1" Style="{DynamicResource SeparatorStyle}" VerticalOptions="End"/>
+                        </Grid>
+                        <Grid Row="2" VerticalOptions="EndAndExpand" Margin="0,20,0,0" RowSpacing="30">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Button x:Name="btnStep4" Text="NEXT" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Clicked="btnStep4_Clicked"/>
+                            <Label x:Name="grdStep4Previous" Grid.Row="1" Text="PREVIOUS" FontSize="17" TextColor="{DynamicResource SkyBlue}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="PreviousStepThree_Tapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
+                    </Grid>
+                    <Grid x:Name="grdStep5" Grid.Row="4" RowSpacing="20" IsVisible="False">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Input your referral code" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="17" Grid.Row="0"/>
+                        <Grid Grid.Row="1" RowSpacing="5" HorizontalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Entry Placeholder="Optional" Text="{Binding ReferralCode}" HorizontalOptions="Fill" HorizontalTextAlignment="Center"/>
+                            <BoxView x:Name="BoxViewLine5" Grid.Row="1" Style="{DynamicResource SeparatorStyle}" VerticalOptions="End"/>
+                        </Grid>
+                        <Grid Row="2" VerticalOptions="EndAndExpand" Margin="0,20,0,0" RowSpacing="30">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Button x:Name="btnStep5" Text="NEXT" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Clicked="btnStep5_Clicked"/>
+                            <Label Grid.Row="1" Text="Skip" FontSize="17" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{DynamicResource SkyBlue}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="lblSkip" Tapped="lblSkip_Tapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
+                    </Grid>
+                    <Grid x:Name="grdStep6" Grid.Row="5" RowSpacing="20" IsVisible="False">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <StackLayout Grid.Row="0" Spacing="7">
+                            <Label Text="What's your Email address?" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="17" />
+                            <Label Text="So we can get in touch with you." HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" FontSize="14" />
+                        </StackLayout>
+                        <Grid Grid.Row="1" RowSpacing="5" HorizontalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Entry Placeholder="Email" Keyboard="Email" Text="{Binding Email}" HorizontalOptions="Fill" HorizontalTextAlignment="Center"/>
+                            <BoxView x:Name="BoxViewLine6" Grid.Row="1" Style="{DynamicResource SeparatorStyle}" VerticalOptions="End"/>
+                        </Grid>
+                        <Grid Row="2" VerticalOptions="EndAndExpand" Margin="0,20,0,0" RowSpacing="30">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Button x:Name="btnStep6" Text="NEXT" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Clicked="btnStep6_Clicked"/>
+                            <Label Grid.Row="1" x:Name="grdStep6Previous" FontSize="17" Text="PREVIOUS" TextColor="{DynamicResource SkyBlue}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="PreviousStepFour_Tapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
+                    </Grid>
+                    <Grid x:Name="grdStep7" Grid.Row="6" RowSpacing="20" IsVisible="False">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <StackLayout Grid.Row="0" Spacing="7">
+                            <Label Text="What's your phone number ?" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="17" />
+                            <Label Text="We'll send you a code to help us protect your account." HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" FontSize="14" />
+                        </StackLayout>
+                        <Grid Grid.Row="1" RowSpacing="5" HorizontalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid ColumnSpacing="5" HorizontalOptions="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Entry x:Name="txtCountryCode" Placeholder="NG(+234)" Focused="txtCountryCode_Focused" Text="{Binding CountryCode}" Keyboard="Numeric" MaxLength="4"/>
+                                <Entry x:Name="txtPhone" Grid.Column="1" Placeholder="phone number" Keyboard="Numeric" Text="{Binding PhoneNumber}" MaxLength="10" HorizontalOptions="Fill" HorizontalTextAlignment="Start"/>
+                            </Grid>
+                            <BoxView x:Name="BoxViewLine78" Grid.Row="1" Style="{DynamicResource SeparatorStyle}" VerticalOptions="End"/>
+                        </Grid>
+                        <Grid Row="2" VerticalOptions="EndAndExpand" Margin="0,20,0,0" RowSpacing="30">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Button x:Name="btnStep7" Text="NEXT" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Clicked="btnStep7_Clicked"/>
+                            <Label Grid.Row="1" x:Name="grdStep7Previous" Text="PREVIOUS" FontSize="17" TextColor="{DynamicResource SkyBlue}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="PreviousStepFive_Tapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
+                    </Grid>
+                    <Grid x:Name="grdStep8" Grid.Row="6" RowSpacing="20" IsVisible="False" VerticalOptions="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <StackLayout Grid.Row="0" Spacing="7" Orientation="Vertical">                            
+                            <Label Text="Kindly verify you own this account number." HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" FontSize="14" HorizontalTextAlignment="Center"/>
+                            <Label x:Name="lblAccountVerification" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" />
+                        </StackLayout>
+                        <Grid Grid.Row="1" RowSpacing="5" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid ColumnSpacing="10" HorizontalOptions="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>                               
+                                <Entry Grid.Column="1" Keyboard="Numeric" MaxLength="10" Placeholder="Enter the complete account number" Text="{Binding ConfirmAccountNumber}" HorizontalOptions="Fill" HorizontalTextAlignment="Center"/>
+                            </Grid>
+                            <BoxView x:Name="BoxViewLine79" Grid.Row="1" Style="{DynamicResource SeparatorStyle}" VerticalOptions="End"/>
+                        </Grid>
+                        <Grid Row="2" VerticalOptions="EndAndExpand" Margin="0,20,0,0" RowSpacing="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Button x:Name="btnStep8" Text="NEXT" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Clicked="btnStep8_Clicked"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>

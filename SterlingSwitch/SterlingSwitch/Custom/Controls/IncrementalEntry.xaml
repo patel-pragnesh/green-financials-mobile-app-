@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Custom.Controls.IncrementalEntry"
+             VerticalOptions="StartAndExpand">
+  <ContentView.Content>
+        <Frame HasShadow="False" Grid.Row="2" Padding="0" CornerRadius="30" HeightRequest="60" WidthRequest="280" HorizontalOptions="Center">
+            <Frame.BorderColor>
+                <Color x:FactoryMethod="FromRgba">
+                    <x:Arguments>
+                        <x:Int32>208</x:Int32>
+                        <x:Int32>2</x:Int32>
+                        <x:Int32>27</x:Int32>
+                        <x:Int32>66</x:Int32>
+                    </x:Arguments>
+                </Color>
+            </Frame.BorderColor>
+            <Grid VerticalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.4*"/>
+                    <ColumnDefinition Width="0.5"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.5"/>
+                    <ColumnDefinition Width="0.4*"/>
+                </Grid.ColumnDefinitions>
+                <BoxView  Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,1,0,1">
+                    <BoxView.Color>
+                        <Color x:FactoryMethod="FromRgba">
+                            <x:Arguments>
+                                <x:Int32>208</x:Int32>
+                                <x:Int32>2</x:Int32>
+                                <x:Int32>27</x:Int32>
+                                <x:Int32>66</x:Int32>
+                            </x:Arguments>
+                        </Color>
+                    </BoxView.Color>
+                </BoxView>
+                <BoxView  Grid.Column="3" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,1,0,1">
+                    <BoxView.Color>
+                        <Color x:FactoryMethod="FromRgba">
+                            <x:Arguments>
+                                <x:Int32>208</x:Int32>
+                                <x:Int32>2</x:Int32>
+                                <x:Int32>27</x:Int32>
+                                <x:Int32>66</x:Int32>
+                            </x:Arguments>
+                        </Color>
+                    </BoxView.Color>
+                </BoxView>
+                <Entry x:Name="AmountToInvestTxt" TextColor="{DynamicResource SkyBlue}" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontSize="18" Keyboard="Numeric" TextChanged="AmountToInvestTxt_TextChanged"/>
+                <Grid Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Image Source="minus.png"  WidthRequest="23" HeightRequest="23"  HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="minus" Tapped="minus_Tapped"/>
+                    </Grid.GestureRecognizers>
+                </Grid>
+                <Grid Grid.Column="4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Image Source="plus.png" WidthRequest="23" HeightRequest="23"  HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="plus" Tapped="plus_Tapped"/>
+                    </Grid.GestureRecognizers>
+                </Grid>
+            </Grid>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

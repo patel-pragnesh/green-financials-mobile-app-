@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ms:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Pages.LocalTransfer.ManageRecipientLocalTransfer"
+             xmlns:ms="clr-namespace:SterlingSwitch.Templates"
+                xmlns:option="clr-namespace:SterlingSwitch.Custom.Controls" 
+                   IsBackImageVisible="True"
+                      IsBottomNavBarVisible="False" 
+                     
+                     ControlTemplate="{StaticResource masterPage}"
+                   
+             
+             >
+    <ms:SwitchMasterPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <!--<SearchBar Placeholder="Search Recipient" x:Name="SearchRecipient" TextChanged="SearchRecipient_TextChanged"/>-->
+                <option:ExtendedEntry TextChanged="SearchRecipient_TextChanged" x:Name="SearchRecipient"/>
+            </StackLayout>
+            <ListView x:Name="RecipientListView" HasUnevenRows="True" ItemTapped="RecipientListView_ItemTapped" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Text="{Binding display}" />
+                                <Grid x:Name="StackManage" Grid.Row="1" IsVisible="{Binding IsVisible}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30*"/>
+                                        <ColumnDefinition Width="30*"/>
+                                        <ColumnDefinition Width="30*"/>
+                                    </Grid.ColumnDefinitions>
+
+
+
+                                    <Button Text="Delete" Grid.Column="2" BackgroundColor="LightCoral" x:Name="btnDelete" Clicked="btnDelete_Clicked" />
+
+
+
+                                </Grid>
+                            </Grid>
+                         
+                          
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ms:SwitchMasterPage.Content>
+</ms:SwitchMasterPage>

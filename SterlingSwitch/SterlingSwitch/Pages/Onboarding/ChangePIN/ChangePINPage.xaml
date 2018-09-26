@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage
+    xmlns:templates="clr-namespace:SterlingSwitch.Templates" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls"
+    x:Class="SterlingSwitch.Pages.Onboarding.ChangePIN.ChangePINPage"
+             IsBottomNavBarVisible="True" IsNavBarVisible="True" TopNavBarBackgroundColor="#5AC8FA"
+             BackImageSource="BackIcon.png" PageTitle="Change PIN" PageTitleColor="White"
+             IsBackImageVisible="True" x:Name="Main" ContentPadding="0" HeaderPadding="16,20,0,0">
+
+    <templates:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}">
+            <ScrollView>
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Padding="16,0,0,30">
+                    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+
+                        <StackLayout Spacing="20" Margin="15,0,15,10" VerticalOptions="CenterAndExpand">
+                            <StackLayout Spacing="30">
+                                <StackLayout x:Name="stkDisableTPIN" IsVisible="{Binding EnableStackTPIN}" Spacing="20">
+                                    <StackLayout Orientation="Horizontal">
+                                        <controls:ExtendedEntry x:Name="txtOldPIN" Title="Old PIN"   Placeholder="Enter your old PIN" IsPassword="True" MaxLength="4" Keyboard="Numeric" WidthRequest="300" />
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <controls:ExtendedEntry x:Name="txtNewPIN" Title="New PIN" Text="{Binding ConfirmTPin}" Placeholder="Enter your new PIN here" MaxLength="4" IsPassword="True" Keyboard="Numeric" WidthRequest="300"/>
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout>
+                                    <controls:ExtendedEntry x:Name="txtConfirmPIN" Title="Login PIN" Text="{Binding LoginPin}" Placeholder="Confirm your new PIN here" MaxLength="4" IsPassword="True" Keyboard="Numeric" WidthRequest="300"/>
+                                </StackLayout>
+
+                            </StackLayout>
+                            <StackLayout Margin="0,20,0,0" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                                <Button Text="CHANGE PIN" x:Name="btnChangePIN" TextColor="White"  Clicked="btnChangePIN_Clicked" />
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+        </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>

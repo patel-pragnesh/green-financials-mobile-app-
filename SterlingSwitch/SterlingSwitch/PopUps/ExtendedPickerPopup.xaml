@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+                x:Class="SterlingSwitch.PopUps.ExtendedPickerPopup">
+
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation 
+            PositionIn="Bottom"
+            PositionOut="Bottom"
+            ScaleIn="1.2"
+            ScaleOut="0.8"
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"/>
+    </pages:PopupPage.Animation>
+    
+    <ContentPage.Content>
+        <Grid VerticalOptions="EndAndExpand" BackgroundColor="{DynamicResource BackgroundColor}" HeightRequest="300">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="cross.png" Margin="20,0" WidthRequest="30" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Cancel"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label x:Name="HeaderTxt" Text="{Binding PickerTitle}" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontSize="17" Margin="50,15" FontAttributes="Bold" TextColor="Black"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <ListView x:Name="PickerList" HasUnevenRows="True" SeparatorColor="{DynamicResource SeparatorColor}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ItemSelected="PickerList_OnItemSelected"  >
+                    <ListView.ItemTemplate >
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid HorizontalOptions="FillAndExpand" Padding="20,15" BackgroundColor="{DynamicResource ElementBackground}">
+                                    <Label Text="{Binding DisplayText}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Style="{DynamicResource EntryLabelStyle}" TextColor="Black"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <StackLayout x:Name="RefreshView" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image x:Name="RefreshBtn" Source="RefreshIcon.png" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="30" WidthRequest="30">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Refresh"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Text="No item found, tap to refresh." HorizontalOptions="Center" VerticalOptions="Center"/>
+                </StackLayout>
+            </Grid>
+            <!--<Label Text="CANCEL" Grid.Row="2" FontAttributes="Bold" Margin="20" HorizontalOptions="End" TextColor="{DynamicResource PrimaryColor}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Cancel"/>
+                </Label.GestureRecognizers>
+            </Label>-->
+        </Grid>
+    </ContentPage.Content>
+</pages:PopupPage>

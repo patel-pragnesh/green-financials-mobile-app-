@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="72" android:versionName="72.0" package="com.switchmobile.sterling" android:installLocation="auto">
+	<uses-sdk android:minSdkVersion="19" android:targetSdkVersion="27" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.READ_CONTACTS" />
+	<uses-permission android:name="android.permission.WRITE_CONTACTS" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<application android:label="Switch">
+		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDYdbG_jHO5TOZcIPkKHsF0uD6po9AWvik" />
+		<provider android:name="android.support.v4.content.FileProvider" android:authorities="com.switchmobile.sterling.fileprovider" android:exported="false" android:grantUriPermissions="true">
+			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
+		</provider>
+	</application>
+</manifest>

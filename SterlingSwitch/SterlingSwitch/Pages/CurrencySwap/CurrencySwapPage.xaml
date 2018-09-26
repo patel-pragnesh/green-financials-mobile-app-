@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+             x:Class="SterlingSwitch.Pages.CurrencySwap.CurrencySwapPage"
+                             xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls"
+                            IsBackImageVisible="True" IsBottomNavBarVisible="False" TopNavBarBackgroundColor="#5ac8fa"
+                            PageTitle="Currency Swap" PageTitleColor="White" ContentPadding="0"
+                           
+                            HeaderPadding="16,20,0,0"
+                            IsTopNavBarSeparatorVisible="False"
+                            BackImageSource="BackIcon.png">
+    <templates:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}" >
+          
+                <Grid BackgroundColor="White"  Padding="16,35,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="2*"/>
+                        <!--<RowDefinition Height="2*"/>-->
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <ScrollView  HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+                        <StackLayout>
+                            <Label Text="Currency" TextColor="#5c5c5c" HeightRequest="40" FontSize="17"/>
+                            <controls:ExtendedPicker Title="From" x:Name="FromCurrency" Placeholder="Select currency" SelectedIndexChanged="FromCurrency_SelectedIndexChanged" />
+                            <controls:TitleContentLabel x:Name="LocalCurrency" HeightRequest="63" ContentText="NGN" HeaderText="To" LineColor="#c7c7cc" ContentTextColor="#4a4a4a" />
+                            <StackLayout Padding="0,35,0,11">
+                                <Label Text="Amount" TextColor="#5c5c5c" HeightRequest="40" FontSize="17"/>
+                            </StackLayout>
+                            <controls:ExtendedEntry Title="You send"  IsAmount="True" Keyboard="Numeric" x:Name="AmountSentInForeignCurrecy" TextChanged="AmountSentInForeignCurrecy_TextChanged"  />
+                            <controls:ExtendedEntry  IsCurrencyVisible="true" CurrencySymbol="NGN" Title="They recieve" InputTransparent="True" IsAmount="True" x:Name="AmtRev"/>
+<!--                            <controls:TitleContentLabel HeaderText="They recieve" HeightRequest="63" x:Name="AmtRev" ContentText=" " />-->
+                            <controls:ExtendedEntry Title="Reference (Improves your expense tracker)" x:Name="ReferenceMessage" Placeholder="Refernce" />
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+                    <StackLayout Grid.Row="2" VerticalOptions="EndAndExpand" Padding="0,0,0,56">
+                        <Button x:Name="btnContinue" Text="Continue" Clicked="btnContinue_Clicked"/>
+                    </StackLayout>
+                </Grid>
+          
+          
+        </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>

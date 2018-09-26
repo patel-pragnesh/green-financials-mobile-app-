@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Pages.CardlessWithdrawals.CardlessWithdrawView"
+              xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+                            xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls"
+                            IsBackImageVisible="True"  
+                            IsNavBarVisible="True" 
+                            PageTitleColor="Black" 
+                            CurrentPage="Actions"  
+                            HeaderPadding="20,20,0,0"
+                            ContentPadding="0" ContentBackgroundColor="#EDEDED"
+                            IsBottomNavBarVisible="False" PageTitle="Cardless Withdrawal" >
+
+    <templates:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}">
+        <StackLayout VerticalOptions="FillAndExpand" Padding="0,0,0,35" Spacing="0">
+                
+           
+            <StackLayout VerticalOptions="StartAndExpand" Spacing="0" BackgroundColor="White" Padding="20,12,0,-5">
+                <controls:ExtendedPicker x:Name="epwithdrawal" RefreshContent="RefreshWithdrawalPicker" SelectedIndexChanged="epwithdrawal_SelectedIndexChanged" ItemsSource="{Binding WithdrawalTypes}" Title="Withdrawal type" Placeholder="Withdrawal type"></controls:ExtendedPicker>
+                <controls:ExtendedPicker x:Name="epaccount" Title="From account or card" Placeholder="From account or card" SelectedIndexChanged="epaccount_SelectedIndexChanged"></controls:ExtendedPicker>
+                <controls:ExtendedEntry Title="Recipients name" Text="{Binding Recipient}" IsVisible="{Binding IsRecipientVisible}"></controls:ExtendedEntry>
+                <controls:ExtendedEntry Title="{Binding PhoneNumberTitle}" Keyboard="Numeric" Text="{Binding PhoneNumber}"></controls:ExtendedEntry>
+                <controls:ExtendedEntry IsCurrencyVisible="true" CurrencySymbol="NGN" Placeholder="1, 000" Title="Amount" Text="{Binding Amount}" Keyboard="Numeric" IsAmount="True"></controls:ExtendedEntry>
+                <controls:ExtendedEntry Title="Authorised PIN" Placeholder="any 4 digit pin" IsPassword="True" MaxLength="4"  Keyboard="Numeric" Text="{Binding OneTimePin}"></controls:ExtendedEntry>
+                <controls:ExtendedEntry Title="Reference" Placeholder="e.g. Shopping" Text="{Binding Reference}"></controls:ExtendedEntry>
+
+              
+            </StackLayout>
+
+                <Button Margin="20,0" VerticalOptions="EndAndExpand" Command="{Binding WithDrawCommand}" HorizontalOptions="FillAndExpand" Text="Continue"></Button>
+            </StackLayout>
+        </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>

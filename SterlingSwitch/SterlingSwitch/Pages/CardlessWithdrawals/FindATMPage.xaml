@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ms:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ms="clr-namespace:SterlingSwitch.Templates"
+             xmlns:controls="clr-namespace:SterlingSwitch.CustomControls.HorizontalList"
+             xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+             xmlns:local="clr-namespace:SterlingSwitch.Pages.CardlessWithdrawals"
+             x:Class="SterlingSwitch.Pages.CardlessWithdrawals.FindATMPage"
+             ContentPadding="0" PageTitle="Find ATM" PageTitleColor="Black" BackImageSource="crossLittle.png" TopNavBarBackgroundColor="Transparent" IsTopNavBarSeparatorVisible="false" IsBottomNavBarVisible="False">
+
+    <ms:SwitchMasterPage.Resources>
+        <ResourceDictionary>
+            <local:EqualsParameterContextConverter x:Key="EqualsParameterContextConverter"/>
+        </ResourceDictionary>
+    </ms:SwitchMasterPage.Resources>
+
+    <ms:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}">
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <maps:Map x:Name="map" InitialCameraUpdate="6.448,3.393, 16, 30, 60" MapType="Street" MyLocationEnabled="true" IsShowingUser="true" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" SelectedPinChanged="map_SelectedPinChanged"/>
+                <Grid Padding="20" VerticalOptions="End" HorizontalOptions="FillAndExpand">
+                    <controls:HorizontalList x:Name="ATMPlacesListView" Margin="0,20" ListOrientation="Horizontal" ItemsSource="{Binding}" SelectedItemChanged="ATMPlacesListView_SelectedItemChanged">
+                        <controls:HorizontalList.ItemTemplate>
+                            <DataTemplate>
+                                <Grid x:Name="cell">
+                                    <Frame BackgroundColor="White" BorderColor="#2CC197" Padding="0" HasShadow="false" WidthRequest="280" HeightRequest="150" CornerRadius="10" HorizontalOptions="Start">
+                                        <Grid RowSpacing="10" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Padding="20">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Label Text="{Binding Distance}" Grid.Column="1" TextColor="#9FA7B3" HorizontalOptions="End" FontSize="14"/>
+                                            <StackLayout>
+                                                <Label Text="{Binding PlaceName}" TextColor="#353A41" FontSize="16" FontAttributes="Bold"/>
+                                                <Label Text="{Binding Address}" TextColor="#565C64" FontSize="13"/>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Open Now: " TextColor="#565C64" FontSize="13"/>
+                                                    <Label Text="{Binding OpenNow}" TextColor="#2CC197" FontSize="13"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="End" IsVisible="{Binding Source={x:Reference ATMPlacesListView}, Path=SelectedItem, Converter={StaticResource EqualsParameterContextConverter}, ConverterParameter={x:Reference cell}}">
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="GetDirectionTapped"/>
+                                                </StackLayout.GestureRecognizers>
+                                                <Image Source="getdirection.png" VerticalOptions="Center" WidthRequest="25" HeightRequest="27"/>
+                                                <Label Text="Get Directions" VerticalOptions="Center" TextColor="#2CC197" FontSize="15" FontAttributes="Bold"/>
+                                            </StackLayout>
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                            </DataTemplate>
+                        </controls:HorizontalList.ItemTemplate>
+                    </controls:HorizontalList>
+                    <Grid x:Name="LoadingView" HorizontalOptions="FillAndExpand" Padding="10" BackgroundColor="White">
+                        <StackLayout Orientation="Vertical"  HorizontalOptions="CenterAndExpand" Margin="10">
+                            <ActivityIndicator x:Name="AnimationView"
+                                HeightRequest="50"
+                                WidthRequest="50"
+                                IsRunning="True"
+                                HorizontalOptions="CenterAndExpand" />
+                            <Label x:Name="MessageTxt" Text="Search for ATM locations around you..." Style="{DynamicResource LabelFont11}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </ContentView>
+    </ms:SwitchMasterPage.PageContent>
+</ms:SwitchMasterPage>

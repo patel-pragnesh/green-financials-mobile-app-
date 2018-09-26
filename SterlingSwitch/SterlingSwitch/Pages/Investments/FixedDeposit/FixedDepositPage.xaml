@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Pages.Investments.FixedDeposit.FixedDepositPage"
+             xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+                            xmlns:c="clr-namespace:SterlingSwitch.Custom.Controls"
+                            IsBottomNavBarVisible="False" IsNavBarVisible="False" 
+                            CurrentPage="Actions"  BackgroundColor="White" ContentPadding="0" 
+                            IsBackImageVisible="False" TopNavBarBackgroundColor="White" x:Name="Main">
+    <templates:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}">
+            <ScrollView>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.13*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid BackgroundColor="White" Grid.Row="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="BlackBackArrow.png" Grid.Column="0" Margin="20,0,0,11" WidthRequest="22" HeightRequest="22" HorizontalOptions="StartAndExpand" VerticalOptions="Center" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="BackButton" Tapped="BackButton_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                <Label Text="Fixed deposits" Style="{DynamicResource PageHeader}" Margin="0,0,40,11" TextColor="#26466c" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+            </Grid>
+            <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="30">
+                <Image Source="shape2.png" HorizontalOptions="CenterAndExpand" Aspect="AspectFit" Margin="0,30,0,0" HeightRequest="146" WidthRequest="146"/>
+                <Label Text="Input an amount e.g N100,000" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" TextColor="{DynamicResource ContentTextColor}" FontSize="17"/>
+                <c:IncrementalEntry x:Name="txtAmountToInvest" Grid.Row="1" WidthRequest="280" HorizontalOptions="Center"/>
+               
+                <Label  Grid.Row="3" Text="How long would you like to invest for?" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" TextColor="{DynamicResource ContentTextColor}" FontSize="17"/>
+                <Label  Grid.Row="4" Text="investment periods are multiples of 30 days" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" TextColor="{DynamicResource ContentTextColor}" FontSize="14" Margin="0,-18,0,0"/>
+                <Grid  Grid.Row="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="44"/>
+                        <RowDefinition Height="24"/>
+                    </Grid.RowDefinitions>
+                    <Slider Grid.Row="0"   x:Name="sliderValue"  HorizontalOptions="FillAndExpand" MinimumTrackColor="#7ED321" MaximumTrackColor="Gray" ThumbColor="#f2f2f2" HeightRequest="100" WidthRequest="279"  Margin="10,0,10,0" Value="30" Maximum="180" Minimum="0" ValueChanged="sliderValue_ValueChanged" />
+                    <Label Grid.Row="1"   x:Name="lblDays" Text="{Binding Path=Value,Source={x:Reference sliderValue}, StringFormat=' {0} Days'}" HorizontalOptions="CenterAndExpand" FontSize="18" TextColor="#1d1d1d" Margin="0,-10,0,0"/>
+                </Grid>
+                <Grid Grid.Row="6" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Margin="0,30,0,30">
+                    <Button Text="Try"  x:Name="btnTryFixedDeposit" Clicked="btnTryFixedDeposit_Clicked" WidthRequest="147"/>
+                </Grid>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+    </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>

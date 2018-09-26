@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ms:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Pages.Pagelanding.InvestmentLanding"
+              xmlns:ms="clr-namespace:SterlingSwitch.Templates"
+               IsNavBarVisible="True"
+                     IsBottomNavBarVisible="False"
+                     xmlns:option="clr-namespace:SterlingSwitch.Custom.Controls" 
+                     ContentPadding="0" IsTopNavBarSeparatorVisible="False"
+                     BackImageSource="BackIcon.png"
+                     PageTitle="Investment Options"
+                     IsBackImageVisible="True"
+                     HeaderPadding="20,20,0,0"
+                     TopNavBarBackgroundColor="{DynamicResource SkyBlue}">
+    <ms:SwitchMasterPage.PageContent>
+        <ContentView  ControlTemplate="{StaticResource masterPage}">
+             <StackLayout Padding="20,0,0,0" BackgroundColor="White">
+            <StackLayout Margin="0,10,0,0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="Tbills" Tapped="Tbills_Tapped" />
+                </StackLayout.GestureRecognizers>
+                <option:OptionCell  HeaderText="Treasury Bills" SubHeaderText="Buy Treasury bills" BoxViewColor="#5AC8FA"  />
+            </StackLayout>
+            <StackLayout>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="FD" Tapped="FD_Tapped" />
+                </StackLayout.GestureRecognizers>
+                <option:OptionCell  HeaderText="Fixed Deposits" SubHeaderText="Book Fixed Deposits" BoxViewColor="#5AC8FA"  />
+            </StackLayout>
+                <StackLayout>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="AllInvestments" Tapped="AllInvestments_Tapped" />
+                    </StackLayout.GestureRecognizers>
+                    <option:OptionCell  HeaderText="View All Investments" SubHeaderText="All Investments" BoxViewColor="#5AC8FA"  />
+                </StackLayout>
+            </StackLayout>
+        </ContentView>
+       
+    </ms:SwitchMasterPage.PageContent>
+</ms:SwitchMasterPage>

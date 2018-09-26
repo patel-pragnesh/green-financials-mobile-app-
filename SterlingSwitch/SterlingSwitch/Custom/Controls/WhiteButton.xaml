@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Custom.Controls.WhiteButton">
+
+    <Frame Style="{DynamicResource ButtonFrame}">
+        <Label x:Name="LabelTxt" FontSize="16" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="{DynamicResource SkyBlue}" FontAttributes="None"/>
+    </Frame>
+</ContentView>

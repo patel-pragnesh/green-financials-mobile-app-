@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:cv="clr-namespace:SterlingSwitch.Converters"
+                xmlns:crv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+                xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls;assembly=SterlingSwitch"
+                x:Class="SterlingSwitch.Pages.BankAccounts.Views.AccountContentView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <cv:CreditDebitConverter x:Key="cdConvert"/>
+            <x:Double x:Key="contentPadding">20,0</x:Double>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <!--Carousel View and Carousel_ActivityIndicator-->
+            <Grid HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         Grid.Row="0" Padding="0,5,0,0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!--Carousel View-->
+                <Grid ColumnSpacing="5" HorizontalOptions="FillAndExpand"
+                         Grid.Row="0" VerticalOptions="FillAndExpand" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout  Grid.Column="0"  Padding="0,15" Margin="-3,0,0,0">
+                        <Frame VerticalOptions="FillAndExpand" IsVisible="{Binding CanSwipeRight}" IsClippedToBounds="True" HasShadow="False" BackgroundColor="{StaticResource Key=CardColorGreen}" HorizontalOptions="FillAndExpand"
+                       CornerRadius="3">
+                        </Frame>
+                    </StackLayout>
+
+                    <crv:CarouselViewControl x:Name="crvAccounts"
+                                             Grid.Column="1"
+                                         AnimateTransition="True" 
+                                         HorizontalOptions="FillAndExpand"
+                                             InterPageSpacing="10"
+                                 ItemsSource="{Binding CustomerAccounts}" 
+                                 PositionSelected="CarouselViewControl_PositionSelected"
+                                 Scrolled="CarouselViewControl_Scrolled">
+                        <crv:CarouselViewControl.ItemTemplate>
+                            <DataTemplate>
+
+                                <StackLayout VerticalOptions="FillAndExpand">
+                                    <Frame VerticalOptions="FillAndExpand"   HasShadow="False" IsClippedToBounds="True" BackgroundColor="{StaticResource Key=CardColorGreen}" CornerRadius="10">
+                                        <StackLayout>
+                                            <Label>
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Sterling Bank - " FontSize="17" TextColor="{StaticResource Key=CardTextColor}"></Span>
+                                                        <Span Text="{Binding accountType}" FontSize="13" TextColor="{StaticResource Key=CardTextColor}"></Span>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label Text="{Binding nuban}" FontSize="17" TextColor="{StaticResource Key=CardTextColor}"></Label>
+                                            <Label >
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding currency,StringFormat=' {0} '}" FontSize="26" TextColor="{StaticResource Key=CardTextColor}"/>
+                                                        <Span Text="{Binding balance}" FontSize="26" TextColor="{StaticResource Key=CardTextColor}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+
+                                            </Label>
+                                            <Label >
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding currency,StringFormat='Book balance: {0} '}" FontSize="13" TextColor="{StaticResource Key=CardTextColor}"/>
+                                                        <Span Text="{Binding balance}" FontSize="13" TextColor="{StaticResource Key=CardTextColor}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>                                          
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </crv:CarouselViewControl.ItemTemplate>
+                    </crv:CarouselViewControl>
+                    <StackLayout Grid.Column="2" Padding="0,15" Margin="0,0,-3,0">
+                        <Frame VerticalOptions="FillAndExpand" IsVisible="{Binding CanSwipeLeft}" IsClippedToBounds="True" HasShadow="False" BackgroundColor="{StaticResource Key=CardColorGreen}" HorizontalOptions="FillAndExpand"
+                       CornerRadius="3">
+                        </Frame>
+                    </StackLayout>
+                </Grid>            
+
+                <StackLayout IsVisible="{Binding ShowReloadCustomerAccounts}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Image Source="ic_refresh_black_24dp.png" Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ReloadAccounts}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label HorizontalTextAlignment="Center" Text="{Binding CustomerAccountsErrorMsg}"></Label>
+                </StackLayout>
+                
+                <StackLayout IsVisible="{Binding CardLoading}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                    <ActivityIndicator VerticalOptions="CenterAndExpand" IsRunning="{Binding CardLoading}" IsVisible="{Binding CardLoading}"></ActivityIndicator>
+
+                </StackLayout>
+            </Grid>
+
+            <Grid Padding="20,24,20,10"  Grid.Row="1" IsVisible="{Binding IsAccountLoaded}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0">
+                    <Label Text="This month" HorizontalTextAlignment="Start"></Label>
+                </StackLayout>
+                <StackLayout Grid.Column="1">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding AllTransactionsCommand}"/>
+                    </StackLayout.GestureRecognizers>
+                    <Label Text="See all transactions" HorizontalTextAlignment="End"/>
+                </StackLayout>
+            </Grid>
+            <StackLayout Padding="20,0,0,0" Grid.Row="2">
+                <ActivityIndicator IsRunning="{Binding IsTransactionLoading}" IsVisible="{Binding IsTransactionLoading}"></ActivityIndicator>
+                <Label VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" IsVisible="{Binding ShowTransactionErrorMessage}" Text="{Binding TransactionMessage}"></Label>
+                <controls:CustomListView HasUnevenRows="True" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" 
+                                         ItemsSource="{Binding CustomerTransactions}" SeparatorVisibility="None" 
+                                         ItemSelected="ListView_ItemSelected" ItemTapped="CustomListView_ItemTapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Margin="0,0,0,5" VerticalOptions="CenterAndExpand" Spacing="10">
+                                    <Grid ColumnSpacing="20"  >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Column="0">
+                                            <Frame HasShadow="False" Padding="0" Margin="0"
+                                               CornerRadius="5" BorderColor="Transparent" 
+                                               IsClippedToBounds="True" BackgroundColor="{StaticResource SkyBlue}"
+                                                HeightRequest="50" 
+                                                 WidthRequest="50" 
+                                                 x:Name="bxv">
+                                            </Frame>
+                                        </StackLayout>
+                                        <StackLayout  Grid.Column="1">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <StackLayout Grid.Column="0">
+                                                    <Label LineBreakMode="TailTruncation"  Text="{Binding BeneficiaryName}" Style="{StaticResource Key=LabelHeader}"></Label>
+                                                    <Label  Text="{Binding CategoryName}" Style="{StaticResource Key=LabelSubHeader}"></Label>
+                                                </StackLayout>
+                                                <StackLayout Grid.Column="1" HorizontalOptions="End">
+                                                    <Label x:Name="lblAmount"  Text="{Binding Amount}" TextColor="{Binding AmountColor}" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="End" FontFamily="{StaticResource ThemeFont}" Margin="0,0,10,0" />
+                                                </StackLayout>
+                                            </Grid>
+                                            <BoxView HeightRequest="0.5" HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource SeparatorColor}" Margin="0,10,0,0"/>
+                                        </StackLayout>
+                                    </Grid>
+
+                                </StackLayout>
+
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </controls:CustomListView>
+            </StackLayout>
+            <StackLayout Grid.Row="3" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Spacing="15" Orientation="Horizontal" Padding="0,0,0,5">              
+                    <StackLayout>
+                    <Image Source="fund.png" HeightRequest="65" WidthRequest="65" VerticalOptions="Center" HorizontalOptions="Center" />
+                    <Label Text="Fund"  Style="{DynamicResource DashBoardStyleSmaller}" HorizontalOptions="CenterAndExpand"></Label>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="fund" Tapped="fund_Tapped"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <StackLayout>
+                    <Image Source="fund.png" HeightRequest="65" WidthRequest="65" VerticalOptions="Center" HorizontalOptions="Center" />
+                    <Label Text="Statement"  Style="{DynamicResource DashBoardStyleSmaller}" HorizontalOptions="CenterAndExpand"></Label>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="statement" Tapped="fund_Tapped"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+     
+    </ContentView.Content>
+</ContentView>

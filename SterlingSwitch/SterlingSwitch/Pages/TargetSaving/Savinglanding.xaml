@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+             x:Class="SterlingSwitch.Pages.TargetSaving.Savinglanding"
+                            IsBackImageVisible="True" IsBottomNavBarVisible="False"  IsTopNavBarSeparatorVisible="False"
+                            PageTitle="Target Saving" PageTitleColor="Black">
+
+    <templates:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}">
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  RowSpacing="0">
+                <StackLayout HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" Spacing="155">
+                    <Image Source="cardAccounts.png" Aspect="AspectFit"/>
+                    <Label Text="Learn about target savings" TextColor="#5B5CDE"/>
+                </StackLayout>
+            </Grid> 
+        </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage> 

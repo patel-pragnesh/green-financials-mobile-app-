@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sm:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sm="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+             xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls;assembly=SterlingSwitch"
+             x:Class="SterlingSwitch.Pages.CardToCard.CardToCardPage"
+             IsBackImageVisible="True" BackImageSource="BackIcon.png"
+             IsBottomNavBarVisible="False" ContentPadding="0"
+             IsNavBarVisible="True" TopNavBarBackgroundColor="{DynamicResource PrimaryColor}"
+             IsTopNavBarSeparatorVisible="False" PageTitle="Card To Card Transfer"              
+             PageTitleColor="White" BackCommand="{Binding BackCommand}" HeaderPadding="16,20,0,0">
+
+    <sm:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}">
+            <Grid Padding="0,8,0,0" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid HorizontalOptions="FillAndExpand"  RowSpacing="0" VerticalOptions="StartAndExpand" BackgroundColor="White" Padding="0,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  HeightRequest="60">
+                        <controls:ExtendedPicker x:Name="CardTypePicker" Title="Card Type" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  Margin="16,0,0,0" Placeholder="Select a card type" />
+                    </Grid>
+                    <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  HeightRequest="60">
+                        <controls:ExtendedPicker x:Name="AccountPicker" Placeholder="Select account to send from" Title="Account" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  Margin="16,0,0,0" />
+                    </Grid>
+                    <Grid Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  HeightRequest="60">
+                        <controls:ExtendedEntry x:Name="BeneficiaryCardTxt" Placeholder="Enter beneficiary's Visa Card number" Title="Beneficiary's Card Number" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  Margin="16,0,0,0"/>
+                    </Grid>
+                    <Grid Grid.Row="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  HeightRequest="60">
+                        <controls:ExtendedEntry x:Name="BeneficiaryNameTxt" Title="Enter beneficiary's full name" HorizontalOptions="FillAndExpand" Placeholder="Beneficiary's FullName" VerticalOptions="FillAndExpand"  Margin="16,0,0,0"/>
+                    </Grid>
+                    <Grid Grid.Row="4" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  HeightRequest="60">
+                        <controls:ExtendedEntry x:Name="AmountTxt" Title="Amount" HorizontalOptions="FillAndExpand" Placeholder="e.g 3,000" CurrencySymbol="NGN" IsCurrencyVisible="True" VerticalOptions="FillAndExpand"  Margin="16,0,0,0" IsAmount="True"  />
+                    </Grid>
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Grid.Row="5" HeightRequest="60" Grid.RowSpacing="0">
+                        <controls:ExtendedEntry x:Name="DescriptionTxt" Title="Description" HorizontalOptions="FillAndExpand" Placeholder="Enter a description" VerticalOptions="FillAndExpand"  Margin="16,0,0,0" />
+                    </Grid>
+                </Grid>
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Row="1" Margin="0,0,0,30">
+                    <Button x:Name="ContinueButton" Text="Continue" VerticalOptions="Center" Clicked="ContinueButton_Clicked"/>
+                </Grid>
+            </Grid>
+        </ContentView>
+    </sm:SwitchMasterPage.PageContent>
+</sm:SwitchMasterPage>

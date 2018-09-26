@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pg:PopupPage
+    xmlns:pg="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="SterlingSwitch.PopUps.ProgressDialog" Padding="0">
+    <pg:PopupPage.BackgroundColor>
+        <Color>
+            <x:Arguments>
+                <x:Double>0</x:Double>
+                <x:Double>0</x:Double>
+                <x:Double>0</x:Double>
+                <x:Double>0.7</x:Double>
+            </x:Arguments>
+        </Color>
+    </pg:PopupPage.BackgroundColor>
+    
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <StackLayout Orientation="Vertical" Spacing="5" WidthRequest="200" HorizontalOptions="Center" VerticalOptions="Center">
+            <ff:CachedImage x:Name="DialogImg" Source="loadingNew.gif" LoadingPriority="Highest" HeightRequest="30" WidthRequest="70"/>
+            <Label x:Name="TitleTxt" Text="PROCESSING" FontSize="17" FontAttributes="Bold" Grid.Row="1" HorizontalOptions="Center" TextColor="White"/>
+            <Label x:Name="MessageTxt" Text="Please wait while we set things up for you." FontSize="14" Grid.Row="2" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White"/>
+        </StackLayout>
+    </Grid>
+</pg:PopupPage>

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Pages.Investments.FixedDeposit.TerminateFDPage"
+             xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+             xmlns:c="clr-namespace:SterlingSwitch.Custom.Controls"
+             IsBottomNavBarVisible="False" IsNavBarVisible="False" CurrentPage="Actions"  
+             BackgroundColor="White" ContentPadding="0" IsBackImageVisible="False" x:Name="Main"
+             >
+    <templates:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}">
+            <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="40,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition Height="1.5*"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Margin="50,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <Label Text="Terminate Fixed Deposit" TextColor="{DynamicResource LabelHeaderFD2}" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontSize="14"/>
+                        <Label Text="Early termination attract fees on your total profit earned" TextColor="{DynamicResource LabelHeaderFD2}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontSize="14"/>
+                    </StackLayout>
+                    <Grid Grid.Row="1" HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1.2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Bill Amount:" TextColor="{DynamicResource LabelHeaderFD2}"  VerticalOptions="CenterAndExpand" FontSize="17"/>
+                        <Label Text="Maturity Date:" Grid.Row="1" TextColor="{DynamicResource LabelHeaderFD2}"  VerticalOptions="CenterAndExpand" FontSize="17"/>
+                        <Label Text="Value at maturity:" Grid.Row="2" TextColor="{DynamicResource LabelHeaderFD2}"  VerticalOptions="CenterAndExpand" FontSize="17"/>
+
+                        <Label x:Name="BillAmountTxt" Grid.Column="1" TextColor="{DynamicResource LabelHeaderFD2}"  VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" FontSize="17"/>
+                        <Label x:Name="MaturityTxt" Grid.Row="1" Grid.Column="1" TextColor="{DynamicResource LabelHeaderFD2}"  VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" FontSize="17"/>
+                        <Label x:Name="ValueTxt"    Grid.Row="2" Grid.Column="1" TextColor="{DynamicResource LabelHeaderFD2}"  VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" FontSize="17"/>
+                    </Grid>
+                    <StackLayout Grid.Row="2" Spacing="20" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="0,20">
+                        <Button Text="Terminate" x:Name="btnTerminate" Clicked="btnTerminate_Clicked"/>
+                        <Label Text="Dismiss" FontSize="16" TextColor="{DynamicResource LabelRedColor}" HorizontalOptions="CenterAndExpand">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="PopPage"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+        </ContentView>
+    </templates:SwitchMasterPage.PageContent>       
+        
+</templates:SwitchMasterPage>

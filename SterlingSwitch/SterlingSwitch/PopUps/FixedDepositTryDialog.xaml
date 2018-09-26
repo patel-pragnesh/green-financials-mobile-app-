@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<fd:PopupPage
+ 
+    xmlns:fd="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.PopUps.FixedDepositTryDialog">
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Frame CornerRadius="5" Padding="0" HasShadow="True" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" BackgroundColor="White" WidthRequest="303">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="20" Margin="20">
+            <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+                <Grid HorizontalOptions="FillAndExpand" HeightRequest="64">
+                    <Label Text="Expected Return" HorizontalOptions="CenterAndExpand" FontSize="20" TextColor="{DynamicResource TextColor}" VerticalOptions="CenterAndExpand" IsVisible="False"></Label>
+                </Grid>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="10" Grid.Row="1">
+                <Label  HorizontalTextAlignment="Center" FontSize="17" HorizontalOptions="CenterAndExpand" x:Name="summary"/>
+                <Label  HorizontalOptions="CenterAndExpand" FontSize="36" x:Name="Returnamount"/>
+                <Label  HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontSize="17" x:Name="Duration"></Label>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Spacing="12" Margin="0,0,0,0">
+                <Button Text="Proceed" HorizontalOptions="CenterAndExpand" x:Name="proceed" Clicked="Proceed_Clicked"/>
+                <Frame Style="{DynamicResource ButtonFrame}">
+                        <Label Text="Try another amount" FontSize="14" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="{DynamicResource SkyBlue}" FontAttributes="None"/>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="TryAnother" Tapped="TryAnother_Tapped" NumberOfTapsRequired="1"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </StackLayout>
+        </Grid>
+        </Frame>
+    </Grid>
+</fd:PopupPage>

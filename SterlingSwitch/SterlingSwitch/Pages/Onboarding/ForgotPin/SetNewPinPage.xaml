@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage
+    xmlns:templates="clr-namespace:SterlingSwitch.Templates" 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls"
+    x:Class="SterlingSwitch.Pages.Onboarding.ForgotPin.SetNewPinPage"
+    NavigationPage.HasNavigationBar="False"
+    PageTitle="Forgot Pin"
+     TopNavBarBackgroundColor="#5AC8FA"
+    IsTopNavBarSeparatorVisible="False"
+    BackImageSource="BackIcon.png"
+    IsBottomNavBarVisible="False" IsNavBarVisible="True"  
+    ContentPadding="0" IsBackImageVisible="True" x:Name="Main">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0,20,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+    <templates:SwitchMasterPage.Resources>
+        <Style TargetType="Entry">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="ValidationStates" >
+                        <VisualState x:Name="Valid" >
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="Green"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Invalid" >
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="LightCoral"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </templates:SwitchMasterPage.Resources>
+    
+    <templates:SwitchMasterPage.Content>
+        <ContentView ControlTemplate="{StaticResource masterPage}">
+            <StackLayout Spacing="30" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="20">
+                <ScrollView>
+                    <StackLayout Spacing="20" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <StackLayout>
+                            <controls:ExtendedEntry Title="OTP" x:Name="txtOTP" Keyboard="Numeric" Placeholder="Enter OTP Here"  HorizontalOptions="FillAndExpand" />
+                        </StackLayout>
+                        <StackLayout>
+                            <controls:ExtendedEntry Title="New PIN" x:Name="txtPin" IsPassword="True"  Keyboard="Numeric" Placeholder="Enter New Pin here" HorizontalOptions="FillAndExpand" />
+                        </StackLayout>
+                        <StackLayout>
+                            <controls:ExtendedEntry Title="Confirm PIN" x:Name="txtConfirmPin" IsPassword="True" Keyboard="Numeric" Placeholder="Confirm Pin" HorizontalOptions="FillAndExpand" />
+                        </StackLayout>
+                        <StackLayout>
+                            <Button x:Name="btnContinue" Text="Create New Pin" Clicked="btnContinue_Clicked"/>
+                        </StackLayout>
+                    </StackLayout>
+
+                </ScrollView>
+            </StackLayout>
+        </ContentView>
+    </templates:SwitchMasterPage.Content>
+</templates:SwitchMasterPage>

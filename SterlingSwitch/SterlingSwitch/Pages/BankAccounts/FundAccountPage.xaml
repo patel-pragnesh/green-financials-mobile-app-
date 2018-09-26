@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sm:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sm="clr-namespace:SterlingSwitch.Templates"
+             xmlns:c="clr-namespace:SterlingSwitch.Custom.Controls"
+             x:Class="SterlingSwitch.Pages.BankAccounts.FundAccountPage"
+             IsBackImageVisible="True" IsBottomNavBarVisible="False" 
+             PageTitle="Fund Account" PageTitleColor="Black" HeaderPadding="16,20,0,0"
+             ContentPadding="0">
+
+    <sm:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}" BackgroundColor="{DynamicResource BackgroundColor}" VerticalOptions="FillAndExpand">
+            <ScrollView Padding="16,0,0,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0,20">
+                    <c:ExtendedPicker x:Name="MethodPicker" Title="Method" SelectedIndexChanged="MethodPicker_SelectedIndexChanged"/>
+                    <c:ExtendedPicker x:Name="AccountPicker" Title="Select account to debit" IsVisible="False"/>
+                    <StackLayout x:Name="CardToDebitView" HorizontalOptions="FillAndExpand" IsVisible="False">
+                        <c:ExtendedPicker x:Name="CardPicker" Title="Select Card" Placeholder="Select card to debit" SelectedIndexChanged="CardPicker_SelectedIndexChanged"/>
+                        <c:ExtendedEntry x:Name="CardToDebitTxt" Placeholder="Card number to debit" Keyboard="Numeric" HorizontalOptions="FillAndExpand" VerticalOptions="Center" IsVisible="False"/>
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <c:ExtendedEntry x:Name="ExpiryTxt" Title="Expiry Date" Placeholder="YY/MM" Keyboard="Numeric" HorizontalOptions="FillAndExpand" VerticalOptions="Center" TextChanged="ExpiryTxt_TextChanged"/>
+                            <c:ExtendedEntry x:Name="CVVTxt" Grid.Column="1" Title="CVV" Placeholder="Enter CVV" IsPassword="True" Keyboard="Numeric" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                        </Grid>
+                        <c:ExtendedEntry x:Name="PinTxt" IsPassword="True" Title="Card PIN" Placeholder="Enter Card PIN" Keyboard="Numeric" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <c:ExtendedEntry x:Name="AmountTxt" Title="Amount" Placeholder="Enter amount" IsAmount="True"/>
+                    <Button x:Name="SubmitBtn" Text="Submit" VerticalOptions="End" Margin="0,20" Clicked="SubmitBtn_Clicked"/>
+                </StackLayout>
+            </ScrollView>
+        </ContentView>
+    </sm:SwitchMasterPage.PageContent>
+</sm:SwitchMasterPage>

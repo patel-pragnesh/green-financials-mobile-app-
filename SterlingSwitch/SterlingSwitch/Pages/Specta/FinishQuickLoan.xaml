@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Pages.Specta.FinishQuickLoan"
+             xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+             xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls"
+              IsBackImageVisible="False"
+              TopNavBarBackgroundColor="Transparent"
+              ContentPadding="20" 
+              IsBottomNavBarVisible="False" IsTopNavBarSeparatorVisible="False">
+    <templates:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}">
+            <Grid Padding="0,10,0,10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                    
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0"  VerticalOptions="CenterAndExpand">
+                        <Image Source="quickcashmask.png" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="120" WidthRequest="120"/>
+                        <Image Source="checkedquickcash.png" Aspect="Fill" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="52" HeightRequest="40"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="1">
+                        <Label Text="Your application has been reviewed and the sum of " FontSize="20" HorizontalTextAlignment="Center"  Margin="0,0,0,13"></Label>
+                        <Label x:Name="lblEligibleAmount" HorizontalOptions="Center"  Margin="0,0,0,13"  FontSize="53"></Label>
+                        <Label Text="is available for disbursement" FontSize="20" HorizontalTextAlignment="Center"  Margin="0"></Label>
+                    </StackLayout>
+                    <StackLayout Grid.Row="2">
+                        <controls:ExtendedEntry x:Name="txtOTP" Text="{Binding otp}" Title="Please enter the OTP sent to your phone" Placeholder="e.g 0264282"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="I hereby accept the terms and Conditions" />
+                            <Switch x:Name="switchLicenceAccepted"  />
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <StackLayout>
+                        <Button Text="Confirm" x:Name="btnConfirm" Clicked="btnConfirm_Clicked"/>
+                        <StackLayout>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            </StackLayout.GestureRecognizers>
+                            <Label Text="Dismiss" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#d0021b" FontSize="17">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="btnDismiss" Tapped="TapGestureRecognizer_Tapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>

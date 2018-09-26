@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Pages.Profile.AddressDetailsPage"
+              xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+                             xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls"
+                            xmlns:circle="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+                              TopNavBarBackgroundColor="White" ContentPadding="0" HeaderPadding="16,20,0,0"
+                            IsBackImageVisible="True" x:Name="allPage" IsTopNavBarSeparatorVisible="False"  
+                             IsNavBarVisible="True"  PageTitle="Address Details"  IsBottomNavBarVisible="False"  
+                             PageTitleColor="Black">
+   <templates:SwitchMasterPage.PageContent>
+      <ContentView ControlTemplate="{StaticResource masterPage}">
+        <ScrollView BackgroundColor="White" Padding="16,0,0,0" VerticalScrollBarVisibility="Never">
+            <StackLayout VerticalOptions="FillAndExpand" Spacing="75" HorizontalOptions="FillAndExpand" >
+                <StackLayout>
+                    <controls:ExtendedEntry Title="Nationality" Text="{Binding Nationality}"/>
+                    <controls:ExtendedEntry Title="Country of residence" Text="{Binding CountryOfResidence}"/>
+                    <controls:ExtendedEntry Title="Address line 1" Text="{Binding AddressLine1}"/>
+                    <controls:ExtendedEntry Title="Address line 2 (optional)" Text="{Binding AddressLine2}"/>
+                    <controls:ExtendedEntry Title="Town / City" Text="{Binding TownOrCity}"/>
+                    <controls:ExtendedEntry Title="State" Text="{Binding State}"/>
+                    <controls:ExtendedEntry Title="Postcode" Text="{Binding PostCode}"/>
+                </StackLayout>
+                
+            </StackLayout>
+        </ScrollView>
+  </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>

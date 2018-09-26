@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+             x:Class="SterlingSwitch.Pages.More.FAQ.FrequenceyQuestion" TopNavBarBackgroundColor="#5AC8FA" IsTopNavBarSeparatorVisible="False"
+                            BackgroundColor="White" IsBackImageVisible="True" IsBottomNavBarVisible="False" ContentPadding="0"
+                             PageTitle="FAQs" PageTitleColor="White" BackImageSource="BackIcon.png" >
+    <templates:SwitchMasterPage.PageContent>
+        <ContentView  ControlTemplate="{StaticResource masterPage}">
+            
+        <ScrollView>
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <ListView ItemsSource="{Binding FAQs}" HasUnevenRows="True" ItemTapped="ListView_ItemTapped" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="20">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="8*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Text="{Binding Question}"
+                                               TextColor="#828393"
+                                           LineBreakMode="WordWrap"
+                                           HorizontalOptions="Start"
+                                           HorizontalTextAlignment="Start"
+                                           FontAttributes="Bold" 
+                                           FontFamily="Circular-Std-Bold" 
+                                           FontSize="15"/>
+                                        <Image Grid.Column="1" 
+                                                Source="arrowDown" 
+                                                HorizontalOptions="End"
+                                                HeightRequest="8"
+                                                WidthRequest="16"/>
+                                        <StackLayout IsVisible="{Binding IsVisible}"
+                                             Orientation="Horizontal"
+                                             Margin="0,30,0,0">
+
+                                            <Label Text="{Binding Answer}" 
+                                           TextColor="#000000"
+                                           LineBreakMode="WordWrap"
+                                           HorizontalTextAlignment="Start"
+                                           FontFamily="Circular-Std-Book" 
+                                           FontSize="15"  />
+
+                                        </StackLayout>
+                                    </Grid>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+        </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>

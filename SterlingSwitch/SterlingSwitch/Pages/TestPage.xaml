@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls"
+             x:Class="SterlingSwitch.Pages.TestPage" Padding="20,0">
+    <ContentPage.Content>
+       
+
+        <!--<StackLayout HeightRequest="50" Spacing="0" Padding="0,8,0,10" Margin="0">
+            <Label x:Name="lblHeader"  FontSize="Small" />
+            <Label x:Name="lblContent" FontSize="Medium"/>
+            <BoxView Grid.Row="1"  x:Name="bxLine" Margin="0,0,0,-10"  HeightRequest="1" HorizontalOptions="FillAndExpand"></BoxView>
+        </StackLayout>-->
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Spacing="40">
+            <StackLayout HorizontalOptions="Center">
+                <controls:ProfileImageVerification HeaderText="Photo ID" SubHeaderText="Valid indentification"></controls:ProfileImageVerification>
+                <controls:WhiteButton Text="Take Picture"></controls:WhiteButton>
+            </StackLayout>
+            <StackLayout HorizontalOptions="Center">
+                <controls:ProfileImageVerification HeaderText="Video Selfie" SubHeaderText="5 second video"></controls:ProfileImageVerification>
+                <controls:WhiteButton Text="Take Picture"></controls:WhiteButton>
+            </StackLayout>
+            <StackLayout HorizontalOptions="Center">
+                <controls:ProfileImageVerification HeaderText="Address Verification" SubHeaderText="Dated within 6 months"></controls:ProfileImageVerification>
+                <controls:WhiteButton Text="Take Picture"></controls:WhiteButton>
+            </StackLayout>
+            <StackLayout HorizontalOptions="Center">
+                <Button Text="Save"></Button>
+                <Label Text="Skip" HorizontalTextAlignment="Center" TextColor="#5ac8fa"></Label>
+            </StackLayout>
+        </StackLayout>
+       
+    </ContentPage.Content>
+</ContentPage>

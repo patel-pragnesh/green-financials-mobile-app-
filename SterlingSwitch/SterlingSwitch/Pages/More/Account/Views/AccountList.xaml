@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cv="clr-namespace:SterlingSwitch.Converters"
+             x:Class="SterlingSwitch.Pages.More.Account.Views.AccountList"
+             xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <cv:CreditDebitConverter x:Key="cdConvert"/>
+            <x:Double x:Key="contentPadding">20,0</x:Double>
+        </ResourceDictionary>
+    </ContentView.Resources>
+  <ContentView.Content>
+        <ScrollView>
+            <ListView x:Name="AccountListView" RowHeight="99" ItemsSource="{Binding profileListAccount}" HasUnevenRows="True" SeparatorVisibility="None" ItemTapped="AccountListView_ItemTapped" ItemSelected="AccountListView_ItemSelected" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid VerticalOptions="StartAndExpand" Padding="16,10,16,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                    <Image Source="sterlingLogo.png"    HeightRequest="20" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start"/>
+                                <Grid RowSpacing="0" Grid.Row="0" HeightRequest="50" Grid.Column="1" VerticalOptions="Center">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <controls:DoubleLabel LeftText="{Binding AccountType}" Grid.Row="0" VerticalOptions="End" RightText="{Binding BalanceWithCurrency}" LineColor="Transparent"/>
+                                        <controls:DoubleLabel LeftText="{Binding nuban}" LeftTextFontSize="11"  Grid.Row="1" VerticalOptions="Start" LeftTextColor="#BFC9D5"  LineColor="Transparent"/>
+                                </Grid>
+                               
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+  </ContentView.Content>
+</ContentView>

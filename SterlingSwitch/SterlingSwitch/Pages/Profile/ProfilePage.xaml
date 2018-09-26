@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Pages.Profile.ProfilePage"
+              xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+              xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls"
+                            xmlns:circle="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+                             TopNavBarBackgroundColor="White" ContentPadding="0" HeaderPadding="16,20,0,0"
+                            IsBackImageVisible="True" x:Name="allPage" IsTopNavBarSeparatorVisible="False"  
+                             IsNavBarVisible="True"  PageTitle="Profile"  IsBottomNavBarVisible="False"  
+                             PageTitleColor="Black">
+
+     <templates:SwitchMasterPage.PageContent>
+      <ContentView ControlTemplate="{StaticResource masterPage}">
+        <StackLayout BackgroundColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="16,30,16,0" Spacing="50">
+           
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Start"  Orientation="Horizontal" Spacing="25">
+                <Image Aspect="AspectFit" IsEnabled="{Binding CanUpload}" Source="camera.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>
+                <circle:CircleImage WidthRequest="104"  HorizontalOptions="CenterAndExpand" 
+                                HeightRequest="104" Source="{Binding ProfileImageSource}" Aspect="AspectFill"></circle:CircleImage>
+
+                <ActivityIndicator IsRunning="{Binding IsSaving}"></ActivityIndicator>
+            </StackLayout>
+
+            <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+                <controls:ExtendedLabel Text="PERSONAL DETAILS" ItemTapped="ExtendedLabel_ItemTapped" IsLineVisible="false" LineColor="White"></controls:ExtendedLabel>
+                <controls:ExtendedLabel Text="RESIDENTIAL DETAILS" ItemTapped="ExtendedLabel_ItemTapped" IsLineVisible="false" LineColor="White"></controls:ExtendedLabel>
+            </StackLayout>
+        </StackLayout>
+     </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Custom.Controls.DoubleLabel">
+  <ContentView.Content>
+        <StackLayout Margin="0,5" HorizontalOptions="FillAndExpand"  Spacing="10">
+            <Grid ColumnSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0" >
+                    <Label x:Name="LefContent" Style="{StaticResource Key=LabelHeader}" LineBreakMode="TailTruncation"  HorizontalTextAlignment="Start"/>
+                </StackLayout>
+                <StackLayout Grid.Column="1" Padding="0,0,10,0">
+                    <Label x:Name="RightContent" Style="{StaticResource Key=LabelHeader}" LineBreakMode="TailTruncation"  HorizontalTextAlignment="End"/>
+                </StackLayout>
+            </Grid>
+            <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand"  x:Name="xLineColor"></BoxView>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

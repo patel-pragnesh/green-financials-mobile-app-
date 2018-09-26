@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage
+    
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SterlingSwitch.Pages.Investments.FixedDeposit.ConfirmFixedDepositPage"
+   xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+             xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls;assembly=SterlingSwitch"
+             IsBottomNavBarVisible="False" 
+    IsNavBarVisible="False" CurrentPage="Actions" TopNavBarBackgroundColor="White"
+    ContentPadding="41,40,51,0" IsBackImageVisible="False" x:Name="Main">
+    <templates:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}">
+            <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Row="0"  Margin="0">
+                        <Label Text="Please review the transaction&#10;details before confirming payment" HorizontalOptions="CenterAndExpand" VerticalOptions="End" HorizontalTextAlignment="Center" FontSize="14" Style="{DynamicResource LabelHeaderFD}"/>
+            </Grid>
+            <Grid Row="1" RowSpacing="60">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,40,0,0" Spacing="20" Grid.Row="0">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <Label Text="Deposit Amount:" HorizontalOptions="Start"  VerticalOptions="Center" Style="{DynamicResource LabelHeaderFD2}"/>
+                                <Label x:Name="lblDepositAmount"   HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Style="{DynamicResource LabelHeaderFD2}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <Label Text="Duration:" HorizontalOptions="Start"  VerticalOptions="Center" Style="{DynamicResource LabelHeaderFD2}"/>
+                                <Label x:Name="lblDuration" HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Style="{DynamicResource LabelHeaderFD2}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <Label Text="Date of maturity:" HorizontalOptions="Start"  VerticalOptions="Center" Style="{DynamicResource LabelHeaderFD2}"/>
+                                <Label x:Name="lblMaturityDate" HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Style="{DynamicResource LabelHeaderFD2}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <Label Text="Rate:" HorizontalOptions="Start"  VerticalOptions="Center" Style="{DynamicResource LabelHeaderFD2}"/>
+                                <Label x:Name="lblMaturityValue"   HorizontalOptions="EndAndExpand"  VerticalOptions="Center" Style="{DynamicResource LabelHeaderFD2}"/>
+                    </StackLayout>
+                </StackLayout>
+                <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <controls:ExtendedPicker x:Name="dpdDebitAccount" Placeholder="Choose an account" Title="Choose an account to debit" HorizontalOptions="FillAndExpand"  SelectedIndexChanged="dpdDebitAccount_SelectedIndexChanged" HeightRequest="63" Margin="0,0,0,0">
+                    </controls:ExtendedPicker>                    
+
+                    <Grid Grid.Row="1" HeightRequest="73" Margin="0,0,0,0" IsVisible="True">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="lblReinvest" Text="Re-invest after maturity" FontSize="17" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                        <Label x:Name="lblReinvestValue" Text="create another fixed deposit" FontSize="12" Grid.Row="1" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Start" Margin="0,0,0,10" TextColor="#a7a7a7"/>
+                        <Switch x:Name="toggleSelected" InputTransparent="True" Grid.RowSpan="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <BoxView Style="{DynamicResource SeparatorStyle}" Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"/>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="grdTapped" Tapped="grdTapped_Tapped" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2" HorizontalOptions="FillAndExpand" RowSpacing="19">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Button Text="Confirm" HorizontalOptions="CenterAndExpand" x:Name="btnConfirm" Clicked="btnConfirm_Clicked"/>
+                    <Label Text="Dismiss" FontSize="16" HorizontalOptions="CenterAndExpand" Grid.Row="1" TextColor="{DynamicResource LabelRedColor}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="lblDismiss" Tapped="lblDismiss_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ScrollView>
+    </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>

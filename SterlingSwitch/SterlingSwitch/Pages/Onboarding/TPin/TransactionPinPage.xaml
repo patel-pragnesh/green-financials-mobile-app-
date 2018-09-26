@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage
+    xmlns:templates="clr-namespace:SterlingSwitch.Templates" xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SterlingSwitch.Custom.Controls"
+    x:Class="SterlingSwitch.Pages.Onboarding.TPin.TransactionPinPage"
+      IsBottomNavBarVisible="True" IsNavBarVisible="True" TopNavBarBackgroundColor="#5AC8FA"
+     BackImageSource="BackIcon.png" PageTitle="Transaction PIN" ContentPadding="0" PageTitleColor="White"
+        IsBackImageVisible="True" x:Name="Main" BackgroundColor="White">
+
+    <templates:SwitchMasterPage.PageContent>
+       <ContentView ControlTemplate="{StaticResource masterPage}">
+    <ScrollView BackgroundColor="White" Padding="20,0">
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="20">
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+               
+                <StackLayout Spacing="20" Margin="15,0,15,10" VerticalOptions="CenterAndExpand">
+                    <StackLayout Spacing="30">
+                                <StackLayout x:Name="stkDisableTPIN" IsVisible="{Binding EnableStackTPIN}" Spacing="20">
+                            <StackLayout Orientation="Horizontal">
+                                <controls:ExtendedEntry x:Name="txtTPin" Title="T.PIN" Text="{Binding TPin}" Placeholder="Enter your Transaction PIN" IsPassword="True" MaxLength="4" Keyboard="Numeric" WidthRequest="300" />
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal">
+                                 <controls:ExtendedEntry x:Name="txtConfirmTPin" Title="Confirm T.PIN" Text="{Binding ConfirmTPin}" Placeholder="Confirm your Transaction PIN" MaxLength="4" IsPassword="True" Keyboard="Numeric" WidthRequest="300"/>
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout>
+                            <controls:ExtendedEntry x:Name="txtLoginPin" Title="Login PIN" Text="{Binding LoginPin}" Placeholder="Enter your Login PIN" MaxLength="4" IsPassword="True" Keyboard="Numeric" WidthRequest="300"/>
+                        </StackLayout>
+                       
+                    </StackLayout>
+                    <StackLayout Margin="0,20,0,0" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                        <Button Text="SET T.PIN" x:Name="btnSetTPIN" TextColor="White" BackgroundColor="#33adc4" Clicked="btnSetTPIN_Clicked" />
+                    </StackLayout>                   
+                </StackLayout>               
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+         </ContentView>
+    </templates:SwitchMasterPage.PageContent>   
+</templates:SwitchMasterPage>

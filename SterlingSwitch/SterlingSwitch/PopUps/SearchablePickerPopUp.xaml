@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+                   xmlns:c="clr-namespace:SterlingSwitch.Custom.Controls"
+                 x:Class="SterlingSwitch.PopUps.SearchablePickerPopUp">
+
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation 
+            PositionIn="Bottom"
+            PositionOut="Bottom"
+            ScaleIn="1.2"
+            ScaleOut="0.8"
+            DurationIn="600"
+            DurationOut="350"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"/>
+    </pages:PopupPage.Animation>
+    <ContentPage.Content>
+        <Grid VerticalOptions="EndAndExpand" BackgroundColor="{DynamicResource BackgroundColor}" HeightRequest="300">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="cross.png" Margin="20,0" WidthRequest="30" HeightRequest="30" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Cancel"/>
+                    </Image.GestureRecognizers>
+                </Image>
+        
+                <!--<SearchBar Placeholder="Search here" Grid.ColumnSpan="2" VerticalOptions="Center" x:Name="searchBarText" TextChanged="searchBarText_TextChanged" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontSize="17" Margin="50,15" FontAttributes="Bold" TextColor="Black"  />-->
+                <c:ExtendedEntry Placeholder="Search here" Grid.ColumnSpan="2" VerticalOptions="Center" x:Name="searchBarText" TextChanged="searchBarText_TextChanged" HorizontalOptions="CenterAndExpand" Margin="50,15" />
+            </Grid>
+            <Grid Grid.Row="1">
+                <ListView x:Name="PickerList" ItemsSource="{Binding Items}" HasUnevenRows="True" SeparatorColor="{DynamicResource SeparatorColor}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ItemSelected="PickerList_OnItemSelected"  >
+                    <ListView.ItemTemplate >
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid HorizontalOptions="FillAndExpand" Padding="20,15" BackgroundColor="{DynamicResource ElementBackground}">
+                                    <Label Text="{Binding DisplayText}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Style="{DynamicResource EntryLabelStyle}" TextColor="Black"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+  
+        </Grid>
+    </ContentPage.Content>
+</pages:PopupPage>

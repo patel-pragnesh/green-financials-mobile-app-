@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sm:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sm="clr-namespace:SterlingSwitch.Templates"
+             x:Class="SterlingSwitch.Pages.Cards.ManageCardPage"
+             IsBackImageVisible="True" IsBottomNavBarVisible="False" 
+             PageTitle="Manage Card" PageTitleColor="Black" ContentPadding="0" HeaderPadding="16,20,0,0">
+
+     <sm:SwitchMasterPage.Resources>
+        <ResourceDictionary>
+            
+        </ResourceDictionary>
+    </sm:SwitchMasterPage.Resources>
+    <sm:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}" BackgroundColor="{DynamicResource BackgroundColor}"> 
+            <Grid Grid.Row="1" Padding="16,0,0,30" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+                    <StackLayout Orientation="Vertical">
+                        <Grid Padding="0,10,10,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="ActivateBtn" Tapped="ActivateBtn_Tapped"/>
+                            </Grid.GestureRecognizers>
+                            <Label Text="Activate Card" Style="{DynamicResource BodyStyle}" VerticalOptions="Center"/>
+                            <Image Source="forwardarrow.png" WidthRequest="8" HeightRequest="13" Aspect="Fill" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center"/>
+                        </Grid>
+                        <BoxView Margin="0,0,-10,0" Style="{DynamicResource SeparatorStyle}"></BoxView>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical">
+                        <Grid Padding="0,10,10,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="ViewDetailsBtn" Tapped="ViewDetailsBtn_Tapped"/>
+                            </Grid.GestureRecognizers>
+                            <Label Text="View card details" Style="{DynamicResource BodyStyle}" VerticalOptions="Center"/>
+                            <Image Source="forwardarrow.png" WidthRequest="8" HeightRequest="13" Aspect="Fill" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center"/>
+                        </Grid>
+                        <BoxView Margin="0,0,-10,0" Style="{DynamicResource SeparatorStyle}"></BoxView>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical">
+                        <Grid Padding="0,10,10,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Enable card for FX transactions" Style="{DynamicResource BodyStyle}" VerticalOptions="Center"/>
+                            <Switch  x:Name="EnableSwitch" IsToggled="False" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="End" Toggled="EnableSwitch_Toggled"/>
+                        </Grid>
+                        <BoxView Margin="0,0,-10,0" Style="{DynamicResource SeparatorStyle}"></BoxView>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical">
+                        <Grid Padding="0,10,10,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="ViewLimitBtn" Tapped="ViewLimitBtn_Tapped"/>
+                            </Grid.GestureRecognizers>
+                            <Label Text="View card limits" Style="{DynamicResource BodyStyle}" VerticalOptions="Center"/>
+                            <Image  Source="forwardarrow.png" WidthRequest="8" HeightRequest="13" Aspect="Fill" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center"/>
+                        </Grid>
+                        <BoxView Margin="0,0,-10,0" Style="{DynamicResource SeparatorStyle}"></BoxView>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </ContentView>
+    </sm:SwitchMasterPage.PageContent>
+
+</sm:SwitchMasterPage>

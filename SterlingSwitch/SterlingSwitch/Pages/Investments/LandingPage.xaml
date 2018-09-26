@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+             xmlns:abstractions="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             x:Class="SterlingSwitch.Pages.Investments.LandingPage"
+             IsBottomNavBarVisible="true" IsNavBarVisible="False" CurrentPage="Actions" 
+                            TopNavBarBackgroundColor="White"
+                            BackgroundColor="White" ContentPadding="0" IsBackImageVisible="False" x:Name="Main">
+    <templates:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}">
+             <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="40">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid BackgroundColor="White" Grid.Row="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Label Text="Investments" Style="{DynamicResource PageHeader}" Margin="0,0,0,11" TextColor="#26466c"  FontSize="17"/>
+        </Grid>
+        <Grid Row="1" VerticalOptions="Fill">
+            <abstractions:CarouselViewControl Margin="0,0,0,40"  Orientation="Horizontal" InterPageSpacing="0" ShowIndicators="True" IndicatorsShape="Circle"  ItemsSource="{Binding WalkThroughList}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" AnimateTransition="True" >
+                <abstractions:CarouselViewControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Fill" RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="End" Grid.Row="0">
+                                <Image Source="investmentWalkthrough.png" Aspect="AspectFit" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" HeightRequest="209" WidthRequest="209"/>
+                            </Grid>
+                            <StackLayout Grid.Row="1" Spacing="5" VerticalOptions="CenterAndExpand" Margin="0,-20,0,0">
+                                <Label Text="{Binding Title}" HorizontalOptions="CenterAndExpand" Style="{DynamicResource LabelHeader}"/>
+                                <Label Text="{Binding Description}" FontSize="16" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" TextColor="{DynamicResource TextColor}"/>
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </abstractions:CarouselViewControl.ItemTemplate>
+            </abstractions:CarouselViewControl>
+        </Grid>
+        <Grid Row="2" Margin="0,0,0,30">
+            <Button Text="Get Started" WidthRequest="222" x:Name="GetStarted" Clicked="GetStarted_Clicked" VerticalOptions="Center"></Button>
+        </Grid>
+    </Grid>
+    </ScrollView>
+        </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>

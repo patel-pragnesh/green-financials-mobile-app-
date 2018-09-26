@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ms:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ms="clr-namespace:SterlingSwitch.Templates"
+             x:Class="SterlingSwitch.Pages.MyBank"
+             IsBackImageVisible="False" IsBottomNavBarVisible="True" IsNavBarVisible="False"  PageTitleColor="Black">
+
+    <ms:SwitchMasterPage.PageContent>
+       <ContentView ControlTemplate="{StaticResource masterPage}">
+    <Grid x:Name="MainView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+    </Grid>
+     </ContentView>
+    </ms:SwitchMasterPage.PageContent>
+</ms:SwitchMasterPage>

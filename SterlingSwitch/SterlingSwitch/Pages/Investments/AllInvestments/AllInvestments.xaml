@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SterlingSwitch.Pages.Investments.AllInvestments.AllInvestments"
+             xmlns:templates="clr-namespace:SterlingSwitch.Templates;assembly=SterlingSwitch"
+             xmlns:local="clr-namespace:SterlingSwitch.Converters"
+             IsBottomNavBarVisible="True" IsNavBarVisible="False"
+             ContentPadding="0"
+             xmlns:syncfussion="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"               
+             xmlns:views="clr-namespace:SterlingSwitch.Pages.Investments.AllInvestments.Views;assembly=SterlingSwitch"
+             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+               IsBackImageVisible="False" x:Name="Main"  TopNavBarBackgroundColor="White">
+    <templates:SwitchMasterPage.Resources>
+        <ResourceDictionary>
+            <local:CurrencyConverter x:Key="CurrencyConverter"/>
+            <Style x:Key="Selected" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="{StaticResource Key=SelectedTab}"/>
+            </Style>
+            <Style x:Key="UnSelectedTab" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+        </ResourceDictionary>
+    </templates:SwitchMasterPage.Resources>
+
+     <templates:SwitchMasterPage.PageContent>
+      <ContentView ControlTemplate="{StaticResource masterPage}">
+    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0" Padding="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.30*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="16,20,10,0" RowSpacing="0" BackgroundColor="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="0" Grid.ColumnSpan="2">
+                    <Label Text="Total Investments" FontSize="16" Opacity="0.5" TextColor="#969696" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="0" RowSpacing="10" Grid.ColumnSpan="2" ColumnSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>        
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+                    <Label Text="{Binding TotalInvestments}" FontSize="30" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Margin="0,10,0,0"/>
+                            <Label x:Name="lblInvestments" Text="{Binding AllFixedInvestments}" FontSize="16" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="1" Margin="0,0,0,0" LineBreakMode="TailTruncation"/>
+                            <Label x:Name="lblInvestmentsd" Text="{Binding AllTbillsInvestments}" FontSize="16" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="2" Margin="0,0,0,0" LineBreakMode="TailTruncation"/>
+                            <Label Text="{Binding AllGoals}" FontSize="16" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="3" Margin="0,0,0,0" LineBreakMode="TailTruncation"/>
+                    <Grid Grid.Row="4" ColumnSpacing="11">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"/>
+                                </Grid.RowDefinitions>
+                          <Grid Grid.Column="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="8"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Image Margin="0,3,0,0" Source="InvestmentGreenRectangle.png" Aspect="AspectFit" VerticalOptions="Start"  HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0"/>
+                            <Label Text="FD" FontSize="11" VerticalOptions="Start" Grid.Row="0" Grid.Column="1"  />
+                          </Grid>
+                        <Grid Grid.Column="1" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="8"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                                    <Image Margin="0,3,0,0" Aspect="AspectFit" Source="InvestmentGreenRectangle.png" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Grid.Row="0" Grid.Column="0"/>
+                            <Label Text="TBills" FontSize="11" VerticalOptions="Start" Grid.Row="0" Grid.Column="1" />
+                        </Grid>
+                    </Grid>
+                     <Grid Grid.RowSpan="3" HeightRequest="100" WidthRequest="100" HorizontalOptions="EndAndExpand">
+                                <forms:ChartView  x:Name="chartView"  Margin="0" HeightRequest="100" WidthRequest="100" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"/>
+                                <Label Text="60%" FontSize="14" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                            </Grid>
+                            </Grid>
+            </Grid>
+            <Grid Grid.Row="1">
+                <syncfussion:SfTabView Grid.Row="0" x:Name="tabView"   EnableSwiping="False" VisibleHeaderCount="2" TabItemTapped="SfTabView_TabItemTapped" SelectionChanged="SfTabView_SelectionChanged" HorizontalOptions="CenterAndExpand" Margin="0,0,0,0">
+                    <syncfussion:SfTabView.SelectionIndicatorSettings>
+                        <syncfussion:SelectionIndicatorSettings Color="Transparent" Position="Bottom" StrokeThickness="0"/>
+                    </syncfussion:SfTabView.SelectionIndicatorSettings>
+                    <syncfussion:SfTabItem>
+                        <syncfussion:SfTabItem.HeaderContent>
+                            <StackLayout VerticalOptions="Center">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Fixed_DepositTapped"/>
+                                </StackLayout.GestureRecognizers>
+                                <Label HorizontalTextAlignment="Center" Text="FIXED DEPOSIT" TextColor="{DynamicResource TabbedPageTileColor}" FontSize="14"></Label>
+                                <BoxView x:Name="bxfixedDepo" HorizontalOptions="Center" HeightRequest="3" WidthRequest="35"></BoxView>
+                            </StackLayout>
+                        </syncfussion:SfTabItem.HeaderContent>
+                        <syncfussion:SfTabItem.Content>
+                            <views:FixedDeposit BindingContext="{Binding Path=BindingContext,Source={x:Reference Main}}"/>
+                        </syncfussion:SfTabItem.Content>
+                    </syncfussion:SfTabItem>
+                    <syncfussion:SfTabItem>
+                        <syncfussion:SfTabItem.HeaderContent>
+                            <StackLayout VerticalOptions="Center">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Treasury_Tapped"/>
+                                </StackLayout.GestureRecognizers>
+                                <Label HorizontalTextAlignment="Center" Text="TREASURY BILLS" TextColor="{DynamicResource TabbedPageTileColor}" FontSize="14"></Label>
+                                <BoxView x:Name="bxTreasury" HorizontalOptions="Center" HeightRequest="3" WidthRequest="35"></BoxView>
+                            </StackLayout>
+                        </syncfussion:SfTabItem.HeaderContent>
+                        <syncfussion:SfTabItem.Content>
+                            <views:TreasuryBills BindingContext="{Binding Path=BindingContext,Source={x:Reference Main}}" />
+                        </syncfussion:SfTabItem.Content>
+                    </syncfussion:SfTabItem>
+                </syncfussion:SfTabView>
+            </Grid>
+        </Grid>
+    </ScrollView>
+    </ContentView>
+    </templates:SwitchMasterPage.PageContent>
+</templates:SwitchMasterPage>  

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sm:SwitchMasterPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:SterlingSwitch.Custom.Controls"
+             xmlns:sm="clr-namespace:SterlingSwitch.Templates"
+             x:Class="SterlingSwitch.Pages.Cards.RequestCardPage" 
+             IsBackImageVisible="True" IsBottomNavBarVisible="False" 
+             PageTitle="New Card" ContentPadding="0" HeaderPadding="16,20,0,0" PageTitleColor="Black">
+
+    <sm:SwitchMasterPage.PageContent>
+        <ContentView ControlTemplate="{StaticResource masterPage}" BackgroundColor="{DynamicResource BackgroundColor}">
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="16,0,0,30">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <ScrollView HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                        <c:ExtendedEntry x:Name="NameTxt" IsEnabled="False" Title="Name to be displayed on card" Margin="0" />
+                        <StackLayout Orientation="Vertical">
+                            <c:ExtendedPicker x:Name="CardTypePicker" Title="Select type of card" HorizontalOptions="FillAndExpand" SelectedIndex="0" SelectedIndexChanged="CardTypePicker_SelectedIndexChanged"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical">
+                            <c:ExtendedPicker x:Name="AccountPicker" Title="Select account" SelectedIndexChanged="AccountPicker_SelectedIndexChanged"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical">
+                            <c:ExtendedPicker x:Name="CurrencyPicker" Title="Select card currency" HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical">
+                            <c:ExtendedPicker x:Name="AddressPicker" Title="Select delivery address" HorizontalOptions="FillAndExpand" SelectedIndexChanged="AddressPicker_SelectedIndexChanged"/>
+                        </StackLayout>
+                        <StackLayout x:Name="NewAddressView" HorizontalOptions="FillAndExpand" IsVisible="False">
+                            <c:ExtendedEntry x:Name="AddressOneTxt" Title="Address Line 1" />
+                            <c:ExtendedEntry x:Name="AddressTwoTxt" Title="Address Line 2"/>
+                            <StackLayout Orientation="Vertical">
+                                <c:ExtendedPicker x:Name="StatePicker" Title="Select State"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical">
+                                <c:ExtendedPicker x:Name="CountryPicker" Title="Select Country"/>
+                            </StackLayout>
+                        </StackLayout>
+                        <Label Text="Card issuance fee of N1,000 applies on physical cards." Style="{DynamicResource Key=FormHeadingStyle}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+                    </StackLayout>
+                </ScrollView>
+                <Button x:Name="RequestBtn" Text="Submit" Grid.Row="1" VerticalOptions="End" Margin="0,0,0,20" Clicked="RequestBtn_Clicked"/>
+            </Grid>
+        </ContentView>
+    </sm:SwitchMasterPage.PageContent>
+
+</sm:SwitchMasterPage>
